@@ -25,25 +25,23 @@
 <body>
 
 <div class="container" id="page">
-    <div id="header-container">
-        <div id="header">
-            <div id="logo"></div>
-            <div id="mainmenu">
-                <?php $this->widget('zii.widgets.CMenu', array(
-                'items' => array(
-                    array('label' => 'Home', 'url' => array('/site/index')),
-                    array('label' => 'Gallery', 'url' => array('/site/page', 'view' => 'about')),
-                    array('label' => 'Shop', 'url' => array('/site/page', 'view' => 'about')),
-                    array('label' => 'smt', 'url' => array('/site/page', 'view' => 'about')),
-                    array('label' => 'FAQ', 'url' => array('/site/page', 'view' => 'about')),
-                    array('label' => 'Contact', 'url' => array('/site/contact')),
-                    array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-                    array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
-                ),
-            )); ?>
-            </div>
-            <div id="slides"></div>
+    <div id="header">
+        <div id="logo"></div>
+        <div id="mainmenu">
+            <?php $this->widget('zii.widgets.CMenu', array(
+            'items' => array(
+                array('label' => 'Home', 'url' => array('/site/index')),
+                array('label' => 'Gallery', 'url' => array('/site/page', 'view' => 'about')),
+                array('label' => 'Shop', 'url' => array('/site/page', 'view' => 'about')),
+                array('label' => 'smt', 'url' => array('/site/page', 'view' => 'about')),
+                array('label' => 'FAQ', 'url' => array('/site/page', 'view' => 'about')),
+                array('label' => 'Contact', 'url' => array('/site/contact')),
+                array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
+                array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+            ),
+        )); ?>
         </div>
+        <div id="slides"></div>
     </div>
     <!-- header -->
 
