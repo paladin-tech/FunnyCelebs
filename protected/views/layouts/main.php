@@ -31,9 +31,9 @@
             <?php $this->widget('zii.widgets.CMenu', array(
             'items' => array(
                 array('label' => 'Home', 'url' => array('/site/index')),
-                array('label' => 'Gallery', 'url' => array('/site/page', 'view' => 'about')),
-                array('label' => 'Shop', 'url' => array('/site/page', 'view' => 'about')),
-                array('label' => 'smt', 'url' => array('/site/page', 'view' => 'about')),
+                array('label' => 'Gallery', 'url' => array('/site/page', 'view' => 'gallery')),
+                array('label' => 'Shop', 'url' => array('/site/page', 'view' => 'shop')),
+                array('label' => 'f-News', 'url' => array('/site/page', 'view' => 'f-news')),
                 array('label' => 'FAQ', 'url' => array('/site/faq')),
                 array('label' => 'Contact', 'url' => array('/site/contact')),
                 array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
