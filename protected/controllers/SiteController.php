@@ -46,6 +46,11 @@ class SiteController extends Controller
 		}
 	}
 
+    public function actionFaq()
+    {
+        $this->render('faq');
+    }
+
 	/**
 	 * Displays the contact page
 	 */
