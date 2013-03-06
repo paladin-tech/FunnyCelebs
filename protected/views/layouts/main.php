@@ -34,7 +34,7 @@
                 array('label' => 'Gallery', 'url' => array('/site/page', 'view' => 'gallery')),
                 array('label' => 'Shop', 'url' => array('/site/page', 'view' => 'shop')),
                 array('label' => 'f-News', 'url' => array('/site/page', 'view' => 'f-news')),
-                array('label' => 'FAQ', 'url' => array('/site/faq')),
+                array('label' => 'f-AQ', 'url' => array('/site/faq')),
                 array('label' => 'Contact', 'url' => array('/site/contact')),
                 array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                 array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
