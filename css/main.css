@@ -55,11 +55,12 @@ body {
 
 #mainmenu {
     float: left;
+    line-height: 40px;
 }
 
 #mainmenu ul {
     padding: 6px 20px 5px 20px;
-    margin: 0px;
+    margin: 0;
 }
 
 #mainmenu ul li {
@@ -77,7 +78,6 @@ body {
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a {
     color: #6399cd;
-    background-color: #EFF4FA;
     text-decoration: none;
 }
 #slides {
@@ -182,7 +182,7 @@ div.search-form {
 }
 
 .portlet-content li {
-    padding: 2px 0 4px 0px;
+    padding: 2px 0 4px 0;
 }
 
 .operations {
