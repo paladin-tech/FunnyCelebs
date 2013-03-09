@@ -80,6 +80,7 @@ body {
     color: #6399cd;
     text-decoration: none;
 }
+
 #slides {
     z-index: 999;
     height: 573px;
@@ -218,11 +219,21 @@ div.search-form {
 
 .gallery-item {
     padding: 10px;
-    margin: 0 10px 10px 0;
+    margin: 0 10px 20px 0;
     width: 428px;
+    height: 460px;
     float: left;
     border: solid 1px #CCC;
+
+    -moz-box-shadow: 3px 3px 4px #333;
+    -webkit-box-shadow: 3px 3px 4px #333;
+    box-shadow: 3px 3px 4px #333;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#333333')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength = 4, Direction = 135, Color = '#333333');
 }
+
 .gallery-item-header {
     width: 416px;
     height: 58px;
@@ -234,19 +245,61 @@ div.search-form {
     font-weight: bold;
     line-height: 58px;
 }
+
 .gallery-item-footer {
     padding: 10px;
 }
+
 .clear {
     clear: both;
 }
+
 .faq-main {
     padding: 20px;
 }
+
 .faq-main-text {
     width: 600px;
     line-height: 1.5;
 }
+
 #celeb-footer {
     text-align: center;
+}
+
+#pager-container {
+    float: right;
+    position: relative;
+    left: -50%;
+    text-align: left;
+}
+
+.pager {
+    list-style-type: none;
+    position: relative;
+    left: 50%;
+    height: 35px;
+}
+
+.pager li {
+    width: 31px;
+    height: 35px;
+    float: left;
+    margin: 5px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.page-number {
+    background: url("../images/PageNr.png");
+}
+
+.pager li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #555;
+}
+
+.pager li.page-number a {
+    color: #FFF;
 }

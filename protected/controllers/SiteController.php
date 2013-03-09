@@ -50,6 +50,11 @@ class SiteController extends Controller
         $this->render('faq');
     }
 
+    public function actionFaq2()
+    {
+        $this->render('faq2');
+    }
+
     public function actionGallery()
     {
         $this->render('gallery');

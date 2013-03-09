@@ -11,25 +11,34 @@
 </div>
 <div id="gallery-two-col">
     <div class="gallery-item">
-        <div class="gallery-item-header">5. DA LI MUŠKARCI MISLE SAMO NA SEX?</div>
-        <div><img src="images/GalleryItem1.png"></div>
-        <div class="gallery-item-footer">blah</div>
+        <div class="gallery-item-header">1. DA LI POSTOJI BOG?</div>
+        <div><img src="images/GalleryItem1.jpg"></div>
+        <div class="gallery-item-footer"></div>
     </div>
     <div class="gallery-item">
-        <div class="gallery-item-header">5. DA LI MUŠKARCI MISLE SAMO NA SEX?</div>
-        <div><img src="images/GalleryItem1.png"></div>
-        <div class="gallery-item-footer">blah</div>
+        <div class="gallery-item-header">2. KAKO DA NAPOKON SMRŠAM?</div>
+        <div><img src="images/GalleryItem2.jpg"></div>
+        <div class="gallery-item-footer"></div>
     </div>
     <div class="clear"></div>
     <div class="gallery-item">
-        <div class="gallery-item-header">5. DA LI MUŠKARCI MISLE SAMO NA SEX?</div>
-        <div><img src="images/GalleryItem1.png"></div>
-        <div class="gallery-item-footer">blah</div>
+        <div class="gallery-item-header">3. DA LI JE BITNIJA DUŽINA ILI TEHNIKA?</div>
+        <div><img src="images/GalleryItem3.jpg"></div>
+        <div class="gallery-item-footer"></div>
     </div>
     <div class="gallery-item">
-        <div class="gallery-item-header">5. DA LI MUŠKARCI MISLE SAMO NA SEX?</div>
-        <div><img src="images/GalleryItem1.png"></div>
-        <div class="gallery-item-footer">blah</div>
+        <div class="gallery-item-header">4. DA LI POSTOJI DEDA MRAZ?</div>
+        <div><img src="images/GalleryItem4.jpg"></div>
+        <div class="gallery-item-footer"></div>
+    </div>
+    <div class="clear"></div>
+    <div id="pager-container">
+        <ul class="pager">
+            <li><a href="<?php echo Yii::app()->createUrl("site/faq") ?>">&lt;</a></li>
+            <li class="page-number"><a href="<?php echo Yii::app()->createUrl("site/faq") ?>">1</a></li>
+            <li class="page-number"><a href="<?php echo Yii::app()->createUrl("site/faq2") ?>">2</a></li>
+            <li><a href="<?php echo Yii::app()->createUrl("site/faq2") ?>">&gt;</a></li>
+        </ul>
     </div>
     <div class="clear"></div>
 </div>
