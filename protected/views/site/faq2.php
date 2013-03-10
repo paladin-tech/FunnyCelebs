@@ -50,8 +50,9 @@
     </ul>
 </div>
 <div class="clear"></div>
-</div>
 <div id="celeb-footer">
-    <img src="images/nadal.jpg"><br><br>
+    <img src="images/nadal.jpg">
+</div>
+<div>
     <img src="images/faq-footer.jpg">
 </div>

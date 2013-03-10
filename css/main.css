@@ -34,12 +34,15 @@ body {
 	padding: 20px 20px 20px 0;
 }
 
-#footer-container {
+#footer {
 	background: #444;
+}
+#footer-container {
+	width: 1000px;
+	margin: auto;
 }
 
 #footer-copyright {
-	margin: auto;
 	/*width: 1000px;*/
 	height: 40px;
 	padding: 10px 10px 10px 100px;

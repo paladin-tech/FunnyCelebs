@@ -58,33 +58,37 @@
 
     <div class="clear"></div>
 
-    <div id="footer-container">
-        <div id="footer-copyright">
-            Copyright &copy; <?php echo date('Y'); ?> by <span style="color: #ffffff">Michael Wolf</span>. All Rights
-            Reserved.
+    <div id="footer">
+        <div id="footer-container">
+            <div id="footer-copyright">
+                Copyright &copy; <?php echo date('Y'); ?> by <span style="color: #ffffff">Michael Wolf</span>. All
+                Rights
+                Reserved.
+            </div>
+            <div id="footer-menu">
+				<?php $this->widget('zii.widgets.CMenu', array(
+				'items' => array(
+					array('label' => 'home', 'url' => array('/site/index')),
+					array('label' => 'gallery', 'url' => array('/site/page', 'view' => 'gallery')),
+					array('label' => 'shop', 'url' => array('/site/page', 'view' => 'shop')),
+					array('label' => 'f-News', 'url' => array('/site/page', 'view' => 'f-news')),
+					array('label' => 'f-AQ', 'url' => array('/site/faq')),
+					array('label' => 'contact', 'url' => array('/site/contact'))
+				),
+			)); ?>
+                <!--            <ul>-->
+                <!--                <li>home</li>-->
+                <!--                <li>gallery</li>-->
+                <!--                <li>shop</li>-->
+                <!--                <li>f-news</li>-->
+                <!--                <li>f-aq</li>-->
+                <!--                <li>contact</li>-->
+                <!--            </ul>-->
+            </div>
+            <div id="back-to-top"><img src="images/BackToTop.png" alt="" onclick="window.location.href = '#top'"
+                                       title="Back to Top"></div>
+            <div class="clear"></div>
         </div>
-        <div id="footer-menu">
-			<?php $this->widget('zii.widgets.CMenu', array(
-			'items' => array(
-				array('label' => 'home', 'url' => array('/site/index')),
-				array('label' => 'gallery', 'url' => array('/site/page', 'view' => 'gallery')),
-				array('label' => 'shop', 'url' => array('/site/page', 'view' => 'shop')),
-				array('label' => 'f-News', 'url' => array('/site/page', 'view' => 'f-news')),
-				array('label' => 'f-AQ', 'url' => array('/site/faq')),
-				array('label' => 'contact', 'url' => array('/site/contact'))
-			),
-		)); ?>
-<!--            <ul>-->
-<!--                <li>home</li>-->
-<!--                <li>gallery</li>-->
-<!--                <li>shop</li>-->
-<!--                <li>f-news</li>-->
-<!--                <li>f-aq</li>-->
-<!--                <li>contact</li>-->
-<!--            </ul>-->
-        </div>
-        <div id="back-to-top"><img src="images/BackToTop.png" alt="" onclick="window.location.href = '#top'" title="Back to Top"></div>
-        <div class="clear"></div>
     </div>
     <!-- footer -->
 
