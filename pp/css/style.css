@@ -1,0 +1,571 @@
+body {
+	margin: 0;
+	padding: 0;
+	color: #888888;
+	font: normal 10pt Arial, Helvetica, sans-serif;
+	background: #EFEFEF;
+}
+
+#container {
+}
+
+#topContainer {
+	background: #0d2c5f;
+}
+
+#menuContainer {
+	margin: auto;
+	width: 1000px;
+}
+
+#logo {
+	width: 301px;
+	height: 60px;
+	background: url("../images/logo.png") no-repeat;
+	background-position: 16px center;
+	float: left;
+}
+
+#menu {
+	height: 60px;
+	float: left;
+}
+
+#menu ul {
+	padding: 22px 0 0 44px;
+	margin: 0;
+	height: 40px;
+}
+
+#menu ul li {
+	display: inline;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 15px;
+	color: #FFFFFF;
+	padding-right: 50px;
+}
+
+#menu ul li:hover {
+	cursor: pointer;
+	color: #ecb715;
+}
+
+#menu ul li.active {
+	cursor: default;
+	color: #ecb715;
+}
+
+#headerContainer {
+	height: 370px;
+	width: 100%;
+	background: #183e76 url("../images/header.png") no-repeat;
+	background-position: center -0px;
+}
+
+#characterContainer {
+	margin: auto;
+	width: 1000px;
+}
+
+#character1 {
+	float: left;
+	margin: 0 0 0 20px;
+}
+
+#character2 img {
+	float: right;
+	margin: -30px -30px 0 0;
+}
+
+#main {
+	margin: auto;
+	width: 1000px;
+	background: #FFFFFF;
+	margin-top: -27px;
+	z-index: 100;
+}
+
+#homeSeparator {
+	height: 28px;
+	background: url("../images/homeSeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#gallerySeparator {
+	height: 28px;
+	background: url("../images/gallerySeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#fNewsSeparator {
+	height: 28px;
+	background: url("../images/fNewsSeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#latestNewsSeparator {
+	height: 28px;
+	background: url("../images/latestNewsSeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#mostPopularSeparator {
+	height: 28px;
+	background: url("../images/mostPopularSeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#mostPopularSeparator2 {
+	height: 16px;
+	background: url("../images/mostPopularSeparator2.png") no-repeat;
+	background-position: 0px 0px;
+}
+
+#newsOtherSeparator {
+	height: 28px;
+	background: url("../images/newsOtherSeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#homeText {
+	padding-left: 30px;
+	width: 581px;
+	color: #333333;
+	float: left;
+}
+
+#homeText h1 {
+	font-size: 38px;
+}
+
+#homeText p {
+	color: #888888;
+	line-height: 1.8;
+	font-size: 16px;
+	padding-left: 35px;
+}
+
+#homeTextSticker {
+	float: right;
+	width: 336px;
+	height: 338px;
+	background: url("../images/home-sticker.jpg") no-repeat;
+}
+
+#funnyNewsSticker {
+	float: right;
+	width: 299px;
+	height: 250px;
+	background: url("../images/fNewsAd.png") no-repeat;
+	margin: 40px 36px 0 0;
+}
+
+#mustRead {
+	padding-bottom: 40px;
+}
+
+#latestNews {
+	padding-top: 12px;
+}
+
+#mustReadHeader {
+	background: url("../images/mustReadHeader.png") no-repeat;
+	height: 121px;
+	background-position: center 20px;
+}
+
+#mustReadHeader span {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 26px;
+	padding: 95px;
+	line-height: 137px;
+}
+
+.mustReadImage {
+	margin: 0 10px 0 74px;
+	height: 187px;
+	width: 187px;
+	float: left;
+}
+
+.latestNewsImage {
+	margin: 0 10px 0 74px;
+	height: 187px;
+	width: 187px;
+	float: left;
+}
+
+#latestNews a {
+	color: #173e75;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.mustReadBody {
+	float: left;
+	width: 655px;
+	font-size: 14px;
+}
+
+.mustReadTitle {
+	color: #173e75;
+	font-size: 22px;
+	font-weight: bold;
+	padding: 8px 0 0 0;
+}
+
+.mustReadTitle2 {
+	padding: 0 0 8px 0;
+	color: #444444;
+}
+
+.mustReadText {
+	color: #888888;
+	line-height: 2;
+}
+
+#mostPopular {
+	padding: 20px 0 0 30px;
+}
+
+#galleryDetailsMain {
+	padding: 20px 0 0 30px;
+}
+
+.galleryBigImage {
+	float: left;
+	padding-bottom: 30px;
+}
+
+#galleryDetailsContainer {
+	float: left;
+	padding: 0 30px 0 20px;
+	width: 302px;
+}
+
+#galleryDetailsContainer #celebrity {
+	font-size: 26px;
+	font-weight: bold;
+	color: #444444;
+	text-transform: capitalize;
+	padding-bottom: 10px;
+}
+
+#galleryDetailsContainer #title {
+	font-size: 32px;
+	font-weight: bold;
+	color: #ecb715;
+	text-transform: capitalize;
+	padding-bottom: 10px;
+}
+
+#galleryDetailsContainer #text {
+	font-size: 13px;
+	color: #888888;
+	line-height: 1.8;
+	padding-bottom: 30px;
+	/*border-bottom: dashed 1px #dddddd;*/
+}
+
+#galleryDetailsContainer #details {
+	padding-top: 30px;
+	line-height: 1.5;
+	padding-bottom: 30px;
+	/*border-bottom: dashed 1px #dddddd;*/
+}
+
+#galleryDetailsContainer #details .span1 {
+	color: #444444;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#galleryDetailsContainer #details .span2 {
+	color: #0160a8;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.mostPopularThumb {
+	width: 296px;
+	height: 274px;
+	background: url("../images/mostPopularThumb.png") no-repeat;
+	float: left;
+	margin-left: 26px;
+}
+
+.mostPopularThumbFirst {
+	margin-left: 0px;
+}
+
+#mostPopular img {
+	padding: 13px;
+}
+
+.mostPopularTitle {
+	color: #404040;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 3px 0 0 13px;
+}
+
+.mostPopularLink {
+	color: #ecb715;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 0 0 0 13px;
+}
+
+#latestNewsHeader {
+	background: url("../images/latestFunnyNewsHeader2.png") no-repeat;
+	height: 110px;
+	background-position: top;
+}
+
+.latestNewsRow {
+	border-bottom: solid 2px #969699;
+	padding: 30px 0 10px 0;
+}
+
+.newsDate {
+	color: #979797;
+}
+
+#adsContainer {
+	background: #EFEFEF;
+	height: 118px;
+}
+
+#adsContainer img {
+	padding: 17px 0 0 30px;
+}
+
+#newsOtherNextMonth {
+	float: left;
+	padding: 15px 0 40px 30px;
+}
+
+#newsOtherStatistics {
+	float: left;
+	padding: 20px 17px 40px 17px;
+}
+
+#newsOtherStatisticsSubtitle {
+	color: #444444;
+	font-weight: bold;
+	font-size: 16px;
+	width: 213px;
+	padding: 8px 12px 0 12px;
+}
+
+#newsOtherStatisticsText {
+	color: #999999;
+	width: 213px;
+	font-size: 11px;
+	padding: 10px 12px 0 12px;
+}
+
+#tagContainer {
+	width: 422px;
+	height: 259px;
+	overflow-y: auto;
+	background: #eff1f2;
+	float: left;
+	color: #999999;
+	font-size: 16px;
+	padding: 12px;
+	margin-top: 20px;
+	line-height: 1.6;
+	border: solid 1px #34a3f7;
+}
+
+#disclaimer {
+	background: #EFEFEF;
+	height: 25px;
+	padding: 5px 0 5px 30px;
+	color: #999999;
+	font-size: 11px;
+}
+
+#footerContainer {
+	background: #444444;
+	height: 89px;
+}
+
+#footer {
+	margin: auto;
+	width: 1000px;
+	color: #888888;
+}
+
+#footerMenu {
+	float: left;
+	padding-left: 24px;
+}
+
+#footerMenu ul {
+	padding: 22px 0 0 44px;
+	margin: 0;
+	height: 40px;
+}
+
+#footerMenu ul li {
+	display: inline;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 15px;
+	color: #FFFFFF;
+	padding-right: 50px;
+}
+
+#footerMenu ul li:hover {
+	cursor: pointer;
+	color: #ecb715;
+}
+
+#footerMenu ul li.active {
+	cursor: default;
+	color: #ecb715;
+}
+
+#copyright {
+	float: left;
+	padding: 16px 50px 0 31px;
+	text-align: right
+}
+
+#arrowUp img {
+	float: right;
+	padding: 18px 29px 0 0;
+}
+
+#pager {
+	text-align: center;
+	padding: 20px;
+	/*margin: auto;*/
+}
+
+#pagerContainer {
+	display: inline-block;
+}
+
+.pagerField {
+	width: 31px;
+	height: 35px;
+	line-height: 35px;
+	float: left;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.activePage {
+	background: url("../images/activePage.png");
+	color: #FFFFFF;
+	cursor: default;
+}
+
+.clear {
+	clear: both;
+}
+
+#commentsBox {
+	padding: 20px 0 20px 0;
+}
+
+#cbTitle {
+	padding: 20px 0 10px 0;
+	font-size: 24px;
+	font-weight: bold;
+	color: #444444;
+}
+
+.comment {
+	font-size: 11px;
+	padding-bottom: 20px;
+}
+
+.cbCelebrity {
+	color: #0160a8;
+	font-weight: bold;
+}
+
+.comment .cbDate {
+	font-weight: bold;
+}
+
+.comment .cbText {
+	font-size: 12px;
+	color: #888888;
+}
+
+#carousel img {
+	/*border: solid 1px #dddddd;*/
+	padding: 5px;
+	width: 160px;
+	margin-right: 5px;
+}
+
+#sectionLike {
+	font-size: 24px;
+	font-weight: bold;
+	color: #888888;
+	text-align: center;
+	padding: 20px;
+}
+
+#faqContainer {
+	padding: 30px;
+}
+
+.faqQuestion {
+	height: 493px;
+	width: 455px;
+	background: url(../images/faq_ram_za_fotke.jpg);
+	float: left;
+}
+
+.faqQuestionRight {
+	float: right;
+}
+
+.faqLike3 {
+	padding: 20px 15px 0 15px;
+}
+
+.faqLike {
+	float: left;
+	width: 142px;
+}
+
+.faqSeparator {
+	height: 28px;
+	background: url("../images/faq_isprekidana_linija.jpg") no-repeat;
+	background-position: 0 12px;
+}
+
+#faqSeparator {
+	height: 28px;
+	background: url("../images/faqSeparator.jpg") no-repeat;
+	background-position: 30px 21px;
+}
+
+.faqQuestionTitle {
+	font-size: 23px;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 36px 0 0 48px;
+}
+
+#faqCommentsBlock {
+	padding: 0 0 0 30px;
+}
+
+#faqGuster {
+	float: right;
+}
+
+#faqGuster img {
+	padding: 140px 80px 0 0;
+}
