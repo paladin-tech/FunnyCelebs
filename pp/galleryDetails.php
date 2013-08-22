@@ -37,7 +37,7 @@ $(document).ready(function() {
 <div id="gallerySeparator"></div>
 <div id="galleryDetailsMain">
 	<div class="galleryBigImage">
-		<div><img src="images/celebrity-<?= $celebId ?>-big.jpg"></div>
+		<div class="galleryLargeFrame"><img src="images/celebrity-<?= $celebId ?>-big.jpg" style="width: 598px; height: 594px;"></div>
 <!--		<div id="sectionLike">Click here to <span style="color: #0160a8; background: url('images/like.png')">Like</span> this picture!</div>-->
 		<div id="sectionLike"><img src="images/clickHereToLike.jpg"></div>
 		<div class="image_carousel">
@@ -58,9 +58,9 @@ $(document).ready(function() {
 	</div>
 	<div id="galleryDetailsContainer">
 		<div id="celebrity"><?= mb_strtoupper($name) ?></div>
-		<div id="title"><?= $title ?></div>
+		<div id="title"><?= ucfirst($title) ?></div>
 		<div id="text"><?= $story ?></div>
-		<div><img src="images/gallery_txt_isprekidane_linije.jpg"></div>
+		<div class="galleryIsprekidane"></div>
 		<div id="details">
 			<span class="span1">NAME:</span> <span class="span2"><?= $name ?></span><br>
 			<span class="span1">OCCUPATION:</span> <span class="span2"><?= $occupation ?></span><br>
@@ -68,7 +68,7 @@ $(document).ready(function() {
 			<span class="span1">PLACE OF BIRTH:</span> <span class="span2"><?= $birthPlace ?></span><br>
 			<span class="span1">STAR SIGN:</span> <span class="span2"><?= $starSign ?></span>
 		</div>
-		<div><img src="images/gallery_txt_isprekidane_linije.jpg"></div>
+		<div class="galleryIsprekidane"></div>
 		<div id="commentsBox">
 			<div id="cbTitle">Comments (36)</div>
 			<div class="comment"><span class="cbCelebrity">Jessie James</span><span class="cbDate">, June 03, 2012, 8.20 PM</span><br>

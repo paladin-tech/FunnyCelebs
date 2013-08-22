@@ -92,9 +92,21 @@ body {
 	background-position: 30px 21px;
 }
 
+#homeSeparator:hover {
+	height: 28px;
+	background: url("../images/homeSeparatorOver.png") no-repeat;
+	background-position: 30px 21px;
+}
+
 #gallerySeparator {
 	height: 28px;
 	background: url("../images/gallerySeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#gallerySeparator:hover {
+	height: 28px;
+	background: url("../images/gallerySeparatorOver.png") no-repeat;
 	background-position: 30px 21px;
 }
 
@@ -104,15 +116,33 @@ body {
 	background-position: 30px 21px;
 }
 
+#fNewsSeparator:hover {
+	height: 28px;
+	background: url("../images/fNewsSeparatorOver.png") no-repeat;
+	background-position: 30px 21px;
+}
+
 #latestNewsSeparator {
 	height: 28px;
 	background: url("../images/latestNewsSeparator.png") no-repeat;
 	background-position: 30px 21px;
 }
 
+#latestNewsSeparator:hover {
+	height: 28px;
+	background: url("../images/latestNewsSeparatorOver.png") no-repeat;
+	background-position: 30px 21px;
+}
+
 #mostPopularSeparator {
 	height: 28px;
 	background: url("../images/mostPopularSeparator.png") no-repeat;
+	background-position: 30px 21px;
+}
+
+#mostPopularSeparator:hover {
+	height: 28px;
+	background: url("../images/mostPopularSeparatorOver.png") no-repeat;
 	background-position: 30px 21px;
 }
 
@@ -128,6 +158,12 @@ body {
 	background-position: 30px 21px;
 }
 
+#newsOtherSeparator:hover {
+	height: 28px;
+	background: url("../images/newsOtherSeparatorOver.png") no-repeat;
+	background-position: 30px 21px;
+}
+
 #homeText {
 	padding-left: 30px;
 	width: 581px;
@@ -136,7 +172,7 @@ body {
 }
 
 #homeText h1 {
-	font-size: 38px;
+	font-size: 42px;
 }
 
 #homeText p {
@@ -226,6 +262,10 @@ body {
 	line-height: 2;
 }
 
+.mustReadText img {
+	padding: 10px 0 10px 0;
+}
+
 #mostPopular {
 	padding: 20px 0 0 30px;
 }
@@ -250,15 +290,16 @@ body {
 	font-weight: bold;
 	color: #444444;
 	text-transform: capitalize;
-	padding-bottom: 10px;
+	padding-bottom: 14px;
 }
 
 #galleryDetailsContainer #title {
-	font-size: 32px;
+	font-size: 35px;
 	font-weight: bold;
 	color: #ecb715;
-	text-transform: capitalize;
-	padding-bottom: 10px;
+	/*text-transform: capitalize;*/
+	padding-bottom: 18px;
+	line-height: 90%;
 }
 
 #galleryDetailsContainer #text {
@@ -288,12 +329,24 @@ body {
 	font-weight: bold;
 }
 
+.galleryLargeFrame {
+	background: url('../images/frameLarge.jpg') no-repeat;
+	width: 618px;
+	height: 623px;
+}
+
+.galleryLargeFrame img {
+	/*padding: 6px 8px 11px 8px;*/
+	padding: 10px 10px 11px 10px;
+}
+
 .mostPopularThumb {
 	width: 296px;
 	height: 274px;
 	background: url("../images/mostPopularThumb.png") no-repeat;
 	float: left;
 	margin-left: 26px;
+	cursor: pointer;
 }
 
 .mostPopularThumbFirst {
@@ -302,13 +355,20 @@ body {
 
 #mostPopular img {
 	padding: 13px;
+	margin: -26px 181px;
+}
+
+.mostPopularImage {
+	height: 221px;
+	width: 295px;
+	cursor: pointer;
 }
 
 .mostPopularTitle {
 	color: #404040;
 	font-weight: bold;
 	font-size: 14px;
-	padding: 3px 0 0 13px;
+	padding: 8px 0 0 13px;
 }
 
 .mostPopularLink {
@@ -316,6 +376,10 @@ body {
 	font-weight: bold;
 	font-size: 14px;
 	padding: 0 0 0 13px;
+}
+
+.mostPopularLinkOver {
+	color: #0160A8;
 }
 
 #latestNewsHeader {
@@ -458,12 +522,59 @@ body {
 	float: left;
 	cursor: pointer;
 	font-weight: bold;
+	background: url('../images/uspravna-linija.jpg') no-repeat;
 }
 
-.activePage {
+.pagerFieldActive {
+	width: 31px;
+	height: 35px;
+	line-height: 35px;
+	float: left;
+	cursor: pointer;
+	font-weight: bold;
 	background: url("../images/activePage.png");
 	color: #FFFFFF;
 	cursor: default;
+}
+
+.pagerField:hover {
+	background: url('../images/strana-over.jpg');
+	color: #FFFFFF;
+}
+
+.pagerFieldFirst {
+	width: 31px;
+	height: 35px;
+	line-height: 35px;
+	float: left;
+	cursor: pointer;
+	font-weight: bold;
+	background: url('../images/leva-strelica-neaktivna.jpg');
+}
+
+.pagerFieldFirst:hover {
+	background: url('../images/leva-strelica-over.jpg');
+}
+
+.pagerFieldLast {
+	width: 31px;
+	height: 35px;
+	line-height: 35px;
+	float: left;
+	cursor: pointer;
+	font-weight: bold;
+	background: url('../images/desna-strelica-neaktivna.jpg');
+}
+
+.pagerFieldLast:hover {
+	background: url('../images/desna-strelica-over.jpg');
+}
+
+.pagerFieldSeparator {
+	background: url('../images/uspravna-linija.jpg');
+	width: 2px;
+	height: 35px;
+	float: left;
 }
 
 .clear {
@@ -502,9 +613,9 @@ body {
 
 #carousel img {
 	/*border: solid 1px #dddddd;*/
-	padding: 5px;
-	width: 160px;
-	margin-right: 5px;
+	/*padding: 5px;*/
+	/*width: 160px;*/
+	/*margin-right: 5px;*/
 }
 
 #sectionLike {
@@ -551,6 +662,12 @@ body {
 	background-position: 30px 21px;
 }
 
+#faqSeparator:hover {
+	height: 28px;
+	background: url("../images/faqSeparatorOver.jpg") no-repeat;
+	background-position: 30px 21px;
+}
+
 .faqQuestionTitle {
 	font-size: 23px;
 	color: #FFFFFF;
@@ -568,4 +685,40 @@ body {
 
 #faqGuster img {
 	padding: 140px 80px 0 0;
+}
+
+.transparentCover {
+	width: 269px;
+	height: 195px;
+	margin: 13px;
+	position: absolute;
+	z-index: 1;
+	/*background: #0160A8;*/
+	opacity: 0.8;
+	display: none;
+	background: url('../images/galleryView.png') no-repeat #0160A8;
+	background-position: center center;
+}
+
+.galleryIsprekidane {
+	height: 5px;
+	background: url('../images/gallery_txt_isprekidane_linije.jpg') no-repeat;
+}
+
+.galleryIsprekidane:hover {
+	height: 5px;
+	background: url('../images/gallery_txt_isprekidane_linije-MouseOver.jpg') no-repeat;
+}
+
+.bull {
+	float: right;
+	width: 350px;
+	height: 292px;
+	background: url('../images/bik1.jpg') no-repeat;
+}
+.bull:hover {
+	float: right;
+	width: 350px;
+	height: 292px;
+	background: url('../images/bik2.jpg') no-repeat;
 }
