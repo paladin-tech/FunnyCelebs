@@ -332,12 +332,13 @@ body {
 .galleryLargeFrame {
 	background: url('../images/frameLarge.jpg') no-repeat;
 	width: 618px;
-	height: 623px;
+	height: 628px;
 }
 
 .galleryLargeFrame img {
 	/*padding: 6px 8px 11px 8px;*/
-	padding: 10px 10px 11px 10px;
+	/*padding: 10px 10px 11px 10px;*/
+	padding: 10px;
 }
 
 .mostPopularThumb {
@@ -408,7 +409,18 @@ body {
 
 #newsOtherNextMonth {
 	float: left;
-	padding: 15px 0 40px 30px;
+	/*padding: 15px 0 40px 30px;*/
+	width: 253px;
+	height: 343px;
+	background-image: url('../images/news50Cent2.png');
+	background-repeat: no-repeat;
+	background-position: 30px 15px;
+}
+
+#newsOtherNextMonth:hover {
+	background-image: url('../images/news50Cent-over.png');
+	background-repeat: no-repeat;
+	background-position: 30px 15px;
 }
 
 #newsOtherStatistics {
@@ -443,6 +455,15 @@ body {
 	margin-top: 20px;
 	line-height: 1.6;
 	border: solid 1px #34a3f7;
+}
+
+#tagContainer a {
+	color: #999999;
+	text-decoration: none;
+}
+
+#tagContainer a:hover {
+	color: #555555;
 }
 
 #disclaimer {
@@ -721,4 +742,5 @@ body {
 	width: 350px;
 	height: 292px;
 	background: url('../images/bik2.jpg') no-repeat;
+	cursor: pointer;
 }

@@ -32,11 +32,12 @@ a.prev {
 	/*left: -22px;*/
 	left: 0;
 	background-position: 0 0;
-	background: url(../images/gallery_strelica_levo.jpg) no-repeat transparent;
+	background: url(../images/levo-strelica-up.jpg) no-repeat transparent;
 }
 
 a.prev:hover {
 	/*background-position: 0 -50px;*/
+	background: url(../images/levo-strelica-over.jpg) no-repeat transparent;
 }
 
 a.prev.disabled {
@@ -46,11 +47,12 @@ a.prev.disabled {
 a.next {
 	right: -22px;
 	background-position: -50px 0;
-	background: url(../images/gallery_strelica_desno.jpg) no-repeat transparent;
+	background: url(../images/desno-strelica-up.jpg) no-repeat transparent;
 }
 
 a.next:hover {
 	/*background-position: -50px -50px;*/
+	background: url(../images/desno-strelica-over.jpg) no-repeat transparent;
 }
 
 a.next.disabled {

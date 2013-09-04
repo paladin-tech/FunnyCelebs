@@ -37,7 +37,7 @@ $(document).ready(function() {
 <div id="gallerySeparator"></div>
 <div id="galleryDetailsMain">
 	<div class="galleryBigImage">
-		<div class="galleryLargeFrame"><img src="images/celebrity-<?= $celebId ?>-big.jpg" style="width: 598px; height: 594px;"></div>
+		<div class="galleryLargeFrame"><img src="images/celebrity-<?= $celebId ?>-big.jpg"></div>
 <!--		<div id="sectionLike">Click here to <span style="color: #0160a8; background: url('images/like.png')">Like</span> this picture!</div>-->
 		<div id="sectionLike"><img src="images/clickHereToLike.jpg"></div>
 		<div class="image_carousel">
@@ -54,7 +54,7 @@ $(document).ready(function() {
 			<a class="next" id="foo2_next" href="#"><span>next</span></a>
 		</div>
 		<div class="clear"></div>
-		<a href="#" class="prev" style="display: block;">aa</a>
+<!--		<a href="#" class="prev" style="display: block;">aa</a>-->
 	</div>
 	<div id="galleryDetailsContainer">
 		<div id="celebrity"><?= mb_strtoupper($name) ?></div>

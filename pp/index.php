@@ -13,6 +13,7 @@ $pg = (isset($_GET['pg']))?$_GET['pg']:'home';
 	<script src="js/jquery-1.5.2.js"></script>
 </head>
 <body>
+<a name="top"></a>
 <div id="container">
 	<div id="topContainer">
 		<div id="menuContainer">

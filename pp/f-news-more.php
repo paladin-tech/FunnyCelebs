@@ -53,7 +53,7 @@ $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `
 		<div>Post comment</div>
 		<div>View All</div>
 	</div>
-	<div class="bull"></div>
+	<div class="bull" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=24'" title="Go to the Gallery!"></div>
 	<div class="clear"></div>
 </div>
 <script>

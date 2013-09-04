@@ -69,10 +69,11 @@
 			$(this).children('.mostPopularImage').children('.transparentCover').show();
 			$(this).children('.mostPopularLink').addClass('mostPopularLinkOver');
 		});
+
 		$('.mostPopularThumb').mouseout(function() {
 			$(this).children('.mostPopularImage').children('.transparentCover').hide();
 			$(this).children('.mostPopularLink').removeClass('mostPopularLinkOver');
 			$(this).children('.mostPopularImage').children('.sticker').show();
-		})
+		});
 	});
 </script>

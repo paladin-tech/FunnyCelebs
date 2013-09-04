@@ -11,8 +11,19 @@
 			</ul>
 		</div>
 		<div id="arrowUp">
-			<img src="images/arrowUp.png">
+			<a href="#top" title="Go on the Top!"><img id="arrowUpImg" src="images/arrowUp.jpg"></a>
 		</div>
 		<div class="clear"></div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		$('#arrowUpImg').mouseover(function() {
+			$(this).attr('src', 'images/arrowUp-over.jpg');
+		});
+
+		$('#arrowUpImg').mouseout(function() {
+			$(this).attr('src', 'images/arrowUp.jpg');
+		});
+	});
+</script>
