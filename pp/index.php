@@ -31,15 +31,16 @@ $pg = (isset($_GET['pg']))?$_GET['pg']:'home';
 		</div>
 	</div>
 	<div id="headerContainer">
-		<div id="characterContainer">
-			<div id="character1">
-				<img src="images/opra.png">
-			</div>
-			<div id="character2">
-				<img src="images/ashton.png">
-			</div>
-			<div class="clear"></div>
-		</div>
+		<div id="characterContainer"><img src="images/header2.png"></div>
+<!--		<div id="characterContainer">-->
+<!--			<div id="character1">-->
+<!--				<img src="images/opra.png">-->
+<!--			</div>-->
+<!--			<div id="character2">-->
+<!--				<img src="images/ashton.png">-->
+<!--			</div>-->
+<!--			<div class="clear"></div>-->
+<!--		</div>-->
 	</div>
 	<div id="main">
 		<? include($pg.'.php'); ?>

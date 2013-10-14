@@ -59,7 +59,7 @@ $(document).ready(function() {
 	<div id="galleryDetailsContainer">
 		<div id="celebrity"><?= mb_strtoupper($name) ?></div>
 		<div id="title"><?= ucfirst($title) ?></div>
-		<div id="text"><?= $story ?></div>
+		<div id="text"><br><?= $story ?></div>
 		<div class="galleryIsprekidane"></div>
 		<div id="details">
 			<span class="span1">NAME:</span> <span class="span2"><?= $name ?></span><br>

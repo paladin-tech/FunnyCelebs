@@ -59,13 +59,14 @@ body {
 #headerContainer {
 	height: 370px;
 	width: 100%;
-	background: #183e76 url("../images/header.png") no-repeat;
+	background: #183e76 url("../images/header.jpg") no-repeat;
 	background-position: center -0px;
 }
 
 #characterContainer {
-	margin: auto;
-	width: 1000px;
+	height: 370px;
+	/*background: url("../images/header2.png") no-repeat;*/
+	/*background-position: -173px -70px;*/
 }
 
 #character1 {
