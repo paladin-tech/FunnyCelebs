@@ -77,7 +77,7 @@
 			<div class="clear"></div>
 		</div>
 	</div>
-	<div id="faqGuster"><img src="images/faq_guster.jpg"></div>
+	<div id="faqGuster" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=4'" title="Go to Gallery"></div>
 	<div class="clear"></div>
 </div>
 <? include('disclaimer.php'); ?>

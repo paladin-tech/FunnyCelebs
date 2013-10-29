@@ -17,7 +17,7 @@ $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `
 <div class="clear"></div>
 <div id="mustRead">
 	<div id="mustReadHeader"><span>MUST READ</span></div>
-	<div>
+    <div class="latestNewsRow">
 		<div class="mustReadImage"><img src="images/news-<?= $newsId ?>-big.jpg"></div>
 		<div class="mustReadBody">
 			<div><?= $date ?></div>
@@ -54,6 +54,7 @@ $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `
 		</div>
 		<div class="clear"></div>
 	</div>
+	<div id="gallerySeparator2"></div>
 	<?
 		$rsNews->MoveNext();
 	}

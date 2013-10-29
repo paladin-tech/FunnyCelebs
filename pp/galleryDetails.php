@@ -1,6 +1,15 @@
 <?
 $celebrity = (isset($_GET['celebrity']))?(int)$_GET['celebrity']:1;
 list($celebId, $name, $occupation, $birthDate, $birthPlace, $starSign, $title, $story) = $infosystem->Execute("SELECT `celebId`, `name`, `occupation`, `birthDate`, `birthPlace`, `starSign`, `title`, `story` FROM `fc_celebrity` WHERE `celebId` = {$celebrity}")->fields;
+
+function calculateAge($date) {
+    $today = date('Y-m-d');
+    $dateDet = explode('-', $date);
+    $dateComp = date('Y').'-'.$dateDet[1].'-'.$dateDet[2];
+    $ageComp = date('Y') - $dateDet[0];
+    $age = ($dateComp <= $today) ? $ageComp : ($ageComp - 1);
+    return $age;
+}
 ?>
 
 <!-- include jQuery + carouFredSel plugin -->
@@ -42,12 +51,13 @@ $(document).ready(function() {
 		<div id="sectionLike"><img src="images/clickHereToLike.jpg"></div>
 		<div class="image_carousel">
 			<div id="carousel">
-				<img src="images/carousel-michaelJackson.jpg" style="" />
-				<img src="images/carousel-eminem.jpg" style="" />
-				<img src="images/carousel-PSY.jpg" style="" />
-				<img src="images/carousel-ladyGaga.jpg" style="" />
-				<img src="images/carousel-kobeBryant.jpg" style="" />
-				<img src="images/carousel-justinBieber.jpg" style="" />
+				<?
+				for($j = 1; $j <= 34; $j++) {
+				?>
+				<img src="images/celebrity-<?= $j ?>-carousel.jpg" style="cursor: pointer" onclick="alert('click')" />
+				<?
+				}
+				?>
 			</div>
 			<div class="clearfix"></div>
 			<a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
@@ -64,7 +74,7 @@ $(document).ready(function() {
 		<div id="details">
 			<span class="span1">NAME:</span> <span class="span2"><?= $name ?></span><br>
 			<span class="span1">OCCUPATION:</span> <span class="span2"><?= $occupation ?></span><br>
-			<span class="span1">BIRTH DATE:</span> <span class="span2"><?= $birthDate ?></span><br>
+			<span class="span1">BIRTH DATE:</span> <span class="span2"><?= date('F d, Y', strtotime($birthDate)) ?> / Age <?= calculateAge($birthDate)  ?></span><br>
 			<span class="span1">PLACE OF BIRTH:</span> <span class="span2"><?= $birthPlace ?></span><br>
 			<span class="span1">STAR SIGN:</span> <span class="span2"><?= $starSign ?></span>
 		</div>

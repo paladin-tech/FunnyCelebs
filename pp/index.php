@@ -31,7 +31,9 @@ $pg = (isset($_GET['pg']))?$_GET['pg']:'home';
 		</div>
 	</div>
 	<div id="headerContainer">
-		<div id="characterContainer"><img src="images/header2.png"></div>
+		<div id="characterContainer">
+<!--			<img src="images/header2.png" style="margin-top: -58px;">-->
+		</div>
 <!--		<div id="characterContainer">-->
 <!--			<div id="character1">-->
 <!--				<img src="images/opra.png">-->

@@ -1,13 +1,16 @@
 <?
 $pager = (isset($_GET['pager']))?(int)$_GET['pager']:1;
-$rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'false' ORDER BY `date` DESC LIMIT ".(0 + ($pager - 1) * 6).", 6");
+$rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'false' ORDER BY `date` DESC LIMIT ".(2 + ($pager - 1) * 6).", 6");
 ?>
 <div class="clear"></div>
 <div id="fNewsSeparator"></div>
 <div class="clear"></div>
 <div id="latestNews">
-	<div id="latestNewsHeader">more f-news...</div>
+	<div id="latestNewsHeader">
+        <span>MORE F-NEWS</span>
+    </div>
 	<?
+    $i = 1;
 	while(!$rsNews->EOF) {
 		?>
 		<div class="latestNewsRow">
@@ -24,9 +27,12 @@ $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `
 				</div>
 			</div>
 			<div class="clear"></div>
-		</div>
-		<?
+        </div><?
+        if($i < $rsNews->RecordCount()) { ?>
+	        <div id="gallerySeparator2"></div><?
+        }
 		$rsNews->MoveNext();
+        $i++;
 	}
 	?>
 </div>
@@ -53,7 +59,7 @@ $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `
 		<div>Post comment</div>
 		<div>View All</div>
 	</div>
-	<div class="bull" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=24'" title="Go to the Gallery!"></div>
+	<div class="bull" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=24'" title="Go to Gallery"></div>
 	<div class="clear"></div>
 </div>
 <script>

@@ -11,7 +11,7 @@
 			</ul>
 		</div>
 		<div id="arrowUp">
-			<a href="#top" title="Go on the Top!"><img id="arrowUpImg" src="images/arrowUp.jpg"></a>
+			<a href="#top" title="Back to Top"><img id="arrowUpImg" src="images/arrowUp.jpg"></a>
 		</div>
 		<div class="clear"></div>
 	</div>
