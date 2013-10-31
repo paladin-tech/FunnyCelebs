@@ -1,3 +1,22 @@
+<script>
+	$(document).ready(function() {
+		$('area').mouseover(function() {
+			$('#FAQ-' + $(this).attr('celeb')).attr('src', 'images/FAQ-' + $(this).attr('celeb') + '-' + $(this).attr('celebOrder') + '.jpg');
+		});
+
+		$('area').mouseout(function() {
+			$('#FAQ-' + $(this).attr('celeb')).attr('src', 'images/FAQ-' + $(this).attr('celeb') + '.jpg');
+		});
+
+		$.fn.preload = function() {
+			this.each(function(){
+				$('<img/>')[0].src = 'images/' + this;
+			});
+		}
+
+		$(['FAQ-2-1.jpg', 'FAQ-2-2.jpg', 'FAQ-2-3.jpg', 'FAQ-3-1.jpg', 'FAQ-3-2.jpg', 'FAQ-3-3.jpg']).preload();
+	});
+</script>
 <div class="clear"></div>
 <div id="faqSeparator"></div>
 <div class="clear"></div>
@@ -17,8 +36,13 @@
 		<div style="padding: 20px 81px 0 82px"><img src="images/faq_like_01.jpg"></div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
-		<div style="background: url(images/faq_pitanje_002.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 376px;">
-			<div class="faqQuestionTitle" style="padding-top: 24px">2. HOW DO I FINALLY LOSE<br>&nbsp;&nbsp;&nbsp;&nbsp;WEIGHT?</div>
+		<div style="padding: 15px">
+			<img src="images/FAQ-2.jpg" border="0" usemap="#Map2" id="FAQ-2" />
+			<map name="Map2" id="Map2">
+				<area shape="rect" coords="0,70,149,376" href="#" alt="Brad Pitt" title="Brad Pitt" celeb="2" celebOrder="1" />
+				<area shape="rect" coords="149,70,278,376" href="#" alt="Oprah Winfrey" title="Oprah Winfrey" celeb="2" celebOrder="2" />
+				<area shape="rect" coords="278,70,426,376" href="#" alt="Britney Spears" title="Britney Spears" celeb="2" celebOrder="3" />
+			</map>
 		</div>
 		<div class="faqLike3">
 			<div style="float: left; width: 112px; padding-left: 30px;"><img src="images/faq_like_02.jpg"></div>
@@ -29,8 +53,13 @@
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
 	<div class="faqQuestion">
-		<div style="background: url(images/faq_pitanje_003.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 376px;">
-			<div class="faqQuestionTitle" style="padding-top: 24px">3. WHAT IS MORE IMPORTANT,<br>&nbsp;&nbsp;&nbsp;&nbsp;LENGTH OR TECHNIQUE?</div>
+		<div style="padding: 15px">
+			<img src="images/FAQ-3.jpg" border="0" usemap="#Map3" id="FAQ-3" />
+			<map name="Map3" id="Map3">
+				<area shape="rect" coords="0,70,149,376" href="#" alt="Julia Roberts" title="Julia Roberts" celeb="3" celebOrder="1" />
+				<area shape="rect" coords="149,70,278,376" href="#" alt="Angelina Jolie" title="Angelina Jolie" celeb="3" celebOrder="2" />
+				<area shape="rect" coords="278,70,426,376" href="#" alt="Ben Affleck" title="Ben Affleck" celeb="3" celebOrder="3" />
+			</map>
 		</div>
 		<div class="faqLike3">
 			<div style="float: left; width: 112px; padding-left: 30px;"><img src="images/faq_like_02.jpg"></div>
