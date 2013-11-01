@@ -1,11 +1,11 @@
 <script>
 	$(document).ready(function() {
 		$('area').mouseover(function() {
-			$('#FAQ-6').attr('src', 'images/FAQ-6-' + $(this).attr('celeb') + '.jpg');
+			$('#FAQ-' + $(this).attr('celeb')).attr('src', 'images/FAQ-' + $(this).attr('celeb') + '-' + $(this).attr('celebOrder') + '.jpg');
 		});
 
 		$('area').mouseout(function() {
-			$('#FAQ-6').attr('src', 'images/FAQ-6.jpg');
+			$('#FAQ-' + $(this).attr('celeb')).attr('src', 'images/FAQ-' + $(this).attr('celeb') + '.jpg');
 		});
 
 		$.fn.preload = function() {
@@ -14,7 +14,7 @@
 			});
 		}
 
-		$(['FAQ-6-1.jpg', 'FAQ-6-2.jpg', 'FAQ-6-3.jpg']).preload();
+		$(['FAQ-6-1.jpg', 'FAQ-6-2.jpg', 'FAQ-6-3.jpg', 'FAQ-7-1.jpg', 'FAQ-7-2.jpg', 'FAQ-7-3.jpg']).preload();
 	});
 </script>
 <div class="clear"></div>
@@ -30,15 +30,13 @@
 		<div style="padding: 20px 81px 0 82px"><img src="images/faq_like_01.jpg"></div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
-<!--		<div style="background: url(images/faq_pitanje_006.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 376px;">-->
 		<div style="padding: 15px">
 			<img src="images/FAQ-6.jpg" border="0" usemap="#Map6" id="FAQ-6" />
 			<map name="Map6" id="Map6">
-				<area shape="rect" coords="0,70,149,376" href="#" alt="Nicole Kidman" celeb="1" />
-				<area shape="rect" coords="149,70,278,376" href="#" alt="Angelina Jolie" celeb="2" />
-				<area shape="rect" coords="278,70,426,376" href="#" alt="Ben Affleck" celeb="3" />
+				<area shape="rect" coords="0,70,149,376" href="#" alt="Nicole Kidman" title="Nicole Kidman" celeb="6" celebOrder="1" />
+				<area shape="rect" coords="149,70,278,376" href="#" alt="Angelina Jolie" title="Angelina Jolie" celeb="6" celebOrder="2" />
+				<area shape="rect" coords="278,70,426,376" href="#" alt="Ben Affleck" title="Ben Affleck" celeb="6" celebOrder="3" />
 			</map>
-<!--			<div class="faqQuestionTitle" style="padding-top: 24px">6. WHAT CAME FIRST, THE<br>&nbsp;&nbsp;&nbsp;&nbsp;CHICKEN OR THE EGG?</div>-->
 		</div>
 		<div class="faqLike3">
 			<div style="float: left; width: 112px; padding-left: 30px;"><img src="images/faq_like_02.jpg"></div>
@@ -49,8 +47,13 @@
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
 	<div class="faqQuestion">
-		<div style="background: url(images/faq_pitanje_007.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 376px;">
-			<div class="faqQuestionTitle" style="padding-top: 24px">7. HOW DOES ONE BECOME<br>&nbsp;&nbsp;&nbsp;&nbsp;RICH?</div>
+		<div style="padding: 15px">
+			<img src="images/FAQ-7.jpg" border="0" usemap="#Map7" id="FAQ-7" />
+			<map name="Map7" id="Map7">
+				<area shape="rect" coords="0,70,149,376" href="#" alt="Christina Aguilera" title="Christina Aguilera" celeb="7" celebOrder="1" />
+				<area shape="rect" coords="149,70,278,376" href="#" alt="Megan Fox" title="Megan Fox" celeb="7" celebOrder="2" />
+				<area shape="rect" coords="278,70,426,376" href="#" alt="Will Smith" title="Will Smith" celeb="7" celebOrder="3" />
+			</map>
 		</div>
 		<div class="faqLike3">
 			<div style="float: left; width: 112px; padding-left: 30px;"><img src="images/faq_like_02.jpg"></div>
