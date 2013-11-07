@@ -14,7 +14,7 @@
 			});
 		}
 
-		$(['FAQ-2-1.jpg', 'FAQ-2-2.jpg', 'FAQ-2-3.jpg', 'FAQ-3-1.jpg', 'FAQ-3-2.jpg', 'FAQ-3-3.jpg']).preload();
+		$(['FAQ-1-1.jpg', 'FAQ-2-1.jpg', 'FAQ-2-2.jpg', 'FAQ-2-3.jpg', 'FAQ-3-1.jpg', 'FAQ-3-2.jpg', 'FAQ-3-3.jpg', 'FAQ-4-1.jpg', 'Gmazox-2.jpg']).preload();
 	});
 </script>
 <div class="clear"></div>
@@ -30,13 +30,16 @@
 <div class="separator"></div>
 <div id="faqContainer">
 	<div class="faqQuestion">
-		<div style="background: url(images/faq_pitanje_001.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 400px;">
-			<div class="faqQuestionTitle">1. DOES GOD EXIST?</div>
+		<div class="faqQuestion1">
+			<img src="images/FAQ-1.jpg" border="0" usemap="#Map1" id="FAQ-1" />
+			<map name="Map1" id="Map1">
+				<area shape="rect" coords="0,70,426,400" href="#" alt="Christina Aguilera" title="Christina Aguilera" celeb="1" celebOrder="1" />
+			</map>
 		</div>
-		<div style="padding: 20px 81px 0 82px"><img src="images/faq_like_01.jpg"></div>
+		<div class="faqLike1"><img src="images/faq_like_01.jpg"></div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
-		<div style="padding: 15px">
+		<div class="faqQuestion3">
 			<img src="images/FAQ-2.jpg" border="0" usemap="#Map2" id="FAQ-2" />
 			<map name="Map2" id="Map2">
 				<area shape="rect" coords="0,70,149,376" href="#" alt="Brad Pitt" title="Brad Pitt" celeb="2" celebOrder="1" />
@@ -53,7 +56,7 @@
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
 	<div class="faqQuestion">
-		<div style="padding: 15px">
+		<div class="faqQuestion3">
 			<img src="images/FAQ-3.jpg" border="0" usemap="#Map3" id="FAQ-3" />
 			<map name="Map3" id="Map3">
 				<area shape="rect" coords="0,70,149,376" href="#" alt="Julia Roberts" title="Julia Roberts" celeb="3" celebOrder="1" />
@@ -68,17 +71,20 @@
 		</div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
-		<div style="background: url(images/faq_pitanje_004.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 400px;">
-			<div class="faqQuestionTitle">4. DOES SANTA CLAUS EXIST?</div>
+		<div class="faqQuestion1">
+			<img src="images/FAQ-4.jpg" border="0" usemap="#Map4" id="FAQ-4" />
+			<map name="Map4" id="Map4">
+				<area shape="rect" coords="0,70,426,400" href="#" alt="Ronaldinho" title="Ronaldinho" celeb="4" celebOrder="1" />
+			</map>
 		</div>
-		<div style="padding: 20px 81px 0 82px"><img src="images/faq_like_01.jpg"></div>
+		<div class="faqLike1"><img src="images/faq_like_01.jpg"></div>
 	</div>
 	<div class="clear"></div>
 </div>
 <div id="pager">
 	<div id="pagerContainer">
 		<div class="pagerField">&lt;</div>
-		<div class="pagerField activePage">1</div>
+		<div class="pagerFieldActive">1</div>
 		<div class="pagerField" onclick="location.href = 'index.php?pg=faq-more'">2</div>
 		<div class="pagerField" onclick="location.href = 'index.php?pg=faq-more'">&gt;</div>
 		<div class="clear"></div>
@@ -106,7 +112,9 @@
 			<div class="clear"></div>
 		</div>
 	</div>
-	<div id="faqGuster" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=4'" title="Go to Gallery"></div>
+	<div id="faqGuster" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=4'" title="Go to Gallery">
+		<img src="images/Gmazox-1.jpg" onmouseover="this.src='images/Gmazox-2.jpg'" onmouseout="this.src='images/Gmazox-1.jpg'" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=4'">
+	</div>
 	<div class="clear"></div>
 </div>
 <? include('disclaimer.php'); ?>

@@ -1,25 +1,52 @@
 <?
 $pager = (isset($_GET['pager']))?(int)$_GET['pager']:1;
 $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'false' ORDER BY `date` DESC LIMIT ".(2 + ($pager - 1) * 6).", 6");
+
+while(!$rsNews->EOF) {
+	list($x_newsId, $x_celebrity, $x_date, $x_title, $x_text) = $rsNews->fields;
+	$newsImagePreload[] = "'news-{$x_newsId}-small-over.jpg'";
+	$rsNews->MoveNext();
+}
+$newsImagePreload = implode(", ", $newsImagePreload);
 ?>
+<script>
+	$(document).ready(function() {
+
+		$('.newsLatest').mouseover(function() {
+			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small-over.jpg');
+		});
+
+		$('.newsLatest').mouseout(function() {
+			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small.jpg');
+		});
+
+		$.fn.preload = function() {
+			this.each(function(){
+				$('<img/>')[0].src = 'images/' + this;
+			});
+		}
+
+		$([<?= $newsImagePreload ?>]).preload();
+
+	});
+</script>
 <div class="clear"></div>
 <div id="fNewsSeparator"></div>
 <div class="clear"></div>
 <div id="latestNews">
-	<div id="latestNewsHeader">
-        <span>MORE F-NEWS</span>
-    </div>
+	<div id="latestNewsHeader"><span>READ ALSO</span></div>
 	<?
     $i = 1;
+	$rsNews->MoveFirst();
 	while(!$rsNews->EOF) {
 		?>
 		<div class="latestNewsRow">
-			<div class="latestNewsImage"><img src="images/news-<?= $rsNews->Fields("newsId") ?>-small.jpg"></div>
+		<div class="latestNewsImage"><img class="newsLatest" newsId="<?= $rsNews->Fields("newsId") ?>" src="images/news-<?= $rsNews->Fields("newsId") ?>-small.jpg"></div>
 			<div class="mustReadBody">
 				<div><?= $rsNews->Fields("date") ?></div>
 				<div class="mustReadTitle"><?= $rsNews->Fields("celebrity") ?></div>
 				<div class="mustReadTitle mustReadTitle2"><?= $rsNews->Fields("title") ?></div>
-				<div class="mustReadText" id="news-<?= $rsNews->Fields("newsId") ?>"><?= substr($rsNews->Fields("text"), 0, 100) ?>... <a class="mustReadTextMoreLink" href="#" onclick="return false">more</a></div>
+				<div class="mustReadText" id="news-<?= $rsNews->Fields("newsId") ?>"><?= truncateWords($rsNews->Fields("text")) ?>... <a class="mustReadTextMoreLink" href="#" onclick="return false">more</a></div>
 				<div class="mustReadText" id="newsMore-<?= $rsNews->Fields("newsId") ?>" style="display: none">
 					<?= $rsNews->Fields("text") ?><br>
 					<img src="images/fNewsClickHereToLike.jpg">

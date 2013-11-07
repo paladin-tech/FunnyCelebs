@@ -14,7 +14,7 @@
 			});
 		}
 
-		$(['FAQ-6-1.jpg', 'FAQ-6-2.jpg', 'FAQ-6-3.jpg', 'FAQ-7-1.jpg', 'FAQ-7-2.jpg', 'FAQ-7-3.jpg']).preload();
+		$(['FAQ-5-1.jpg', 'FAQ-6-1.jpg', 'FAQ-6-2.jpg', 'FAQ-6-3.jpg', 'FAQ-7-1.jpg', 'FAQ-7-2.jpg', 'FAQ-7-3.jpg', 'FAQ-8-1.jpg', 'FAQ-9-1.jpg', 'FAQ-10-1.jpg', 'FAQ-10-2.jpg', 'FAQ-10-3.jpg']).preload();
 	});
 </script>
 <div class="clear"></div>
@@ -24,13 +24,16 @@
 </div>
 <div id="faqContainer" style="padding: 20px 30px 30px 30px;">
 	<div class="faqQuestion">
-		<div style="background: url(images/faq_pitanje_005.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 400px;">
-			<div class="faqQuestionTitle">5. IS SEX ALL MEN THINK ABOUT?</div>
+		<div class="faqQuestion1">
+			<img src="images/FAQ-5.jpg" border="0" usemap="#Map5" id="FAQ-5" />
+			<map name="Map5" id="Map5">
+				<area shape="rect" coords="0,70,426,400" href="#" alt="George Clooney" title="George Clooney" celeb="5" celebOrder="1" />
+			</map>
 		</div>
-		<div style="padding: 20px 81px 0 82px"><img src="images/faq_like_01.jpg"></div>
+		<div class="faqLike1"><img src="images/faq_like_01.jpg"></div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
-		<div style="padding: 15px">
+		<div class="faqQuestion3">
 			<img src="images/FAQ-6.jpg" border="0" usemap="#Map6" id="FAQ-6" />
 			<map name="Map6" id="Map6">
 				<area shape="rect" coords="0,70,149,376" href="#" alt="Nicole Kidman" title="Nicole Kidman" celeb="6" celebOrder="1" />
@@ -47,7 +50,7 @@
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
 	<div class="faqQuestion">
-		<div style="padding: 15px">
+		<div class="faqQuestion3">
 			<img src="images/FAQ-7.jpg" border="0" usemap="#Map7" id="FAQ-7" />
 			<map name="Map7" id="Map7">
 				<area shape="rect" coords="0,70,149,376" href="#" alt="Christina Aguilera" title="Christina Aguilera" celeb="7" celebOrder="1" />
@@ -62,22 +65,33 @@
 		</div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
-		<div style="background: url(images/faq_pitanje_008.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 400px;">
-			<div class="faqQuestionTitle" style="padding-top: 24px">8. WILL THERE BE THE END OF<br>&nbsp;&nbsp;&nbsp;&nbsp;THE WORLD?</div>
+		<div class="faqQuestion1">
+			<img src="images/FAQ-8.jpg" border="0" usemap="#Map8" id="FAQ-8" />
+			<map name="Map8" id="Map8">
+				<area shape="rect" coords="0,70,426,400" href="#" alt="Eminem" title="Eminem" celeb="8" celebOrder="1" />
+			</map>
 		</div>
-		<div style="padding: 20px 81px 0 82px"><img src="images/faq_like_01.jpg"></div>
+		<div class="faqLike1"><img src="images/faq_like_01.jpg"></div>
 	</div>
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
 	<div class="faqQuestion">
-		<div style="background: url(images/faq_pitanje_009.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 400px;">
-			<div class="faqQuestionTitle" style="padding-top: 24px">9. DO EXTRATERRESTRIALS<br>&nbsp;&nbsp;&nbsp;&nbsp;EXIST?</div>
+		<div class="faqQuestion1">
+			<img src="images/FAQ-9.jpg" border="0" usemap="#Map9" id="FAQ-9" />
+			<map name="Map9" id="Map9">
+				<area shape="rect" coords="0,70,426,400" href="#" alt="Michael Jackson" title="Michael Jackson" celeb="9" celebOrder="1" />
+			</map>
 		</div>
-		<div style="padding: 20px 81px 0 82px"><img src="images/faq_like_01.jpg"></div>
+		<div class="faqLike1"><img src="images/faq_like_01.jpg"></div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
-		<div style="background: url(images/faq_pitanje_010.jpg) no-repeat; background-position: 15px 15px; width: 441px; height: 376px;">
-			<div class="faqQuestionTitle">10. IS THERE LIFE AFTER DEATH?</div>
+		<div class="faqQuestion3">
+			<img src="images/FAQ-10.jpg" border="0" usemap="#Map10" id="FAQ-10" />
+			<map name="Map10" id="Map10">
+				<area shape="rect" coords="0,70,149,376" href="#" alt="David Beckham" title="David Beckham" celeb="10" celebOrder="1" />
+				<area shape="rect" coords="149,70,278,376" href="#" alt="Lady Gaga" title="Lady Gaga" celeb="10" celebOrder="2" />
+				<area shape="rect" coords="278,70,426,376" href="#" alt="Richard Gere" title="Richard Gere" celeb="10" celebOrder="3" />
+			</map>
 		</div>
 		<div class="faqLike3">
 			<div style="float: left; width: 112px; padding-left: 30px;"><img src="images/faq_like_02.jpg"></div>
@@ -91,7 +105,7 @@
 	<div id="pagerContainer">
 		<div class="pagerField">&lt;</div>
 		<div class="pagerField" onclick="location.href = 'index.php?pg=faq'">1</div>
-		<div class="pagerField activePage">2</div>
+		<div class="pagerFieldActive">2</div>
 		<div class="pagerField" onclick="location.href = 'index.php?pg=faq-more'">&gt;</div>
 		<div class="clear"></div>
 	</div>

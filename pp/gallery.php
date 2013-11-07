@@ -34,9 +34,9 @@ $rsGallery = $infosystem->Execute("SELECT `celebId`, `name`, `title`, `special` 
 	<div id="pager">
 		<div id="pagerContainer">
 			<div class="pagerFieldFirst"<? if($pager > 1) { ?> onclick="location.href = 'index.php?pg=gallery&pager=<?= ($pager - 1) ?>'"<? } ?>></div>
-			<div class="<?= ($pager==1)?" pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=gallery&pager=1'">1</div>
-			<div class="<?= ($pager==2)?" pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=gallery&pager=2'">2</div>
-			<div class="<?= ($pager==3)?" pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=gallery&pager=3'">3</div>
+			<div class="<?= ($pager==1)?"pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=gallery&pager=1'">1</div>
+			<div class="<?= ($pager==2)?"pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=gallery&pager=2'">2</div>
+			<div class="<?= ($pager==3)?"pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=gallery&pager=3'">3</div>
 			<div class="pagerFieldLast"<? if($pager < 3) { ?> onclick="location.href = 'index.php?pg=gallery&pager=<?= ($pager + 1) ?>'"<? } ?>></div>
 			<div class="clear"></div>
 		</div>

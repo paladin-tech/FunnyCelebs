@@ -1,3 +1,27 @@
+<?
+list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'true'")->fields;
+?>
+<script>
+	$(document).ready(function() {
+
+		$('.newsMustRead').mouseover(function() {
+			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-big-over.jpg');
+		});
+
+		$('.newsMustRead').mouseout(function() {
+			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-big.jpg');
+		});
+
+		$.fn.preload = function() {
+			this.each(function(){
+				$('<img/>')[0].src = 'images/' + this;
+			});
+		}
+
+		$(['fNewsSeparatorOver.png']).preload();
+
+	});
+</script>
 <div id="homeSeparator"></div>
 <div class="clear"></div>
 <div id="homeText">
@@ -57,6 +81,23 @@
 		<div class="mostPopularLink">A distant relative from a Roman legion</div>
 	</div>
 	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div id="fNewsSeparator"></div>
+<div id="mustRead">
+	<div id="mustReadHeader"><span>F-NEWS</span></div>
+	<div class="latestNewsRow">
+		<div class="mustReadImage"><img class="newsMustRead" newsId="<?= $newsId ?>" src="images/news-<?= $newsId ?>-big.jpg"></div>
+		<div class="mustReadBody">
+			<div><?= $date ?></div>
+			<div class="mustReadTitle"><?= $celebrity ?></div>
+			<div class="mustReadTitle mustReadTitle2"><?= $title ?></div>
+			<div class="mustReadText">
+				<?= truncateWords($text) ?> <a class="mustReadTextMoreLink" href="index.php?pg=f-news&pager=1" title="See all news">more</a>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
 </div>
 <? include('ads.php'); ?>
 <? include("otherNews.php"); ?>

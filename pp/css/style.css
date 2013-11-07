@@ -217,16 +217,16 @@ body {
 }
 
 #latestNews {
-	padding-top: 12px;
+	/*padding-top: 12px;*/
 }
 
 #mustReadHeader {
-	background: url("../images/mustReadHeader.png") no-repeat;
+	background: url("../images/breakingFunnyNewsHeader.jpg") no-repeat;
 	height: 121px;
 	background-position: center 20px;
 }
 
-#mustReadHeader span {
+#mustReadHeader span, #latestNewsHeader span {
 	color: #FFFFFF;
 	font-weight: bold;
 	font-size: 26px;
@@ -235,7 +235,7 @@ body {
 }
 
 .mustReadImage {
-	margin: 0 20px 0 57px;
+	margin: 0 26px 0 57px;
 	height: 187px;
 	width: 187px;
 	float: left;
@@ -248,7 +248,7 @@ body {
 	float: left;
 }
 
-#latestNews a {
+.latestNewsRow a {
 	color: #173e75;
 	text-decoration: none;
 	font-weight: bold;
@@ -399,9 +399,10 @@ body {
 }
 
 #latestNewsHeader {
-	background: url("../images/latestFunnyNewsHeader2.png") no-repeat;
-	height: 110px;
-	background-position: top;
+	background: url("../images/moreFunnyNewsHeader.jpg") no-repeat;
+	height: 121px;
+	/*background-position: top;*/
+	background-position: center 20px;
 }
 
 .latestNewsRow {
@@ -677,6 +678,18 @@ body {
 	float: right;
 }
 
+.faqQuestion1 {
+	padding: 15px 15px 10px 15px;
+}
+
+.faqQuestion3 {
+	padding: 15px 15px 15px 15px;
+}
+
+.faqLike1 {
+	padding: 0 81px 0 82px;
+}
+
 .faqLike3 {
 	padding: 0 15px 0 15px;
 }
@@ -717,10 +730,13 @@ body {
 
 #faqGuster {
 	float: right;
+	height: 374px;
 }
 
 #faqGuster img {
-	padding: 140px 80px 0 0;
+	padding-top: 82px;
+	cursor: pointer;
+	/*padding: 140px 80px 0 0;*/
 }
 
 .transparentCover {

@@ -25,12 +25,13 @@ a.prev, a.next {
 	height: 50px;
 	display: block;
 	position: absolute;
-	top: 85px;
+	top: 76px;
 }
 
 a.prev {
 	/*left: -22px;*/
 	left: 0;
+	top: 76px;
 	background-position: 0 0;
 	background: url(../images/levo-strelica-up.jpg) no-repeat transparent;
 }
