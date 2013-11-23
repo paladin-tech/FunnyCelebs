@@ -14,7 +14,7 @@
 			});
 		}
 
-		$(['FAQ-1-1.jpg', 'FAQ-2-1.jpg', 'FAQ-2-2.jpg', 'FAQ-2-3.jpg', 'FAQ-3-1.jpg', 'FAQ-3-2.jpg', 'FAQ-3-3.jpg', 'FAQ-4-1.jpg', 'Gmazox-2.jpg']).preload();
+		$(['FAQ-1-1.jpg', 'FAQ-2-1.jpg', 'FAQ-2-2.jpg', 'FAQ-2-3.jpg', 'FAQ-3-1.jpg', 'FAQ-3-2.jpg', 'FAQ-3-3.jpg', 'FAQ-4-1.jpg', 'Gmazox-2.jpg', 'faq_like_01-over.jpg', 'faq_like_03-over.jpg']).preload();
 	});
 </script>
 <div class="clear"></div>
@@ -36,7 +36,7 @@
 				<area shape="rect" coords="0,70,426,400" href="#" alt="Christina Aguilera" title="Christina Aguilera" celeb="1" celebOrder="1" />
 			</map>
 		</div>
-		<div class="faqLike1"><img src="images/faq_like_01.jpg"></div>
+		<div class="faqLike1"></div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
 		<div class="faqQuestion3">
@@ -48,9 +48,9 @@
 			</map>
 		</div>
 		<div class="faqLike3">
-			<div style="float: left; width: 112px; padding-left: 30px;"><img src="images/faq_like_02.jpg"></div>
-			<div style="float: left; width: 125px; padding-left: 16px;"><img src="images/faq_like_03.jpg"></div>
-			<div style="float: left; width: 126px; padding-left: 16px;"><img src="images/faq_like_03.jpg"></div>
+			<div class="faqLike3-1L"></div>
+			<div class="faqLike3-2"></div>
+			<div class="faqLike3-3"></div>
 		</div>
 	</div>
 	<div class="clear"></div>
@@ -65,9 +65,9 @@
 			</map>
 		</div>
 		<div class="faqLike3">
-			<div style="float: left; width: 112px; padding-left: 30px;"><img src="images/faq_like_02.jpg"></div>
-			<div style="float: left; width: 125px; padding-left: 16px;"><img src="images/faq_like_03.jpg"></div>
-			<div style="float: left; width: 126px; padding-left: 16px;"><img src="images/faq_like_03.jpg"></div>
+			<div class="faqLike3-1L"></div>
+			<div class="faqLike3-2"></div>
+			<div class="faqLike3-3"></div>
 		</div>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
@@ -77,7 +77,7 @@
 				<area shape="rect" coords="0,70,426,400" href="#" alt="Ronaldinho" title="Ronaldinho" celeb="4" celebOrder="1" />
 			</map>
 		</div>
-		<div class="faqLike1"><img src="images/faq_like_01.jpg"></div>
+		<div class="faqLike1"></div>
 	</div>
 	<div class="clear"></div>
 </div>

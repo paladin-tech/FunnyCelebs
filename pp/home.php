@@ -18,7 +18,7 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 			});
 		}
 
-		$(['fNewsSeparatorOver.png']).preload();
+		$(['fNewsSeparatorOver.png', 'news50Cent-over.jpg', 'home-sticker-over.jpg']).preload();
 
 	});
 </script>

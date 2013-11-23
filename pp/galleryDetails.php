@@ -10,6 +10,15 @@ function calculateAge($date) {
     $age = ($dateComp <= $today) ? $ageComp : ($ageComp - 1);
     return $age;
 }
+
+$rsCelebrity = $infosystem->Execute("SELECT `celebId` FROM `fc_celebrity` WHERE `celebId` = {$celebrity}");
+$carouselImagePreload[] = "";
+while(!$rsCelebrity->EOF) {
+	list($xCelebId) = $rsCelebrity->fields;
+	$newsImagePreload[] = "'celebrity-{$xCelebId}-carousel-over.jpg'";
+	$rsCelebrity->MoveNext();
+}
+$carouselImagePreload = implode(", ", $carouselImagePreload);
 ?>
 
 <!-- include jQuery + carouFredSel plugin -->
@@ -39,6 +48,26 @@ $(document).ready(function() {
 			key             : "right"
 		}
 	});
+
+	$.fn.preload = function() {
+		this.each(function(){
+			$('<img/>')[0].src = 'images/' + this;
+		});
+	}
+
+	$('.carouselCelebrity').mouseover(function() {
+		$(this).attr('src', $(this).attr('src').replace('.jpg', '-over.jpg'));
+	});
+
+	$('.carouselCelebrity').mouseout(function() {
+		$(this).attr('src', $(this).attr('src').replace('-over.jpg', '.jpg'));
+	});
+
+	$('.carouselCelebrity').click(function() {
+		window.location.href = 'index.php?pg=galleryDetails&celebrity=' + $(this).attr('celeb');
+	});
+
+	$([<?= $carouselImagePreload ?>, 'clickHereToLike-over.jpg']).preload();
 });
 </script>
 
@@ -48,13 +77,13 @@ $(document).ready(function() {
 	<div class="galleryBigImage">
 		<div class="galleryLargeFrame"><img src="images/celebrity-<?= $celebId ?>-big.jpg"></div>
 <!--		<div id="sectionLike">Click here to <span style="color: #0160a8; background: url('images/like.png')">Like</span> this picture!</div>-->
-		<div id="sectionLike"><img src="images/clickHereToLike.jpg"></div>
+		<div id="sectionLike"></div>
 		<div class="image_carousel">
 			<div id="carousel">
 				<?
 				for($j = 1; $j <= 34; $j++) {
 				?>
-				<img src="images/celebrity-<?= $j ?>-carousel.jpg" style="cursor: pointer" onclick="alert('click')" />
+				<img src="images/celebrity-<?= $j ?>-carousel.jpg" style="cursor: pointer" class="carouselCelebrity" celeb="<?= $j ?>">
 				<?
 				}
 				?>

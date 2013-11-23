@@ -139,13 +139,13 @@ body {
 
 #latestNewsSeparator {
 	height: 28px;
-	background: url("../images/latestNewsSeparator.png") no-repeat;
+	background: url("../images/latestNewsSeparator.jpg") no-repeat;
 	background-position: 30px 21px;
 }
 
 #latestNewsSeparator:hover {
 	height: 28px;
-	background: url("../images/latestNewsSeparatorOver.png") no-repeat;
+	background: url("../images/latestNewsSeparator-over.jpg") no-repeat;
 	background-position: 30px 21px;
 }
 
@@ -204,6 +204,10 @@ body {
 	background: url("../images/home-sticker.jpg") no-repeat;
 }
 
+#homeTextSticker:hover {
+	background: url("../images/home-sticker-over.jpg") no-repeat;
+}
+
 #funnyNewsSticker {
 	float: right;
 	width: 299px;
@@ -226,7 +230,12 @@ body {
 	background-position: center 20px;
 }
 
-#mustReadHeader span, #latestNewsHeader span {
+#mustReadHeader:hover {
+	background: url("../images/breakingFunnyNewsHeader-over.jpg") no-repeat;
+	background-position: center 20px;
+}
+
+#mustReadHeader span, #latestNewsHeader span, #latestNewsHeaderMore span {
 	color: #FFFFFF;
 	font-weight: bold;
 	font-size: 26px;
@@ -239,19 +248,6 @@ body {
 	height: 187px;
 	width: 187px;
 	float: left;
-}
-
-.latestNewsImage {
-	margin: 0 10px 0 74px;
-	height: 200px;
-	width: 200px;
-	float: left;
-}
-
-.latestNewsRow a {
-	color: #173e75;
-	text-decoration: none;
-	font-weight: bold;
 }
 
 .mustReadBody {
@@ -279,6 +275,23 @@ body {
 
 .mustReadText img {
 	padding: 10px 0 10px 0;
+}
+
+.latestNewsImage {
+	margin: 0 10px 0 74px;
+	height: 200px;
+	width: 200px;
+	float: left;
+}
+
+.latestNewsRow a {
+	color: #173e75;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.latestNewsRow a:hover {
+	color: #12c1dc;
 }
 
 #mostPopular {
@@ -405,6 +418,23 @@ body {
 	background-position: center 20px;
 }
 
+#latestNewsHeader:hover {
+	background: url("../images/moreFunnyNewsHeader-over.jpg") no-repeat;
+	background-position: center 20px;
+}
+
+#latestNewsHeaderMore {
+	background: url("../images/moreFunnyNewsHeader2.jpg") no-repeat;
+	height: 121px;
+	/*background-position: top;*/
+	background-position: center 20px;
+}
+
+#latestNewsHeaderMore:hover {
+	background: url("../images/moreFunnyNewsHeader2-over.jpg") no-repeat;
+	background-position: center 20px;
+}
+
 .latestNewsRow {
 	/*border-bottom: solid 2px #969699;*/
 	padding: 30px 0 10px 0;
@@ -428,7 +458,7 @@ body {
 	/*padding: 15px 0 40px 30px;*/
 	width: 253px;
 	height: 343px;
-	background-image: url('../images/news50Cent2.jpg');
+	background-image: url('../images/news50Cent.jpg');
 	background-repeat: no-repeat;
 	background-position: 30px 15px;
 }
@@ -660,7 +690,15 @@ body {
 	font-weight: bold;
 	color: #888888;
 	text-align: center;
+	height: 50px;
 	padding: 20px;
+	background: url(../images/clickHereToLike.jpg) no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+#sectionLike:hover {
+	background: url(../images/clickHereToLike-over.jpg) no-repeat;
+	background-position: center;
 }
 
 #faqContainer {
@@ -688,15 +726,76 @@ body {
 
 .faqLike1 {
 	padding: 0 81px 0 82px;
+	height: 48px;
+	background: url(../images/faq_like_01.jpg) no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+
+.faqLike1:hover {
+	background: url(../images/faq_like_01-over.jpg) no-repeat;
+	background-position: center;
 }
 
 .faqLike3 {
 	padding: 0 15px 0 15px;
 }
 
+.faqLike3-1L {
+	float: left;
+	width: 112px;
+	height: 64px;
+	padding-left: 30px;
+	background: url(../images/faq_like_02.jpg) no-repeat;
+	background-position: center;
+}
+
+.faqLike3-2 {
+	float: left;
+	width: 125px;
+	height: 64px;
+	padding-left: 16px;
+	background: url(../images/faq_like_03.jpg) no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+
+.faqLike3-3 {
+	float: left;
+	width: 126px;
+	height: 64px;
+	padding-left: 16px;
+	background: url(../images/faq_like_03.jpg) no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+
+.faqLike3-2:hover  {
+	background: url(../images/faq_like_03-over.jpg) no-repeat;
+	background-position: center;
+}
+
+.faqLike3-3:hover  {
+	background: url(../images/faq_like_03-over.jpg) no-repeat;
+	background-position: center;
+}
+
 .faqLike {
 	float: left;
 	width: 142px;
+}
+
+.newsLike {
+	padding: 0 81px 0 82px;
+	height: 48px;
+	background: url(../images/faq_like_news.jpg) no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+
+.newsLike:hover  {
+	background: url(../images/faq_like_news-over.jpg) no-repeat;
+	background-position: center;
 }
 
 .faqSeparator {

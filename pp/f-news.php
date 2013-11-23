@@ -20,12 +20,17 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		$('.newsMustRead').mouseout(function() {
 			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-big.jpg');
 		});
+
 		$('.newsLatest').mouseover(function() {
 			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small-over.jpg');
+			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#12c1dc');
+			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#12c1dc');
 		});
 
 		$('.newsLatest').mouseout(function() {
 			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small.jpg');
+			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#173e75');
+			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#173e75');
 		});
 
 		$.fn.preload = function() {
@@ -34,7 +39,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 			});
 		}
 
-		$([<?= $newsImagePreload ?>]).preload();
+		$([<?= $newsImagePreload ?>, 'breakingFunnyNewsHeader-over.jpg', 'moreFunnyNewsHeader-over.jpg', 'latestNewsSeparator-over.jpg', 'faq_like_03-over.jpg']).preload();
 	});
 </script>
 <div class="clear"></div>
@@ -59,7 +64,8 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 			<div class="mustReadTitle mustReadTitle2"><?= $title ?></div>
 			<div class="mustReadText">
 				<?= $text ?><br>
-				<img src="images/fNewsClickHereToLike.jpg">
+				<div class="newsLike"></div>
+<!--				<img src="images/fNewsClickHereToLike.jpg">-->
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -78,12 +84,13 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		<div class="latestNewsImage"><img class="newsLatest" newsId="<?= $rsNews->Fields("newsId") ?>" src="images/news-<?= $rsNews->Fields("newsId") ?>-small.jpg"></div>
 		<div class="mustReadBody">
 			<div><?= $rsNews->Fields("date") ?></div>
-			<div class="mustReadTitle"><?= $rsNews->Fields("celebrity") ?></div>
+			<div class="mustReadTitle" id="mustReadTitle<?= $rsNews->Fields("newsId") ?>"><?= $rsNews->Fields("celebrity") ?></div>
 			<div class="mustReadTitle mustReadTitle2"><?= $rsNews->Fields("title") ?></div>
-			<div class="mustReadText" id="news-<?= $rsNews->Fields("newsId") ?>"><?= truncateWords($rsNews->Fields("text")) ?>... <a class="mustReadTextMoreLink" href="#" onclick="return false">more</a></div>
+			<div class="mustReadText" id="news-<?= $rsNews->Fields("newsId") ?>"><?= truncateWords($rsNews->Fields("text")) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $rsNews->Fields("newsId") ?>" href="#" onclick="return false">more</a></div>
 			<div class="mustReadText" id="newsMore-<?= $rsNews->Fields("newsId") ?>" style="display: none">
-				<?= $rsNews->Fields("text") ?><br>
-				<img src="images/fNewsClickHereToLike.jpg">
+				<?= $rsNews->Fields("text") ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
+				<div class="newsLike"></div>
+<!--				<img src="images/fNewsClickHereToLike.jpg">-->
 <!--				<a class="mustReadTextlessLink" href="#" onclick="return false">less</a>-->
 			</div>
 		</div>
@@ -111,6 +118,11 @@ $(document).ready(function() {
 		newsId = $(this).parent().attr('id').replace('news-', '');
 		$('#news-'+newsId).hide();
 		$('#newsMore-'+newsId).show('fast');
+	});
+	$('.mustReadTextLessLink').click(function() {
+		newsId = $(this).parent().attr('id').replace('newsMore-', '');
+		$('#newsMore-'+newsId).hide('fast');
+		$('#news-'+newsId).show();
 	});
 });
 </script>
