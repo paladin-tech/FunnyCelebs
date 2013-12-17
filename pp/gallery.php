@@ -42,10 +42,9 @@ $rsGallery = $infosystem->Execute("SELECT `celebId`, `name`, `title`, `special` 
 		</div>
 	</div>
 </div>
-<div id="adsContainer">
-	<img src="images/ads.png">
-</div>
+<? include('ads.php'); ?>
 <? include("otherNews.php"); ?>
+<? include('disclaimer.php'); ?>
 <script>
 $(document).ready(function() {
 	$('.mostPopularThumb').mouseover(function() {

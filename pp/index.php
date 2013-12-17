@@ -1,4 +1,6 @@
 <?
+session_start();
+
 require("adodb/adodb.inc.php");
 require("infosystem.php");
 $pg = (isset($_GET['pg']))?$_GET['pg']:'home';
@@ -36,14 +38,14 @@ function truncateWords($text, $maxLength = 20)
 <div id="container">
 	<div id="topContainer">
 		<div id="menuContainer">
-			<div id="logo"></div>
+			<div id="logo" onclick="window.location.href = 'index.php?pg=home'"></div>
 			<div id="menu">
 				<ul>
-					<li onclick="location.href = 'index.php?pg=home'"<? if($pg=="home") { ?> class="active"<? } ?>>home</li>
-					<li onclick="location.href = 'index.php?pg=gallery&pager=1'"<? if($pg=="gallery"||$pg=="galleryDetails") { ?> class="active"<? } ?>>gallery</li>
-					<li onclick="location.href = 'index.php?pg=f-news'"<? if($pg=="f-news" || $pg == "f-news-more") { ?> class="active"<? } ?>>f-news</li>
-					<li onclick="location.href = 'index.php?pg=faq'"<? if($pg=="faq"||$pg=="faq-more") { ?> class="active"<? } ?>>f-AQ</li>
-					<li>contact</li>
+					<li onclick="location.href = 'index.php?pg=home'" class="<?= ($pg=="home") ? "menuHomeActive active" : "" ?>">home</li>
+					<li onclick="location.href = 'index.php?pg=gallery&pager=1'" class="<?= ($pg=="gallery"||$pg=="galleryDetails") ? "menuGalleryActive active" : "" ?>">gallery</li>
+					<li onclick="location.href = 'index.php?pg=f-news'" class="<?= ($pg=="f-news" || $pg == "f-news-more") ? "menuFnewsActive active" : "" ?>">f-news</li>
+					<li onclick="location.href = 'index.php?pg=faq'" class="<?= ($pg=="faq"||$pg=="faq-more") ? "menuFaqActive active" : "" ?>">f-AQ</li>
+					<li onclick="location.href = 'index.php?pg=contact'" class="<?= ($pg=="contact") ? "menuContactActive active" : "" ?>">contact</li>
 				</ul>
 			</div>
 			<div class="clear"></div>

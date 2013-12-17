@@ -1,3 +1,3 @@
 <div id="adsContainer">
-	<img src="images/ads.png">
+	<img src="images/horizontalAd.jpg">
 </div>

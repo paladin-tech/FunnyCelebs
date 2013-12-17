@@ -24,6 +24,7 @@ body {
 	background: url("../images/logo.png") no-repeat;
 	background-position: 16px center;
 	float: left;
+	cursor: pointer;
 }
 
 #menu {
@@ -38,17 +39,18 @@ body {
 }
 
 #menu ul li {
-	display: inline;
+	display: inline-block;
 	font-family: arial;
 	font-weight: bold;
 	font-size: 15px;
 	color: #FFFFFF;
-	padding-right: 50px;
+	padding: 0 25px 0 25px;
+	height: 40px;
 }
 
 #menu ul li:hover {
 	cursor: pointer;
-	color: #ecb715;
+	/*color: #ecb715;*/
 }
 
 #menu ul li.active {
@@ -116,13 +118,13 @@ body {
 #gallerySeparator2 {
 	height: 28px;
 	background: url("../images/gallerySeparator2.png") no-repeat;
-	background-position: 30px 21px;
+	background-position: 54px 21px;
 }
 
 #gallerySeparator2:hover {
 	height: 28px;
 	background: url("../images/gallerySeparator2Over.png") no-repeat;
-	background-position: 30px 21px;
+	background-position: 54px 21px;
 }
 
 #fNewsSeparator {
@@ -210,9 +212,9 @@ body {
 
 #funnyNewsSticker {
 	float: right;
-	width: 299px;
+	width: 300px;
 	height: 250px;
-	background: url("../images/fNewsAd.png") no-repeat;
+	background: url("../images/fNewsAd.jpg") no-repeat;
 	margin: 40px 36px 0 0;
 }
 
@@ -263,9 +265,15 @@ body {
 	padding: 8px 0 0 0;
 }
 
+.mustReadTitle:hover {
+	color: #12c1dc;
+}
+
 .mustReadTitle2 {
-	padding: 0 0 8px 0;
 	color: #444444;
+	font-size: 22px;
+	font-weight: bold;
+	padding: 0 0 8px 0;
 }
 
 .mustReadText {
@@ -304,7 +312,7 @@ body {
 
 .galleryBigImage {
 	float: left;
-	padding-bottom: 30px;
+	padding-bottom: 10px;
 }
 
 #galleryDetailsContainer {
@@ -424,14 +432,14 @@ body {
 }
 
 #latestNewsHeaderMore {
-	background: url("../images/moreFunnyNewsHeader2.jpg") no-repeat;
+	background: url("../images/moreFunnyNewsHeader.jpg") no-repeat;
 	height: 121px;
 	/*background-position: top;*/
 	background-position: center 20px;
 }
 
 #latestNewsHeaderMore:hover {
-	background: url("../images/moreFunnyNewsHeader2-over.jpg") no-repeat;
+	background: url("../images/moreFunnyNewsHeader-over.jpg") no-repeat;
 	background-position: center 20px;
 }
 
@@ -446,11 +454,11 @@ body {
 
 #adsContainer {
 	background: #EFEFEF;
-	height: 118px;
+	height: 124px;
 }
 
 #adsContainer img {
-	padding: 17px 0 0 30px;
+	padding: 17px 136px 17px 136px;
 }
 
 #newsOtherNextMonth {
@@ -537,28 +545,37 @@ body {
 }
 
 #footerMenu ul {
-	padding: 22px 0 0 44px;
+	padding: 0 0 0 44px;
 	margin: 0;
-	height: 40px;
+	height: 62px;
 }
 
 #footerMenu ul li {
-	display: inline;
+	display: inline-block;
 	font-family: arial;
 	font-weight: bold;
 	font-size: 15px;
 	color: #FFFFFF;
-	padding-right: 50px;
+	padding: 0 25px 0 25px;
+	height: 62px;
+	line-height: 62px;
 }
 
 #footerMenu ul li:hover {
 	cursor: pointer;
+	/*color: #ecb715;*/
+	background: url('../images/strelica-footer.png') no-repeat;
+	background-position: center 0;
+}
+
+#footerMenu ul li.activeFooter {
+	cursor: default;
 	color: #ecb715;
 }
 
-#footerMenu ul li.active {
-	cursor: default;
-	color: #ecb715;
+.footerStrelica {
+	background: url('../images/strelica-footer.png') no-repeat;
+	background-position: center 0;
 }
 
 #copyright {
@@ -691,7 +708,7 @@ body {
 	color: #888888;
 	text-align: center;
 	height: 50px;
-	padding: 20px;
+	padding: 20px 20px 15px 20px;
 	background: url(../images/clickHereToLike.jpg) no-repeat;
 	background-position: center;
 	cursor: pointer;
@@ -873,4 +890,82 @@ body {
 	height: 292px;
 	background: url('../images/bik2.jpg') no-repeat;
 	cursor: pointer;
+}
+
+#contactForm {
+	/*padding-left: 30px;*/
+}
+
+#contactForm div {
+	padding-bottom: 20px;
+}
+
+#contactSeparator {
+	height: 28px;
+	background: url("../images/contactSeparator.jpg") no-repeat;
+	background-position: 30px 21px;
+}
+
+#contactSeparator:hover {
+	height: 28px;
+	background: url("../images/contactSeparator-over.jpg") no-repeat;
+	background-position: 30px 21px;
+}
+
+#contactBody {
+	padding: 0 60px 60px 30px;
+	width: 452px;
+	height: 737px;
+	color: #333333;
+	float: left;
+	background: url("../images/contactOkvir.jpg") no-repeat;
+	background-position: 30px center;
+}
+
+#contactBody h1 {
+	font-size: 42px;
+}
+
+#contactBody p {
+	color: #888888;
+	line-height: 1.8;
+	font-size: 16px;
+}
+
+#contactImage {
+	width: 425px;
+	height: 797px;
+	background: url("../images/contact.jpg") no-repeat;
+	background-position: center 225px;
+	float: right;
+}
+
+#contactImage:hover {
+	background: url("../images/contact-over.jpg") no-repeat;
+	background-position: center 225px;
+}
+
+.menuHomeActive {
+	background: url("../images/strelica-home.png") no-repeat;
+	background-position: center 30px;
+}
+
+.menuGalleryActive {
+	background: url("../images/strelica-gallery.png") no-repeat;
+	background-position: center 30px;
+}
+
+.menuFnewsActive {
+	background: url("../images/strelica-fnews.png") no-repeat;
+	background-position: center 30px;
+}
+
+.menuFaqActive {
+	background: url("../images/strelica-faq.png") no-repeat;
+	background-position: center 30px;
+}
+
+.menuContactActive {
+	background: url("../images/strelica-contact.png") no-repeat;
+	background-position: center 30px;
 }

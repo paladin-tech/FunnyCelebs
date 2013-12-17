@@ -90,9 +90,7 @@
 		<div class="clear"></div>
 	</div>
 </div>
-<div id="adsContainer">
-	<img src="images/ads.png">
-</div>
+<? include('ads.php'); ?>
 <div id="faqCommentsBlock">
 	<div id="commentsBox" style="padding: 10px 0 20px 14; width: 300px; float: left;">
 		<div id="cbTitle">Comments (36)</div>

@@ -19,9 +19,7 @@
 </script>
 <div class="clear"></div>
 <div id="faqSeparator" style="height: 44px;"></div>
-<div id="adsContainer">
-	<img src="images/ads.png">
-</div>
+<? include('ads.php'); ?>
 <div id="faqContainer" style="padding: 20px 30px 30px 30px;">
 	<div class="faqQuestion">
 		<div class="faqQuestion1">
@@ -110,7 +108,5 @@
 		<div class="clear"></div>
 	</div>
 </div>
-<div id="adsContainer">
-	<img src="images/ads.png">
-</div>
+<? include('ads.php'); ?>
 <? include('disclaimer.php'); ?>

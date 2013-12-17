@@ -18,7 +18,7 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 			});
 		}
 
-		$(['fNewsSeparatorOver.png', 'news50Cent-over.jpg', 'home-sticker-over.jpg']).preload();
+		$(['fNewsSeparatorOver.png', 'news50Cent-over.jpg', 'home-sticker-over.jpg', 'breakingFunnyNewsHeader-over.jpg']).preload();
 
 	});
 </script>
@@ -91,7 +91,7 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 		<div class="mustReadBody">
 			<div><?= $date ?></div>
 			<div class="mustReadTitle"><?= $celebrity ?></div>
-			<div class="mustReadTitle mustReadTitle2"><?= $title ?></div>
+			<div class="mustReadTitle2"><?= $title ?></div>
 			<div class="mustReadText">
 				<?= truncateWords($text) ?> <a class="mustReadTextMoreLink" href="index.php?pg=f-news&pager=1" title="See all news">more</a>
 			</div>

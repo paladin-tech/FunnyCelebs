@@ -14,14 +14,14 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 
 		$('.newsLatest').mouseover(function() {
 			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small-over.jpg');
-			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#12c1dc');
-			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#12c1dc');
+//			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#12c1dc');
+//			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#12c1dc');
 		});
 
 		$('.newsLatest').mouseout(function() {
 			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small.jpg');
-			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#173e75');
-			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#173e75');
+//			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#173e75');
+//			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#173e75');
 		});
 
 		$.fn.preload = function() {
@@ -30,7 +30,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 			});
 		}
 
-		$([<?= $newsImagePreload ?>, 'moreFunnyNewsHeader2-over.jpg', 'faq_like_03-over.jpg']).preload();
+		$([<?= $newsImagePreload ?>, 'moreFunnyNewsHeader-over.jpg', 'faq_like_03-over.jpg']).preload();
 
 	});
 </script>
@@ -49,7 +49,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 			<div class="mustReadBody">
 				<div><?= $rsNews->Fields("date") ?></div>
 				<div class="mustReadTitle" id="mustReadTitle<?= $rsNews->Fields("newsId") ?>"><?= $rsNews->Fields("celebrity") ?></div>
-				<div class="mustReadTitle mustReadTitle2"><?= $rsNews->Fields("title") ?></div>
+				<div class="mustReadTitle2"><?= $rsNews->Fields("title") ?></div>
 				<div class="mustReadText" id="news-<?= $rsNews->Fields("newsId") ?>"><?= truncateWords($rsNews->Fields("text")) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $rsNews->Fields("newsId") ?>" href="#" onclick="return false">more</a></div>
 				<div class="mustReadText" id="newsMore-<?= $rsNews->Fields("newsId") ?>" style="display: none">
 					<?= $rsNews->Fields("text") ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
@@ -66,10 +66,9 @@ $newsImagePreload = implode(", ", $newsImagePreload);
         $i++;
 	}
 	?>
+	<div style="height: 22px;"></div>
 </div>
-<div id="adsContainer">
-	<img src="images/ads.png">
-</div>
+<? include('ads.php'); ?>
 <div id="pager" style="padding: 0px;">
 	<div id="pagerContainer" style="padding: 20px;">
 		<div class="pagerFieldFirst" <? if($pager > 1) { ?>onclick="location.href = 'index.php?pg=f-news-more&pager=<?= ($pager - 1) ?>'"<? } else { ?>onclick="location.href = 'index.php?pg=f-news'"<? } ?>></div>
@@ -93,6 +92,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 	<div class="bull" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=24'" title="Go to Gallery"></div>
 	<div class="clear"></div>
 </div>
+<? include('disclaimer.php'); ?>
 <script>
 $(document).ready(function() {
 	$('.mustReadTextMoreLink').click(function() {

@@ -23,14 +23,14 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 
 		$('.newsLatest').mouseover(function() {
 			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small-over.jpg');
-			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#12c1dc');
-			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#12c1dc');
+//			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#12c1dc');
+//			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#12c1dc');
 		});
 
 		$('.newsLatest').mouseout(function() {
 			$(this).attr('src', 'images/news-' + $(this).attr('newsId') + '-small.jpg');
-			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#173e75');
-			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#173e75');
+//			$('#mustReadTitle' + $(this).attr('newsId')).css('color', '#173e75');
+//			$('#mustReadTextMoreLink' + $(this).attr('newsId')).css('color', '#173e75');
 		});
 
 		$.fn.preload = function() {
@@ -61,7 +61,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		<div class="mustReadBody">
 			<div><?= $date ?></div>
 			<div class="mustReadTitle"><?= $celebrity ?></div>
-			<div class="mustReadTitle mustReadTitle2"><?= $title ?></div>
+			<div class="mustReadTitle2"><?= $title ?></div>
 			<div class="mustReadText">
 				<?= $text ?><br>
 				<div class="newsLike"></div>
@@ -71,12 +71,11 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		<div class="clear"></div>
 	</div>
 </div>
-<div id="adsContainer">
-	<img src="images/ads.png">
-</div>
+<? include('ads.php'); ?>
 <div id="latestNews">
 	<div id="latestNewsHeader"><span>HOT GOSSIPS</span></div>
 	<?
+	$i = 1;
 	$rsNews->MoveFirst();
 	while(!$rsNews->EOF) {
 	?>
@@ -85,7 +84,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		<div class="mustReadBody">
 			<div><?= $rsNews->Fields("date") ?></div>
 			<div class="mustReadTitle" id="mustReadTitle<?= $rsNews->Fields("newsId") ?>"><?= $rsNews->Fields("celebrity") ?></div>
-			<div class="mustReadTitle mustReadTitle2"><?= $rsNews->Fields("title") ?></div>
+			<div class="mustReadTitle2"><?= $rsNews->Fields("title") ?></div>
 			<div class="mustReadText" id="news-<?= $rsNews->Fields("newsId") ?>"><?= truncateWords($rsNews->Fields("text")) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $rsNews->Fields("newsId") ?>" href="#" onclick="return false">more</a></div>
 			<div class="mustReadText" id="newsMore-<?= $rsNews->Fields("newsId") ?>" style="display: none">
 				<?= $rsNews->Fields("text") ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
@@ -96,9 +95,14 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		</div>
 		<div class="clear"></div>
 	</div>
+	<?
+	if($i < $rsNews->RecordCount()) {
+	?>
 	<div id="gallerySeparator2"></div>
 	<?
+		}
 		$rsNews->MoveNext();
+		$i++;
 	}
 	?>
 </div>
@@ -112,6 +116,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		<div class="clear"></div>
 	</div>
 </div>
+<? include('disclaimer.php'); ?>
 <script>
 $(document).ready(function() {
 	$('.mustReadTextMoreLink').click(function() {

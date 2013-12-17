@@ -129,7 +129,6 @@ $(document).ready(function() {
 	</div>
 	<div class="clear"></div>
 </div>
-<div id="adsContainer">
-	<img src="images/ads.png">
-</div>
+<? include('ads.php'); ?>
 <? include("otherNews.php"); ?>
+<? include('disclaimer.php'); ?>
