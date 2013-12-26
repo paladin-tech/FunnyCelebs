@@ -6,6 +6,10 @@ body {
 	background: #EFEFEF;
 }
 
+a {
+	text-decoration: none;
+}
+
 #container {
 }
 
@@ -226,18 +230,18 @@ body {
 	/*padding-top: 12px;*/
 }
 
-#mustReadHeader {
+#mustReadHeader, #mustReadHeaderHome {
 	background: url("../images/breakingFunnyNewsHeader.jpg") no-repeat;
 	height: 121px;
 	background-position: center 20px;
 }
 
-#mustReadHeader:hover {
+#mustReadHeaderHome:hover {
 	background: url("../images/breakingFunnyNewsHeader-over.jpg") no-repeat;
 	background-position: center 20px;
 }
 
-#mustReadHeader span, #latestNewsHeader span, #latestNewsHeaderMore span {
+#mustReadHeader span, #latestNewsHeader span, #latestNewsHeaderMore span, #mustReadHeaderHome span {
 	color: #FFFFFF;
 	font-weight: bold;
 	font-size: 26px;
@@ -265,9 +269,9 @@ body {
 	padding: 8px 0 0 0;
 }
 
-.mustReadTitle:hover {
-	color: #12c1dc;
-}
+/*.mustReadTitle:hover {*/
+	/*color: #12c1dc;*/
+/*}*/
 
 .mustReadTitle2 {
 	color: #444444;
@@ -426,10 +430,10 @@ body {
 	background-position: center 20px;
 }
 
-#latestNewsHeader:hover {
-	background: url("../images/moreFunnyNewsHeader-over.jpg") no-repeat;
-	background-position: center 20px;
-}
+/*#latestNewsHeader:hover {*/
+	/*background: url("../images/moreFunnyNewsHeader-over.jpg") no-repeat;*/
+	/*background-position: center 20px;*/
+/*}*/
 
 #latestNewsHeaderMore {
 	background: url("../images/moreFunnyNewsHeader.jpg") no-repeat;
@@ -438,10 +442,10 @@ body {
 	background-position: center 20px;
 }
 
-#latestNewsHeaderMore:hover {
-	background: url("../images/moreFunnyNewsHeader-over.jpg") no-repeat;
-	background-position: center 20px;
-}
+/*#latestNewsHeaderMore:hover {*/
+	/*background: url("../images/moreFunnyNewsHeader-over.jpg") no-repeat;*/
+	/*background-position: center 20px;*/
+/*}*/
 
 .latestNewsRow {
 	/*border-bottom: solid 2px #969699;*/
@@ -710,12 +714,12 @@ body {
 	height: 50px;
 	padding: 20px 20px 15px 20px;
 	background: url(../images/clickHereToLike.jpg) no-repeat;
-	background-position: center;
+	background-position: left;
 	cursor: pointer;
 }
 #sectionLike:hover {
 	background: url(../images/clickHereToLike-over.jpg) no-repeat;
-	background-position: center;
+	background-position: left;
 }
 
 #faqContainer {
@@ -968,4 +972,22 @@ body {
 .menuContactActive {
 	background: url("../images/strelica-contact.png") no-repeat;
 	background-position: center 30px;
+}
+
+#galleryBigImage {
+	position: absolute;
+}
+
+#galleryLayerPrevious {
+	position: relative;
+	top: 198px;
+	left: 0;
+	cursor: pointer;
+}
+
+#galleryLayerNext {
+	position: relative;
+	top: 198px;
+	left: 489px;
+	cursor: pointer;
 }

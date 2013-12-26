@@ -11,18 +11,18 @@ function calculateAge($date) {
     return $age;
 }
 
-$rsCelebrity = $infosystem->Execute("SELECT `celebId` FROM `fc_celebrity` WHERE `celebId` = {$celebrity}");
-$carouselImagePreload[] = "";
+$rsCelebrity = $infosystem->Execute("SELECT `celebId` FROM `fc_celebrity`");
+$carouselImagePreload = array();
 while(!$rsCelebrity->EOF) {
 	list($xCelebId) = $rsCelebrity->fields;
-	$newsImagePreload[] = "'celebrity-{$xCelebId}-carousel-over.jpg'";
+	$carouselImagePreload[] = "'celebrity-{$xCelebId}-carousel-over.jpg'";
 	$rsCelebrity->MoveNext();
 }
 $carouselImagePreload = implode(", ", $carouselImagePreload);
 ?>
 
 <!-- include jQuery + carouFredSel plugin -->
-<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+<!--<script type="text/javascript" language="javascript" src="js/jquery.js"></script>-->
 <script type="text/javascript" language="javascript" src="js/jquery.carouFredSel.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/carousel.css"/>
@@ -68,6 +68,28 @@ $(document).ready(function() {
 	});
 
 	$([<?= $carouselImagePreload ?>, 'clickHereToLike-over.jpg']).preload();
+
+	$('#mapLeft').mouseover(function() {
+		$('#galleryLayerPrevious').show();
+	});
+	$('#mapLeft').mouseout(function() {
+		$('#galleryLayerPrevious').hide();
+	});
+	$('#galleryLayerPrevious').click(function() {
+		window.location.href = 'index.php?pg=galleryDetails&celebrity=<?= ($celebrity > 1) ? ($celebrity - 1) : $numberOfCelebrities ?>';
+	});
+
+	$('#mapRight').mouseover(function() {
+		$('#galleryLayerNext').show();
+	});
+
+	$('#mapRight').mouseout(function() {
+		$('#galleryLayerNext').hide();
+	});
+
+	$('#galleryLayerNext').click(function() {
+		window.location.href = 'index.php?pg=galleryDetails&celebrity=<?= ($celebrity < $numberOfCelebrities) ? ($celebrity + 1) : 1 ?>';
+	});
 });
 </script>
 
@@ -75,9 +97,31 @@ $(document).ready(function() {
 <div id="gallerySeparator"></div>
 <div id="galleryDetailsMain">
 	<div class="galleryBigImage">
-		<div class="galleryLargeFrame"><img src="images/celebrity-<?= $celebId ?>-big.jpg"></div>
+		<div class="galleryLargeFrame">
+			<img id="galleryBigImage" src="images/celebrity-<?= $celebId ?>-big.jpg" usemap="#galleryMap" border="0">
+			<img id="galleryLayerPrevious" src="images/gallery-arrow-previous.png" style="display: none">
+			<img id="galleryLayerNext" src="images/gallery-arrow-next.png" style="display: none">
+		</div>
 <!--		<div id="sectionLike">Click here to <span style="color: #0160a8; background: url('images/like.png')">Like</span> this picture!</div>-->
-		<div id="sectionLike"></div>
+		<div id="sectionLike">
+			<div style="float: right">
+				<span class='st_facebook_large' displayText='Facebook'></span>
+				<span class='st_twitter_large' displayText='Tweet'></span>
+				<span class='st_linkedin_large' displayText='LinkedIn'></span>
+				<span class='st_pinterest_large' displayText='Pinterest'></span>
+				<span class='st_email_large' displayText='Email'></span>
+			</div>
+<!--			<!-- AddThis Button BEGIN -->
+<!--			<div class="addthis_toolbox addthis_default_style ">-->
+<!--				<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+<!--				<a class="addthis_button_tweet"></a>-->
+<!--				<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>-->
+<!--				<a class="addthis_counter addthis_pill_style"></a>-->
+<!--			</div>-->
+<!--			<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>-->
+<!--			<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4dc877092cc00cbc"></script>-->
+<!--			<!-- AddThis Button END -->
+		</div>
 		<div class="image_carousel">
 			<div id="carousel">
 				<?
@@ -129,6 +173,10 @@ $(document).ready(function() {
 	</div>
 	<div class="clear"></div>
 </div>
+<map name="galleryMap" id="galleryMap">
+	<area shape="rect" coords="0,0,299,598" href="#" id="mapLeft">
+	<area shape="rect" coords="299,0,598,598" href="#" id="mapRight">
+</map>
 <? include('ads.php'); ?>
 <? include("otherNews.php"); ?>
 <? include('disclaimer.php'); ?>

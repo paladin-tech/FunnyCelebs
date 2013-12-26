@@ -5,6 +5,8 @@ require("adodb/adodb.inc.php");
 require("infosystem.php");
 $pg = (isset($_GET['pg']))?$_GET['pg']:'home';
 
+list($numberOfCelebrities) = $infosystem->Execute("SELECT COUNT('celebId') FROM `fc_celebrity`")->fields;
+
 function truncateWords($text, $maxLength = 20)
 {
 	// explode the text into an array of words
@@ -32,6 +34,9 @@ function truncateWords($text, $maxLength = 20)
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<title>FunnyCelebs</title>
 	<script src="js/jquery-1.5.2.js"></script>
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "11bdf58d-6cc5-4ecd-b0ef-8f21b3d9c6bf", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
 <a name="top"></a>

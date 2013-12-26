@@ -85,7 +85,7 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 <div class="clear"></div>
 <div id="fNewsSeparator"></div>
 <div id="mustRead">
-	<div id="mustReadHeader"><span>F-NEWS</span></div>
+	<div id="mustReadHeaderHome"><a href="index.php?pg=f-news" title="Go to F-news"><span>F-NEWS</span></a></div>
 	<div class="latestNewsRow">
 		<div class="mustReadImage"><img class="newsMustRead" newsId="<?= $newsId ?>" src="images/news-<?= $newsId ?>-big.jpg"></div>
 		<div class="mustReadBody">
