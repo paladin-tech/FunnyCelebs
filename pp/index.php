@@ -3,6 +3,8 @@ session_start();
 
 require("adodb/adodb.inc.php");
 require("infosystem.php");
+include("fbConnect.php");
+
 $pg = (isset($_GET['pg']))?$_GET['pg']:'home';
 
 list($numberOfCelebrities) = $infosystem->Execute("SELECT COUNT('celebId') FROM `fc_celebrity`")->fields;

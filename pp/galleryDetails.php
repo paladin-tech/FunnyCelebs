@@ -2,6 +2,16 @@
 $celebrity = (isset($_GET['celebrity']))?(int)$_GET['celebrity']:1;
 list($celebId, $name, $occupation, $birthDate, $birthPlace, $starSign, $title, $story) = $infosystem->Execute("SELECT `celebId`, `name`, `occupation`, `birthDate`, `birthPlace`, `starSign`, `title`, `story` FROM `fc_celebrity` WHERE `celebId` = {$celebrity}")->fields;
 
+$page = $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'];
+
+if(isset($_POST['btnSubmit'])) {
+	$fbID = $user_profile['id'];
+	$fbName = $user_profile['name'];
+	$fbData = serialize($user_profile);
+	$comment = mysql_real_escape_string($_POST['txtComment']);
+	$infosystem->Execute("INSERT INTO `fc_comment` SET `fbID` = '{$fbID}', `fbName` = '{$fbName}', `fbData` = '{$fbData}', `page` = '{$page}', `comment` = '{$comment}', `date` = NOW()");
+}
+
 function calculateAge($date) {
     $today = date('Y-m-d');
     $dateDet = explode('-', $date);
@@ -18,7 +28,15 @@ while(!$rsCelebrity->EOF) {
 	$carouselImagePreload[] = "'celebrity-{$xCelebId}-carousel-over.jpg'";
 	$rsCelebrity->MoveNext();
 }
+
 $carouselImagePreload = implode(", ", $carouselImagePreload);
+
+$rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_comment` WHERE `page` = '{$page}' ORDER BY `date` DESC");
+
+list($likeCount) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = 'gallery' AND `item` = {$celebrity}")->fields;
+
+$ip = $_SERVER['REMOTE_ADDR'];
+$likedCheck =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'gallery' AND `item` = {$celebrity} AND `ip` = '{$ip}'");
 ?>
 
 <!-- include jQuery + carouFredSel plugin -->
@@ -90,6 +108,53 @@ $(document).ready(function() {
 	$('#galleryLayerNext').click(function() {
 		window.location.href = 'index.php?pg=galleryDetails&celebrity=<?= ($celebrity < $numberOfCelebrities) ? ($celebrity + 1) : 1 ?>';
 	});
+	$('#frmComment').submit(function(e) {
+		if($('#txtComment').val() == '') {
+			alert('You can\'t send an empty comment');
+			e.preventDefault();
+		}
+	});
+
+	$('.sectionLike').click(function() {
+		$.ajax({
+			type: "POST",
+			url: "setVote.php",
+			data: { type: 'gallery', item: '<?= $celebrity ?>' },
+			success: function() {
+				$('.sectionLike')
+					.html('YOU LIKE THIS')
+					.css('background-image', 'none');
+
+				$('.sectionLikeBox span').html('<?= $likeCount + 1 ?>');
+			}
+		});
+	});
+
+	$(".galleryLargeFrame").mousemove(function(e){
+		var parentOffset = $(this).parent().offset();
+		var relX = e.pageX - parentOffset.left;
+		var relY = e.pageY - parentOffset.top;
+		if(relX < 309) {
+			$('#galleryLayerPrevious').show();
+			$('#galleryLayerNext').hide();
+			$('#galleryLayerPrevious').mouseover(function() {
+				$(this).attr('src', 'images/gallery-arrow-previous-over.png');
+			});
+			$('#galleryLayerPrevious').mouseout(function() {
+				$(this).attr('src', 'images/gallery-arrow-previous.png');
+			});
+		} else {
+			$('#galleryLayerPrevious').hide();
+			$('#galleryLayerNext').show();
+			$('#galleryLayerNext').mouseover(function() {
+				$(this).attr('src', 'images/gallery-arrow-next-over.png');
+			});
+			$('#galleryLayerNext').mouseout(function() {
+				$(this).attr('src', 'images/gallery-arrow-next.png');
+			});
+		}
+	});
+
 });
 </script>
 
@@ -98,30 +163,34 @@ $(document).ready(function() {
 <div id="galleryDetailsMain">
 	<div class="galleryBigImage">
 		<div class="galleryLargeFrame">
-			<img id="galleryBigImage" src="images/celebrity-<?= $celebId ?>-big.jpg" usemap="#galleryMap" border="0">
-			<img id="galleryLayerPrevious" src="images/gallery-arrow-previous.png" style="display: none">
-			<img id="galleryLayerNext" src="images/gallery-arrow-next.png" style="display: none">
+			<img id="galleryBigImage" src="images/celebrity-<?= $celebId ?>-big.jpg" border="0">
+			<img id="galleryLayerPrevious" src="images/gallery-arrow-previous.png" style="display: none" title="Previous image in the gallery">
+			<img id="galleryLayerNext" src="images/gallery-arrow-next.png" style="display: none" title="Next image in the gallery">
 		</div>
-<!--		<div id="sectionLike">Click here to <span style="color: #0160a8; background: url('images/like.png')">Like</span> this picture!</div>-->
-		<div id="sectionLike">
-			<div style="float: right">
+		<div>
+			<?
+			if($likedCheck->RecordCount() == 0) {
+			?>
+			<div class="sectionLike"></div>
+			<?
+			} else {
+			?>
+			<div class="sectionLikeD">YOU LIKE THIS</div>
+			<?
+			}
+			?>
+			<div class="sectionLikeBox">
+				<span><?= $likeCount ?></span>
+			</div>
+			<div id="sectionShare" style="float: right">
 				<span class='st_facebook_large' displayText='Facebook'></span>
 				<span class='st_twitter_large' displayText='Tweet'></span>
-				<span class='st_linkedin_large' displayText='LinkedIn'></span>
+				<span class='st_googleplus_large' displayText='Google +'></span>
 				<span class='st_pinterest_large' displayText='Pinterest'></span>
 				<span class='st_email_large' displayText='Email'></span>
 			</div>
-<!--			<!-- AddThis Button BEGIN -->
-<!--			<div class="addthis_toolbox addthis_default_style ">-->
-<!--				<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
-<!--				<a class="addthis_button_tweet"></a>-->
-<!--				<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>-->
-<!--				<a class="addthis_counter addthis_pill_style"></a>-->
-<!--			</div>-->
-<!--			<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>-->
-<!--			<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4dc877092cc00cbc"></script>-->
-<!--			<!-- AddThis Button END -->
 		</div>
+		<div class="clear"></div>
 		<div class="image_carousel">
 			<div id="carousel">
 				<?
@@ -153,22 +222,41 @@ $(document).ready(function() {
 		</div>
 		<div class="galleryIsprekidane"></div>
 		<div id="commentsBox">
-			<div id="cbTitle">Comments (36)</div>
-			<div class="comment"><span class="cbCelebrity">Jessie James</span><span class="cbDate">, June 03, 2012, 8.20 PM</span><br>
-				<span class="cbText">Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet.</span>
+			<div id="cbTitle">Comments (<?= $rsComment->RecordCount() ?>)</div>
+			<?
+			$i = 1;
+			while(!$rsComment->EOF) {
+				list($xName, $xDate, $xComment) = $rsComment->fields;
+			?>
+			<div class="comment"><span class="cbCelebrity"><?= $xName ?></span>, <span class="cbDate"><?= date('F d, Y H:i', strtotime($xDate)) ?></span><br>
+				<span class="cbText"><?= $xComment ?></span>
 			</div>
-			<div class="comment"><span class="cbCelebrity">Abdulah Muhamed</span><span class="cbDate">, June 03, 2012, 8.20 PM</span><br>
-				<span class="cbText">Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget.</span>
-			</div>
-			<div class="comment"><span class="cbCelebrity">Darko Šarić</span><span class="cbDate">, June 03, 2012, 8.20 PM</span><br>
-				<span class="cbText">Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet.</span>
-			</div>
+			<?
+				$rsComment->MoveNext();
+				$i++;
+				if($i > 3) break;
+			}
+			?>
 			<div><img src="images/faq_komentari_isprekidana.jpg"></div>
 			<div style="padding: 15px 0 5px 0">
 				<div style="float: left;"><span class="cbCelebrity">Post comment</span></div>
 				<div class="cbCelebrity" style="float: right;">View all</div>
 				<div class="clear"></div>
 			</div>
+		</div>
+		<div>
+			<? if ($user) { ?>
+			<form name="frmComment" id="frmComment" method="post" action="<?= $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'] ?>">
+				<div><textarea name="txtComment" id="txtComment"></textarea></div>
+				<div><input type="submit" name="btnSubmit" value="Send Comment"></div>
+<!--				<div><a href="--><?php //echo $logoutUrl; ?><!--">Logout</a></div>-->
+			</form>
+			<? } else { ?>
+			<div>
+				<div>You need to be connected to your Facebook account if you want to leave a comment.</div>
+				<div><a href="<?php echo $loginUrl; ?>"><img src="images/facebook-connect.gif" border="0"></a></div>
+			</div>
+			<? } ?>
 		</div>
 	</div>
 	<div class="clear"></div>
