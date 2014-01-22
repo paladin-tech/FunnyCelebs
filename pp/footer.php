@@ -1,6 +1,10 @@
 <div id="footerContainer">
 	<div id="footer">
-		<div id="copyright">© 2013 by <span style="color: #FFFFFF">Michael Wolf</span>&nbsp;&nbsp;&nbsp;All rights reserved<br>Terms of use</div>
+		<div id="copyright">
+			© 2013 by <span style="color: #FFFFFF">Michael Wolf</span>&nbsp;&nbsp;&nbsp;All rights reserved<br>
+			<a href="index.php?pg=privacyPolicy">Privacy policy</a><br>
+			<a href="index.php?pg=termsOfUse">Terms of use</a>
+		</div>
 		<div id="footerMenu">
 			<ul>
 				<li<? if($pg == 'home') { ?> class="activeFooter footerStrelica"<? } else { ?> onclick="location.href = 'index.php?pg=home'"<? } ?>>home</li>

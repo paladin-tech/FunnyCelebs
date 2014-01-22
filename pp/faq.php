@@ -60,8 +60,8 @@
 			<img src="images/FAQ-3.jpg" border="0" usemap="#Map3" id="FAQ-3" />
 			<map name="Map3" id="Map3">
 				<area shape="rect" coords="0,70,149,376" href="#" alt="Julia Roberts" title="Julia Roberts" celeb="3" celebOrder="1" />
-				<area shape="rect" coords="149,70,278,376" href="#" alt="Angelina Jolie" title="Angelina Jolie" celeb="3" celebOrder="2" />
-				<area shape="rect" coords="278,70,426,376" href="#" alt="Ben Affleck" title="Ben Affleck" celeb="3" celebOrder="3" />
+				<area shape="rect" coords="149,70,278,376" href="#" alt="Bruce Willis" title="Bruce Willis" celeb="3" celebOrder="2" />
+				<area shape="rect" coords="278,70,426,376" href="#" alt="Jennifer Lopez" title="Jennifer Lopez" celeb="3" celebOrder="3" />
 			</map>
 		</div>
 		<div class="faqLike3">

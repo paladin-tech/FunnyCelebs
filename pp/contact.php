@@ -39,7 +39,7 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 <div id="contactSeparator"></div>
 <div class="clear"></div>
 <div id="contactBody">
-	<div style="padding: 34px">
+	<div style="padding: 20px 34px 34px 34px;">
 		<h1>Contact Us</h1>
 		<? if($errorMsg) { ?>
 		<p style="color: red">The security code entered was incorrect.</p>
@@ -50,7 +50,7 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 		<?
 		if(!$errorMsg && !$confirmMsg) {
 		?>
-		<p>If you have business inquiries or other questions, please fill out the following form to contact us. Thank you!</p>
+		<p style="margin-top: -5px;">If you have business inquiries or other questions, please fill out the following form to contact us.<br>Thank you!</p>
 	<!--</div>-->
 	<!--<div class="clear"></div>-->
 		<div id="contactForm">

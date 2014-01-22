@@ -115,6 +115,14 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.sectionLike').mouseover(function() {
+		$('.sectionLikeBox span').css('color', '#12c1dc');
+	});
+
+	$('.sectionLike').mouseout(function() {
+		$('.sectionLikeBox span').css('color', '#0160a8');
+	});
+
 	$('.sectionLike').click(function() {
 		$.ajax({
 			type: "POST",
@@ -122,8 +130,7 @@ $(document).ready(function() {
 			data: { type: 'gallery', item: '<?= $celebrity ?>' },
 			success: function() {
 				$('.sectionLike')
-					.html('YOU LIKE THIS')
-					.css('background-image', 'none');
+					.css('background-image', 'url(images/you-have-liked-this.jpg)');
 
 				$('.sectionLikeBox span').html('<?= $likeCount + 1 ?>');
 			}
@@ -154,7 +161,11 @@ $(document).ready(function() {
 			});
 		}
 	});
-
+	$('.galleryLargeFrame').mouseout(function() {
+		$('#galleryLayerPrevious').hide();
+		$('#galleryLayerNext').hide();
+	});
+	$(['you-have-liked-this.jpg']).preload();
 });
 </script>
 
@@ -164,8 +175,8 @@ $(document).ready(function() {
 	<div class="galleryBigImage">
 		<div class="galleryLargeFrame">
 			<img id="galleryBigImage" src="images/celebrity-<?= $celebId ?>-big.jpg" border="0">
-			<img id="galleryLayerPrevious" src="images/gallery-arrow-previous.png" style="display: none" title="Previous image in the gallery">
-			<img id="galleryLayerNext" src="images/gallery-arrow-next.png" style="display: none" title="Next image in the gallery">
+			<img id="galleryLayerPrevious" src="images/gallery-arrow-previous.png" style="display: none" title="Previous Image">
+			<img id="galleryLayerNext" src="images/gallery-arrow-next.png" style="display: none" title="Next Image">
 		</div>
 		<div>
 			<?
@@ -175,7 +186,7 @@ $(document).ready(function() {
 			<?
 			} else {
 			?>
-			<div class="sectionLikeD">YOU LIKE THIS</div>
+			<div class="sectionLikeD"></div>
 			<?
 			}
 			?>

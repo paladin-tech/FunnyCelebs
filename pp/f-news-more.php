@@ -1,4 +1,6 @@
 <?
+$ip = $_SERVER['REMOTE_ADDR'];
+
 $pager = (isset($_GET['pager']))?(int)$_GET['pager']:1;
 $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'false' ORDER BY `date` DESC LIMIT ".(2 + ($pager - 1) * 6).", 6");
 
@@ -17,11 +19,15 @@ if(isset($_POST['btnSubmit'])) {
 while(!$rsNews->EOF) {
 	list($x_newsId, $x_celebrity, $x_date, $x_title, $x_text) = $rsNews->fields;
 	$newsImagePreload[] = "'news-{$x_newsId}-small-over.jpg'";
+
+	list($likeCount[$x_newsId]) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = 'news' AND `item` = {$x_newsId}")->fields;
+
+	$likedCheck[$x_newsId] =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'news' AND `item` = {$x_newsId} AND `ip` = '{$ip}'");
 	$rsNews->MoveNext();
 }
 $newsImagePreload = implode(", ", $newsImagePreload);
 
-$rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_comment` WHERE `page` = '{$page}' ORDER BY `date` DESC")
+$rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_comment` WHERE `page` = '{$page}' ORDER BY `date` DESC");
 ?>
 <script>
 	$(document).ready(function() {
@@ -46,6 +52,25 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 
 		$([<?= $newsImagePreload ?>, 'moreFunnyNewsHeader-over.jpg', 'faq_like_03-over.jpg']).preload();
 
+
+		$('.sectionLike').click(function() {
+
+			news = $(this).attr('newsId');
+			sectionLikeDiv = '#sectionLike' + news;
+			sectionLikeBoxSpan = '#sectionLikeBox' + news + ' span';
+			$.ajax({
+				type: "POST",
+				url: "setVote.php",
+				data: { type: 'news', item: news },
+				success: function(data) {
+					$(sectionLikeDiv)
+						.css('background-image', 'url(images/you-have-liked-this.jpg)');
+
+					$(sectionLikeBoxSpan).html(data);
+				}
+			});
+		});
+
 	});
 </script>
 <div class="clear"></div>
@@ -57,17 +82,38 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
     $i = 1;
 	$rsNews->MoveFirst();
 	while(!$rsNews->EOF) {
-		?>
+		list($x_newsId, $x_celebrity, $x_date, $x_title, $x_text) = $rsNews->fields;
+	?>
 		<div class="latestNewsRow">
 		<div class="latestNewsImage"><img class="newsLatest" newsId="<?= $rsNews->Fields("newsId") ?>" src="images/news-<?= $rsNews->Fields("newsId") ?>-small.jpg"></div>
 			<div class="mustReadBody">
-				<div><?= $rsNews->Fields("date") ?></div>
-				<div class="mustReadTitle" id="mustReadTitle<?= $rsNews->Fields("newsId") ?>"><?= $rsNews->Fields("celebrity") ?></div>
-				<div class="mustReadTitle2" newsId="<?= $rsNews->Fields("newsId") ?>"><?= $rsNews->Fields("title") ?></div>
-				<div class="mustReadText" id="news-<?= $rsNews->Fields("newsId") ?>"><?= truncateWords($rsNews->Fields("text")) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $rsNews->Fields("newsId") ?>" newsId="<?= $rsNews->Fields("newsId") ?>" href="#" onclick="return false">more</a></div>
-				<div class="mustReadText" id="newsMore-<?= $rsNews->Fields("newsId") ?>" style="display: none">
-					<?= $rsNews->Fields("text") ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
-					<div class="newsLike"></div>
+				<div><?= $x_date ?></div>
+				<div class="mustReadTitle" id="mustReadTitle<?= $x_newsId ?>"><?= $x_celebrity ?></div>
+				<div class="mustReadTitle2" newsId="<?= $x_newsId ?>"><?= $x_title ?></div>
+				<div class="mustReadText" id="news-<?= $x_newsId ?>"><?= truncateWords($x_text) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $x_newsId ?>" newsId="<?= $x_newsId ?>" href="#" onclick="return false">more</a></div>
+				<div class="mustReadText" id="newsMore-<?= $x_newsId ?>" style="display: none">
+					<?= $x_text ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
+					<?
+					if($likedCheck[$x_newsId]->RecordCount() == 0) {
+						?>
+						<div class="sectionLike" id="sectionLike<?= $x_newsId ?>" newsId="<?= $x_newsId ?>"></div>
+					<?
+					} else {
+						?>
+						<div class="sectionLikeD" id="sectionLikeD<?= $x_newsId ?>"></div>
+					<?
+					}
+					?>
+					<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
+						<span><?= $likeCount[$x_newsId] ?></span>
+					</div>
+					<div id="sectionShare" style="float: right">
+						<span class='st_facebook_large' displayText='Facebook'></span>
+						<span class='st_twitter_large' displayText='Tweet'></span>
+						<span class='st_googleplus_large' displayText='Google +'></span>
+						<span class='st_pinterest_large' displayText='Pinterest'></span>
+						<span class='st_email_large' displayText='Email'></span>
+					</div>
 				</div>
 			</div>
 			<div class="clear"></div>

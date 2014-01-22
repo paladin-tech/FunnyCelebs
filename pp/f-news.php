@@ -1,12 +1,13 @@
 <?
-//$infosystem->debug = true;
+$ip = $_SERVER['REMOTE_ADDR'];
+
 $pager = 0;
 list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'true'")->fields;
-list($likeCountMustRead) = $infosystem->Execute("SELECT COUNT(`id`) FROM `fc_like` WHERE `type` = 'news' AND `item` = {$newsId} AND `mustRead` = 'true'")->fields;
+list($likeCountMustRead) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = 'news' AND `item` = {$newsId}")->fields;
+$likeCount[$newsId] = $likeCountMustRead;
+$likedCheck[$newsId] =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'news' AND `item` = {$newsId} AND `ip` = '{$ip}'");
 
 $rsNews = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'false' LIMIT 2");
-
-$ip = $_SERVER['REMOTE_ADDR'];
 
 $newsImagePreload[] = "'news-{$newsId}-big-over.jpg'";
 while(!$rsNews->EOF) {
@@ -18,6 +19,7 @@ while(!$rsNews->EOF) {
 	$likedCheck[$x_newsId] =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'news' AND `item` = {$x_newsId} AND `ip` = '{$ip}'");
 	$rsNews->MoveNext();
 }
+
 $newsImagePreload = implode(", ", $newsImagePreload);
 ?>
 <script>
@@ -57,10 +59,11 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 				type: "POST",
 				url: "setVote.php",
 				data: { type: 'news', item: news },
-				success: function() {
-					$(sectionLikeDiv).html('YOU LIKE THIS');
-					$(sectionLikeDiv).css('background-image', 'none');
-					$(sectionLikeBoxSpan).html(parseInt($(sectionLikeBoxSpan).html()) + 1);
+				success: function(data) {
+					$(sectionLikeDiv)
+						.css('background-image', 'url(images/you-have-liked-this.jpg)');
+
+					$(sectionLikeBoxSpan).html(data);
 				}
 			});
 		});
@@ -90,10 +93,26 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 			<div class="mustReadTitle2"><?= $title ?></div>
 			<div class="mustReadText">
 				<?= $text ?><br>
-				<div class="sectionLike" id="sectionLike<?= $newsId ?>" newsId="<?= $newsId ?>"></div>
-				<div class="sectionLikeD" id="sectionLikeD<?= $newsId ?>" style="display: none">YOU LIKE THIS IMAGE</div>
-				<div class="sectionLikeBox" id="sectionLikeBox<?= $newsId ?>">
+				<?
+				if($likedCheck[$newsId]->RecordCount() == 0) {
+				?>
+					<div class="sectionLike" id="sectionLike<?= $newsId ?>" newsId="<?= $newsId ?>"></div>
+				<?
+				} else {
+				?>
+					<div class="sectionLikeD" id="sectionLikeD<?= $newsId ?>"></div>
+				<?
+				}
+				?>
+				<div class="sectionLikeBox">
 					<span><?= $likeCountMustRead ?></span>
+				</div>
+				<div id="sectionShare" style="float: right">
+					<span class='st_facebook_large' displayText='Facebook'></span>
+					<span class='st_twitter_large' displayText='Tweet'></span>
+					<span class='st_googleplus_large' displayText='Google +'></span>
+					<span class='st_pinterest_large' displayText='Pinterest'></span>
+					<span class='st_email_large' displayText='Email'></span>
 				</div>
 			</div>
 		</div>
@@ -101,7 +120,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 	</div>
 </div>
 <? include('ads.php'); ?>
-<div id="latestNews">
+<div id="latestNews" style="padding-top: 5px;">
 	<div id="latestNewsHeader"><span>HOT GOSSIPS</span></div>
 	<?
 	$i = 1;
@@ -118,10 +137,26 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 			<div class="mustReadText" id="news-<?= $x_newsId ?>"><?= truncateWords($x_text) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $x_newsId ?>" newsId="<?= $x_newsId ?>" href="#" onclick="return false">more</a></div>
 			<div class="mustReadText" id="newsMore-<?= $x_newsId ?>" style="display: none">
 				<?= $x_text ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
-				<div class="sectionLike" id="sectionLike<?= $x_newsId ?>" newsId="<?= $x_newsId ?>"></div>
-				<div class="sectionLikeD" id="sectionLikeD<?= $x_newsId ?>" style="display: none">YOU LIKE THIS IMAGE</div>
+				<?
+				if($likedCheck[$x_newsId]->RecordCount() == 0) {
+				?>
+					<div class="sectionLike" id="sectionLike<?= $x_newsId ?>" newsId="<?= $x_newsId ?>"></div>
+				<?
+				} else {
+				?>
+					<div class="sectionLikeD" id="sectionLikeD<?= $x_newsId ?>"></div>
+				<?
+				}
+				?>
 				<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
 					<span><?= $likeCount[$x_newsId] ?></span>
+				</div>
+				<div id="sectionShare" style="float: right">
+					<span class='st_facebook_large' displayText='Facebook'></span>
+					<span class='st_twitter_large' displayText='Tweet'></span>
+					<span class='st_googleplus_large' displayText='Google +'></span>
+					<span class='st_pinterest_large' displayText='Pinterest'></span>
+					<span class='st_email_large' displayText='Email'></span>
 				</div>
 			</div>
 		</div>

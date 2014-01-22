@@ -51,9 +51,9 @@
 		<div class="faqQuestion3">
 			<img src="images/FAQ-7.jpg" border="0" usemap="#Map7" id="FAQ-7" />
 			<map name="Map7" id="Map7">
-				<area shape="rect" coords="0,70,149,376" href="#" alt="Christina Aguilera" title="Christina Aguilera" celeb="7" celebOrder="1" />
+				<area shape="rect" coords="0,70,149,376" href="#" alt="Kim Kardashian" title="Kim Kardashian" celeb="7" celebOrder="1" />
 				<area shape="rect" coords="149,70,278,376" href="#" alt="Megan Fox" title="Megan Fox" celeb="7" celebOrder="2" />
-				<area shape="rect" coords="278,70,426,376" href="#" alt="Will Smith" title="Will Smith" celeb="7" celebOrder="3" />
+				<area shape="rect" coords="278,70,426,376" href="#" alt="50 cent" title="50 cent" celeb="7" celebOrder="3" />
 			</map>
 		</div>
 		<div class="faqLike3">

@@ -9,5 +9,7 @@ if(in_array($_POST['type'], $acceptedTypes)) {
 	$item = $_POST['item'];
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$infosystem->Execute("INSERT IGNORE INTO `fc_like` SET `ip` = '{$ip}', `type` = '{$type}', `item` = {$item}, `date` = NOW()");
+	list($likeCount) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = '{$type}' AND `item` = {$item}")->fields;
+	echo ($likeCount);
 }
 ?>
