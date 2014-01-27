@@ -797,6 +797,20 @@ h1 {
 	background-position: center;
 }
 
+.faqLike1Liked {
+	padding: 0 81px 0 82px;
+	height: 48px;
+	background: url(../images/faq_like_01_liked.jpg) no-repeat;
+	background-position: center;
+}
+
+.faqLikeBox1 {
+	padding: 0 81px 0 82px;
+	height: 48px;
+	background: url(../images/faq_like_01_count.jpg) no-repeat;
+	background-position: center;
+}
+
 .faqLike3 {
 	padding: 0 15px 0 15px;
 }

@@ -1,3 +1,29 @@
+<?
+$ip = $_SERVER['REMOTE_ADDR'];
+$likedCheckArray = $likedCount = array();
+
+$rsLikeCount = $infosystem->Execute("SELECT COUNT(`ip`) `itemCount`, `item` FROM `fc_like` WHERE `type` = 'faq' GROUP BY `item`");
+if($rsLikeCount->RecordCount() > 0) {
+	while(!$rsLikeCount->EOF) {
+		list($xItemCount, $xItem) = $rsLikeCount->fields;
+		$itemId = floor($xItem / 10);
+		$itemData = $xItem - $itemId * 10;
+		$likedCount[$itemId] = $xItemCount;
+		$rsLikeCount->MoveNext();
+	}
+}
+
+$likedCheck =  $infosystem->Execute("SELECT `ip`, `item` FROM `fc_like` WHERE `type` = 'faq' AND `ip` = '{$ip}'");
+if($likedCheck->RecordCount() > 0) {
+	while(!$likedCheck->EOF) {
+		list($xIp, $xItem) = $likedCheck->fields;
+		$itemId = floor($xItem / 10);
+		$itemData = $xItem - $itemId * 10;
+		$likedCheckArray[$itemId] = $itemData;
+		$likedCheck->MoveNext();
+	}
+}
+?>
 <script>
 	$(document).ready(function() {
 		$('area').mouseover(function() {
@@ -6,6 +32,31 @@
 
 		$('area').mouseout(function() {
 			$('#FAQ-' + $(this).attr('celeb')).attr('src', 'images/FAQ-' + $(this).attr('celeb') + '.jpg');
+		});
+
+		$('.faqLike1').click(function() {
+			itemData = $(this).attr('celeb') + $(this).attr('celebOrder');
+			console.log(itemData);
+			$.ajax({
+				type: "POST",
+				url: "setVote.php",
+				data: { type: 'faq', item: itemData },
+				success: function() {
+					$('.faqLike1').css('background-image', 'url(images/faq_like_01_liked.jpg)');
+				}
+			});
+		});
+
+		$('.faqLike1Liked').mouseover(function() {
+			faqItem = $(this).attr('celeb');
+			$('#faqLiked' + faqItem).hide();
+			$('#faqLikeBox' + faqItem).show();
+		});
+
+		$('.faqLike1Liked').mouseout(function() {
+			faqItem = $(this).attr('celeb');
+			$('#faqLikeBox' + faqItem).hide();
+			$('#faqLiked' + faqItem).show();
 		});
 
 		$.fn.preload = function() {
@@ -36,7 +87,20 @@
 				<area shape="rect" coords="0,70,426,400" href="#" alt="Christina Aguilera" title="Christina Aguilera" celeb="1" celebOrder="1" />
 			</map>
 		</div>
-		<div class="faqLike1"></div>
+		<?
+		if(!isset($likedCheckArray[1])) {
+		?>
+			<div class="faqLike1" celeb="1" celebOrder="1"></div>
+		<?
+		} else {
+		?>
+			<div class="faqLike1Liked" id="faqLiked1" celeb="1"></div>
+			<div class="faqLikeBox1" id="faqLikeBox1" celeb="1" style="display: none">
+				<span><?= $likeCount ?></span>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
 		<div class="faqQuestion3">
@@ -77,7 +141,20 @@
 				<area shape="rect" coords="0,70,426,400" href="#" alt="Ronaldinho" title="Ronaldinho" celeb="4" celebOrder="1" />
 			</map>
 		</div>
-		<div class="faqLike1"></div>
+		<?
+		if(!isset($likedCheckArray[4])) {
+			?>
+			<div class="faqLike1" celeb="4" celebOrder="1"></div>
+		<?
+		} else {
+			?>
+			<div class="faqLike1Liked"></div>
+			<div class="faqLikeBox1" style="display: none">
+				<span><?= $likeCount ?></span>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="clear"></div>
 </div>

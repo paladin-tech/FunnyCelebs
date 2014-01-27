@@ -128,11 +128,11 @@ $(document).ready(function() {
 			type: "POST",
 			url: "setVote.php",
 			data: { type: 'gallery', item: '<?= $celebrity ?>' },
-			success: function() {
+			success: function(data) {
 				$('.sectionLike')
 					.css('background-image', 'url(images/you-have-liked-this.jpg)');
 
-				$('.sectionLikeBox span').html('<?= $likeCount + 1 ?>');
+				$('.sectionLikeBox span').html(data);
 			}
 		});
 	});

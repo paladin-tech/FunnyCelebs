@@ -2,7 +2,7 @@
 require("adodb/adodb.inc.php");
 require("infosystem.php");
 
-$acceptedTypes = array('gallery', 'news');
+$acceptedTypes = array('gallery', 'news', 'faq');
 
 if(in_array($_POST['type'], $acceptedTypes)) {
 	$type = $_POST['type'];
