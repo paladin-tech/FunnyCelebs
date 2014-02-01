@@ -6,9 +6,7 @@ $rsLikeCount = $infosystem->Execute("SELECT COUNT(`ip`) `itemCount`, `item` FROM
 if($rsLikeCount->RecordCount() > 0) {
 	while(!$rsLikeCount->EOF) {
 		list($xItemCount, $xItem) = $rsLikeCount->fields;
-		$itemId = floor($xItem / 10);
-		$itemData = $xItem - $itemId * 10;
-		$likedCount[$itemId] = $xItemCount;
+		$likedCount[$xItem] = $xItemCount;
 		$rsLikeCount->MoveNext();
 	}
 }
@@ -35,28 +33,53 @@ if($likedCheck->RecordCount() > 0) {
 		});
 
 		$('.faqLike1').click(function() {
-			itemData = $(this).attr('celeb') + $(this).attr('celebOrder');
-			console.log(itemData);
+			elem = $(this);
+			itemData = elem.attr('celeb') + elem.attr('celebOrder');
 			$.ajax({
 				type: "POST",
 				url: "setVote.php",
 				data: { type: 'faq', item: itemData },
 				success: function() {
-					$('.faqLike1').css('background-image', 'url(images/faq_like_01_liked.jpg)');
+					elem.css('background-image', 'url(images/faq_like_01_liked.jpg)');
 				}
 			});
 		});
 
-		$('.faqLike1Liked').mouseover(function() {
-			faqItem = $(this).attr('celeb');
-			$('#faqLiked' + faqItem).hide();
-			$('#faqLikeBox' + faqItem).show();
+		$('.like3').click(function() {
+			elem = $(this);
+			itemData = elem.attr('celeb');
+			$.ajax({
+				type: "POST",
+				url: "setVote.php",
+				data: { type: 'faq', item: itemData },
+				success: function() {
+					elem.css('background-image', 'url(images/faq_likeD_03.jpg)');
+				}
+			});
 		});
 
-		$('.faqLike1Liked').mouseout(function() {
+		$('.faqLikeContainer').mouseover(function() {
 			faqItem = $(this).attr('celeb');
-			$('#faqLikeBox' + faqItem).hide();
-			$('#faqLiked' + faqItem).show();
+			$(this).children('.faqLike1Liked').hide();
+			$(this).children('.faqLikeBox1').show();
+		});
+
+		$('.faqLikeContainer').mouseout(function() {
+			faqItem = $(this).attr('celeb');
+			$(this).children('.faqLike1Liked').show();
+			$(this).children('.faqLikeBox1').hide();
+		});
+
+		$('.faqLikeContainer3').mouseover(function() {
+			faqItem = $(this).attr('celeb');
+			$(this).children('.faqLikeContainerInner').hide();
+			$(this).children('.faqLikeBox3').show();
+		});
+
+		$('.faqLikeContainer3').mouseout(function() {
+			faqItem = $(this).attr('celeb');
+			$(this).children('.faqLikeContainerInner').show();
+			$(this).children('.faqLikeBox3').hide();
 		});
 
 		$.fn.preload = function() {
@@ -94,9 +117,11 @@ if($likedCheck->RecordCount() > 0) {
 		<?
 		} else {
 		?>
-			<div class="faqLike1Liked" id="faqLiked1" celeb="1"></div>
-			<div class="faqLikeBox1" id="faqLikeBox1" celeb="1" style="display: none">
-				<span><?= $likeCount ?></span>
+			<div class="faqLikeContainer" celeb="1">
+				<div class="faqLike1Liked" id="faqLiked1" celeb="1"></div>
+				<div class="faqLikeBox1" id="faqLikeBox1" celeb="1" style="display: none">
+					<span><?= $likedCount[11] ?></span>
+				</div>
 			</div>
 		<?
 		}
@@ -111,11 +136,32 @@ if($likedCheck->RecordCount() > 0) {
 				<area shape="rect" coords="278,70,426,376" href="#" alt="Britney Spears" title="Britney Spears" celeb="2" celebOrder="3" />
 			</map>
 		</div>
-		<div class="faqLike3">
-			<div class="faqLike3-1L"></div>
-			<div class="faqLike3-2"></div>
-			<div class="faqLike3-3"></div>
-		</div>
+		<?
+		if(!isset($likedCheckArray[2])) {
+		?>
+			<div class="faqLike3">
+				<div class="faqLike3-1 like3" celeb="21"></div>
+				<div class="faqLike3-2 like3" celeb="22"></div>
+				<div class="faqLike3-3 like3" celeb="23"></div>
+			</div>
+		<?
+		} else {
+		?>
+			<div class="faqLikeContainer3" celeb="2">
+				<div class="faqLikeContainerInner">
+					<div class="faqLike3-1L-blank<?= ($likedCheckArray[2] == 1) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-2L-blank<?= ($likedCheckArray[2] == 2) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-3L-blank<?= ($likedCheckArray[2] == 3) ? " faqLikeD3" : "" ?>"></div>
+				</div>
+				<div class="faqLikeBox3" id="faqLikeBox2" celeb="2" style="display: none">
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[21] ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[22] ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[23] ?></span></div>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
@@ -128,11 +174,32 @@ if($likedCheck->RecordCount() > 0) {
 				<area shape="rect" coords="278,70,426,376" href="#" alt="Jennifer Lopez" title="Jennifer Lopez" celeb="3" celebOrder="3" />
 			</map>
 		</div>
-		<div class="faqLike3">
-			<div class="faqLike3-1L"></div>
-			<div class="faqLike3-2"></div>
-			<div class="faqLike3-3"></div>
-		</div>
+		<?
+		if(!isset($likedCheckArray[3])) {
+		?>
+			<div class="faqLike3">
+				<div class="faqLike3-1 like3" celeb="31"></div>
+				<div class="faqLike3-2 like3" celeb="32"></div>
+				<div class="faqLike3-3 like3" celeb="33"></div>
+			</div>
+		<?
+		} else {
+		?>
+			<div class="faqLikeContainer3" celeb="3">
+				<div class="faqLikeContainerInner">
+					<div class="faqLike3-1L-blank<?= ($likedCheckArray[3] == 1) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-2L-blank<?= ($likedCheckArray[3] == 2) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-3L-blank<?= ($likedCheckArray[3] == 3) ? " faqLikeD3" : "" ?>"></div>
+				</div>
+				<div class="faqLikeBox3" id="faqLikeBox3" celeb="3" style="display: none">
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[31] ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[32] ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[33] ?></span></div>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
 		<div class="faqQuestion1">
@@ -147,10 +214,12 @@ if($likedCheck->RecordCount() > 0) {
 			<div class="faqLike1" celeb="4" celebOrder="1"></div>
 		<?
 		} else {
-			?>
-			<div class="faqLike1Liked"></div>
-			<div class="faqLikeBox1" style="display: none">
-				<span><?= $likeCount ?></span>
+		?>
+			<div class="faqLikeContainer" celeb="4">
+				<div class="faqLike1Liked" id="faqLiked1" celeb="4"></div>
+				<div class="faqLikeBox1" id="faqLikeBox1" celeb="4" style="display: none">
+					<span><?= $likedCount[41] ?></span>
+				</div>
 			</div>
 		<?
 		}

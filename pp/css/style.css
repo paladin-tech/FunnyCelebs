@@ -809,18 +809,54 @@ h1 {
 	height: 48px;
 	background: url(../images/faq_like_01_count.jpg) no-repeat;
 	background-position: center;
+	text-align: center;
+}
+
+.faqLikeBox1 span {
+	color: #0160a8;
+	line-height: 50px;
+	font-size: 18px;
+}
+
+.faqLikeBox3 {
+	height: 64px;
+	background: url(../images/faq_like_03_count.jpg) no-repeat;
+	background-position: center;
+	text-align: center;
+}
+
+.faqLikeBox3 span {
+	color: #0160a8;
+	line-height: 60px;
+	font-size: 18px;
+	/*float: left;*/
 }
 
 .faqLike3 {
 	padding: 0 15px 0 15px;
 }
 
-.faqLike3-1L {
+.faqLike3-1 {
 	float: left;
 	width: 112px;
 	height: 64px;
 	padding-left: 30px;
-	background: url(../images/faq_like_02.jpg) no-repeat;
+	background: url(../images/faq_like_03.jpg) no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+
+.faqLike3-1:hover  {
+	background: url(../images/faq_like_03-over.jpg) no-repeat;
+	background-position: center;
+}
+
+.faqLike3-1L-blank {
+	float: left;
+	width: 112px;
+	height: 64px;
+	padding-left: 30px;
+	background: none;
 	background-position: center;
 }
 
@@ -834,6 +870,15 @@ h1 {
 	cursor: pointer;
 }
 
+.faqLike3-2L-blank {
+	float: left;
+	width: 125px;
+	height: 64px;
+	padding-left: 16px;
+	background: none;
+	background-position: center;
+}
+
 .faqLike3-3 {
 	float: left;
 	width: 126px;
@@ -844,6 +889,15 @@ h1 {
 	cursor: pointer;
 }
 
+.faqLike3-3L-blank {
+	float: left;
+	width: 126px;
+	height: 64px;
+	padding-left: 16px;
+	background: none;
+	background-position: center;
+}
+
 .faqLike3-2:hover  {
 	background: url(../images/faq_like_03-over.jpg) no-repeat;
 	background-position: center;
@@ -851,6 +905,11 @@ h1 {
 
 .faqLike3-3:hover  {
 	background: url(../images/faq_like_03-over.jpg) no-repeat;
+	background-position: center;
+}
+
+.faqLikeD3 {
+	background: url(../images/faq_likeD_03.jpg) no-repeat;
 	background-position: center;
 }
 

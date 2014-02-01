@@ -1,3 +1,27 @@
+<?
+$ip = $_SERVER['REMOTE_ADDR'];
+$likedCheckArray = $likedCount = array();
+
+$rsLikeCount = $infosystem->Execute("SELECT COUNT(`ip`) `itemCount`, `item` FROM `fc_like` WHERE `type` = 'faq' GROUP BY `item`");
+if($rsLikeCount->RecordCount() > 0) {
+	while(!$rsLikeCount->EOF) {
+		list($xItemCount, $xItem) = $rsLikeCount->fields;
+		$likedCount[$xItem] = $xItemCount;
+		$rsLikeCount->MoveNext();
+	}
+}
+
+$likedCheck =  $infosystem->Execute("SELECT `ip`, `item` FROM `fc_like` WHERE `type` = 'faq' AND `ip` = '{$ip}'");
+if($likedCheck->RecordCount() > 0) {
+	while(!$likedCheck->EOF) {
+		list($xIp, $xItem) = $likedCheck->fields;
+		$itemId = floor($xItem / 10);
+		$itemData = $xItem - $itemId * 10;
+		$likedCheckArray[$itemId] = $itemData;
+		$likedCheck->MoveNext();
+	}
+}
+?>
 <script>
 	$(document).ready(function() {
 		$('area').mouseover(function() {
@@ -6,6 +30,56 @@
 
 		$('area').mouseout(function() {
 			$('#FAQ-' + $(this).attr('celeb')).attr('src', 'images/FAQ-' + $(this).attr('celeb') + '.jpg');
+		});
+
+		$('.faqLike1').click(function() {
+			elem = $(this);
+			itemData = elem.attr('celeb') + elem.attr('celebOrder');
+			$.ajax({
+				type: "POST",
+				url: "setVote.php",
+				data: { type: 'faq', item: itemData },
+				success: function() {
+					elem.css('background-image', 'url(images/faq_like_01_liked.jpg)');
+				}
+			});
+		});
+
+		$('.like3').click(function() {
+			elem = $(this);
+			itemData = elem.attr('celeb');
+			$.ajax({
+				type: "POST",
+				url: "setVote.php",
+				data: { type: 'faq', item: itemData },
+				success: function() {
+					elem.css('background-image', 'url(images/faq_likeD_03.jpg)');
+				}
+			});
+		});
+
+		$('.faqLikeContainer').mouseover(function() {
+			faqItem = $(this).attr('celeb');
+			$(this).children('.faqLike1Liked').hide();
+			$(this).children('.faqLikeBox1').show();
+		});
+
+		$('.faqLikeContainer').mouseout(function() {
+			faqItem = $(this).attr('celeb');
+			$(this).children('.faqLike1Liked').show();
+			$(this).children('.faqLikeBox1').hide();
+		});
+
+		$('.faqLikeContainer3').mouseover(function() {
+			faqItem = $(this).attr('celeb');
+			$(this).children('.faqLikeContainerInner').hide();
+			$(this).children('.faqLikeBox3').show();
+		});
+
+		$('.faqLikeContainer3').mouseout(function() {
+			faqItem = $(this).attr('celeb');
+			$(this).children('.faqLikeContainerInner').show();
+			$(this).children('.faqLikeBox3').hide();
 		});
 
 		$.fn.preload = function() {
@@ -28,7 +102,22 @@
 				<area shape="rect" coords="0,70,426,400" href="#" alt="George Clooney" title="George Clooney" celeb="5" celebOrder="1" />
 			</map>
 		</div>
-		<div class="faqLike1"></div>
+		<?
+		if(!isset($likedCheckArray[5])) {
+			?>
+			<div class="faqLike1" celeb="5" celebOrder="1"></div>
+		<?
+		} else {
+			?>
+			<div class="faqLikeContainer" celeb="5">
+				<div class="faqLike1Liked" id="faqLiked5" celeb="5"></div>
+				<div class="faqLikeBox1" id="faqLikeBox5" celeb="5" style="display: none">
+					<span><?= $likedCount[51] ?></span>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
 		<div class="faqQuestion3">
@@ -39,11 +128,32 @@
 				<area shape="rect" coords="278,70,426,376" href="#" alt="Ben Affleck" title="Ben Affleck" celeb="6" celebOrder="3" />
 			</map>
 		</div>
-		<div class="faqLike3">
-			<div class="faqLike3-1L"></div>
-			<div class="faqLike3-2"></div>
-			<div class="faqLike3-3"></div>
-		</div>
+		<?
+		if(!isset($likedCheckArray[6])) {
+			?>
+			<div class="faqLike3">
+				<div class="faqLike3-1 like3" celeb="61"></div>
+				<div class="faqLike3-2 like3" celeb="62"></div>
+				<div class="faqLike3-3 like3" celeb="63"></div>
+			</div>
+		<?
+		} else {
+			?>
+			<div class="faqLikeContainer3" celeb="6">
+				<div class="faqLikeContainerInner">
+					<div class="faqLike3-1L-blank<?= ($likedCheckArray[6] == 1) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-2L-blank<?= ($likedCheckArray[6] == 2) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-3L-blank<?= ($likedCheckArray[6] == 3) ? " faqLikeD3" : "" ?>"></div>
+				</div>
+				<div class="faqLikeBox3" id="faqLikeBox6" celeb="6" style="display: none">
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[61] ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[62] ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[63] ?></span></div>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
@@ -56,11 +166,32 @@
 				<area shape="rect" coords="278,70,426,376" href="#" alt="50 cent" title="50 cent" celeb="7" celebOrder="3" />
 			</map>
 		</div>
-		<div class="faqLike3">
-			<div class="faqLike3-1L"></div>
-			<div class="faqLike3-2"></div>
-			<div class="faqLike3-3"></div>
-		</div>
+		<?
+		if(!isset($likedCheckArray[7])) {
+			?>
+			<div class="faqLike3">
+				<div class="faqLike3-1 like3" celeb="71"></div>
+				<div class="faqLike3-2 like3" celeb="72"></div>
+				<div class="faqLike3-3 like3" celeb="73"></div>
+			</div>
+		<?
+		} else {
+			?>
+			<div class="faqLikeContainer3" celeb="7">
+				<div class="faqLikeContainerInner">
+					<div class="faqLike3-1L-blank<?= ($likedCheckArray[7] == 1) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-2L-blank<?= ($likedCheckArray[7] == 2) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-3L-blank<?= ($likedCheckArray[7] == 3) ? " faqLikeD3" : "" ?>"></div>
+				</div>
+				<div class="faqLikeBox3" id="faqLikeBox7" celeb="7" style="display: none">
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[71] ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[72] ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[73] ?></span></div>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
 		<div class="faqQuestion1">
@@ -69,7 +200,22 @@
 				<area shape="rect" coords="0,70,426,400" href="#" alt="Eminem" title="Eminem" celeb="8" celebOrder="1" />
 			</map>
 		</div>
-		<div class="faqLike1"></div>
+		<?
+		if(!isset($likedCheckArray[8])) {
+			?>
+			<div class="faqLike1" celeb="8" celebOrder="1"></div>
+		<?
+		} else {
+			?>
+			<div class="faqLikeContainer" celeb="8">
+				<div class="faqLike1Liked" id="faqLiked8" celeb="8"></div>
+				<div class="faqLikeBox1" id="faqLikeBox8" celeb="8" style="display: none">
+					<span><?= $likedCount[81] ?></span>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="clear"></div>
 	<div class="faqSeparator"></div>
@@ -80,7 +226,22 @@
 				<area shape="rect" coords="0,70,426,400" href="#" alt="Michael Jackson" title="Michael Jackson" celeb="9" celebOrder="1" />
 			</map>
 		</div>
-		<div class="faqLike1"></div>
+		<?
+		if(!isset($likedCheckArray[9])) {
+			?>
+			<div class="faqLike1" celeb="9" celebOrder="1"></div>
+		<?
+		} else {
+			?>
+			<div class="faqLikeContainer" celeb="9">
+				<div class="faqLike1Liked" id="faqLiked9" celeb="9"></div>
+				<div class="faqLikeBox1" id="faqLikeBox9" celeb="9" style="display: none">
+					<span><?= $likedCount[91] ?></span>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="faqQuestion faqQuestionRight">
 		<div class="faqQuestion3">
@@ -91,11 +252,32 @@
 				<area shape="rect" coords="278,70,426,376" href="#" alt="Richard Gere" title="Richard Gere" celeb="10" celebOrder="3" />
 			</map>
 		</div>
-		<div class="faqLike3">
-			<div class="faqLike3-1L"></div>
-			<div class="faqLike3-2"></div>
-			<div class="faqLike3-3"></div>
-		</div>
+		<?
+		if(!isset($likedCheckArray[10])) {
+			?>
+			<div class="faqLike3">
+				<div class="faqLike3-1 like3" celeb="101"></div>
+				<div class="faqLike3-2 like3" celeb="102"></div>
+				<div class="faqLike3-3 like3" celeb="103"></div>
+			</div>
+		<?
+		} else {
+			?>
+			<div class="faqLikeContainer3" celeb="10">
+				<div class="faqLikeContainerInner">
+					<div class="faqLike3-1L-blank<?= ($likedCheckArray[10] == 1) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-2L-blank<?= ($likedCheckArray[10] == 2) ? " faqLikeD3" : "" ?>"></div>
+					<div class="faqLike3-3L-blank<?= ($likedCheckArray[10] == 3) ? " faqLikeD3" : "" ?>"></div>
+				</div>
+				<div class="faqLikeBox3" id="faqLikeBox7" celeb="10" style="display: none">
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[101] ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[102] ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[103] ?></span></div>
+				</div>
+			</div>
+		<?
+		}
+		?>
 	</div>
 	<div class="clear"></div>
 </div>
