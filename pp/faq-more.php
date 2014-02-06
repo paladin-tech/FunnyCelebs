@@ -92,7 +92,7 @@ if($likedCheck->RecordCount() > 0) {
 	});
 </script>
 <div class="clear"></div>
-<div id="faqSeparator" style="height: 44px;"></div>
+<div id="faqSeparator" style="height: 48px;"></div>
 <? include('ads.php'); ?>
 <div id="faqContainer" style="padding: 20px 30px 30px 30px;">
 	<div class="faqQuestion">
@@ -283,10 +283,10 @@ if($likedCheck->RecordCount() > 0) {
 </div>
 <div id="pager">
 	<div id="pagerContainer">
-		<div class="pagerField">&lt;</div>
+		<div class="pagerFieldFirst"></div>
 		<div class="pagerField" onclick="location.href = 'index.php?pg=faq'">1</div>
 		<div class="pagerFieldActive">2</div>
-		<div class="pagerField" onclick="location.href = 'index.php?pg=faq-more'">&gt;</div>
+		<div class="pagerFieldLast" onclick="location.href = 'index.php?pg=faq-more'"></div>
 		<div class="clear"></div>
 	</div>
 </div>

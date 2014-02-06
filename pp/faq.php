@@ -229,10 +229,10 @@ if($likedCheck->RecordCount() > 0) {
 </div>
 <div id="pager">
 	<div id="pagerContainer">
-		<div class="pagerField">&lt;</div>
+		<div class="pagerFieldFirst"></div>
 		<div class="pagerFieldActive">1</div>
 		<div class="pagerField" onclick="location.href = 'index.php?pg=faq-more'">2</div>
-		<div class="pagerField" onclick="location.href = 'index.php?pg=faq-more'">&gt;</div>
+		<div class="pagerFieldLast" onclick="location.href = 'index.php?pg=faq-more'"></div>
 		<div class="clear"></div>
 	</div>
 </div>

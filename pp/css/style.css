@@ -331,7 +331,7 @@ h1 {
 
 .galleryBigImage {
 	float: left;
-	padding-bottom: 10px;
+	/*padding-bottom: 10px;*/
 }
 
 #galleryDetailsContainer {
@@ -345,7 +345,7 @@ h1 {
 	font-weight: bold;
 	color: #444444;
 	text-transform: capitalize;
-	padding-bottom: 14px;
+	padding: 4px 0 14px 0;
 }
 
 #galleryDetailsContainer #title {
@@ -366,9 +366,9 @@ h1 {
 }
 
 #galleryDetailsContainer #details {
-	padding-top: 30px;
+	padding-top: 26px;
 	line-height: 1.5;
-	padding-bottom: 30px;
+	padding-bottom: 32px;
 	/*border-bottom: dashed 1px #dddddd;*/
 }
 
@@ -694,14 +694,14 @@ h1 {
 }
 
 #commentsBox {
-	padding: 20px 0 20px 0;
+	padding: 6px 0 20px 0;
 	float: left;
 	text-align: left;
 	width: 300px;
 }
 
 #cbTitle {
-	padding: 20px 0 10px 0;
+	padding: 18px 0 15px 0;
 	font-size: 24px;
 	font-weight: bold;
 	color: #444444;
@@ -1138,7 +1138,7 @@ h1 {
 
 #sectionShare {
 	float: right;
-	padding: 10px 10px 10px 25px;
+	padding: 17px 6px 10px 25px;
 }
 
 #privacyPolicyText {
@@ -1180,4 +1180,8 @@ h1 {
 	height: 28px;
 	background: url("../images/termsOfUseSeparatorOver.jpg") no-repeat;
 	background-position: 30px 21px;
+}
+
+.fbConnectBtn {
+	padding: 6px 0 0 0;
 }

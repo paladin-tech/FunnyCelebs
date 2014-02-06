@@ -249,7 +249,7 @@ $(document).ready(function() {
 			}
 			?>
 			<div><img src="images/faq_komentari_isprekidana.jpg"></div>
-			<div style="padding: 15px 0 5px 0">
+			<div style="padding: 8px 0 5px 0">
 				<div style="float: left;"><span class="cbCelebrity">Post comment</span></div>
 				<div class="cbCelebrity" style="float: right;">View all</div>
 				<div class="clear"></div>
@@ -265,7 +265,7 @@ $(document).ready(function() {
 			<? } else { ?>
 			<div>
 				<div>You need to be connected to your Facebook account if you want to leave a comment.</div>
-				<div><a href="<?php echo $loginUrl; ?>"><img src="images/facebook-connect.gif" border="0"></a></div>
+				<div class="fbConnectBtn"><a href="<?php echo $loginUrl; ?>"><img src="images/facebook-connect.gif" border="0"></a></div>
 			</div>
 			<? } ?>
 		</div>
