@@ -84,10 +84,11 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 	while(!$rsNews->EOF) {
 		list($x_newsId, $x_celebrity, $x_date, $x_title, $x_text) = $rsNews->fields;
 	?>
-		<div class="latestNewsRow">
+	<div class="latestNewsRow">
+		<a name="news-<?= $x_newsId ?>"></a>
 		<div class="latestNewsImage"><img class="newsLatest" newsId="<?= $rsNews->Fields("newsId") ?>" src="images/news-<?= $rsNews->Fields("newsId") ?>-small.jpg"></div>
 			<div class="mustReadBody">
-				<div><?= $x_date ?></div>
+				<div><?= date('F d, Y', strtotime($x_date)) ?></div>
 				<div class="mustReadTitle" id="mustReadTitle<?= $x_newsId ?>"><?= $x_celebrity ?></div>
 				<div class="mustReadTitle2" newsId="<?= $x_newsId ?>"><?= $x_title ?></div>
 				<div class="mustReadText" id="news-<?= $x_newsId ?>"><?= truncateWords($x_text) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $x_newsId ?>" newsId="<?= $x_newsId ?>" href="#" onclick="return false">more</a></div>
@@ -104,25 +105,27 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 					<?
 					}
 					?>
-					<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
-						<span><?= $likeCount[$x_newsId] ?></span>
-					</div>
-					<div id="sectionShare" style="float: right">
-						<span class='st_facebook_large' displayText='Facebook'></span>
-						<span class='st_twitter_large' displayText='Tweet'></span>
-						<span class='st_googleplus_large' displayText='Google +'></span>
-						<span class='st_pinterest_large' displayText='Pinterest'></span>
-						<span class='st_email_large' displayText='Email'></span>
-					</div>
+				<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
+					<span><?= $likeCount[$x_newsId] ?></span>
+				</div>
+				<div id="sectionShare" style="float: right">
+					<span class='st_facebook_large' displayText='Facebook'></span>
+					<span class='st_twitter_large' displayText='Tweet'></span>
+					<span class='st_googleplus_large' displayText='Google +'></span>
+					<span class='st_pinterest_large' displayText='Pinterest'></span>
+					<span class='st_email_large' displayText='Email'></span>
 				</div>
 			</div>
-			<div class="clear"></div>
-        </div><?
-        if($i < $rsNews->RecordCount()) { ?>
-	        <div id="gallerySeparator2"></div><?
-        }
+		</div>
+		<div class="clear"></div>
+    </div>
+		<?
+	    if($i < $rsNews->RecordCount()) {
+		?>
+    <div id="gallerySeparator2"></div><?
+	    }
 		$rsNews->MoveNext();
-        $i++;
+	    $i++;
 	}
 	?>
 	<div style="height: 22px;"></div>

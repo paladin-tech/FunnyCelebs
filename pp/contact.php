@@ -84,6 +84,6 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 		?>
 	</div>
 </div>
-<div id="contactImage"></div>
+<div id="contactImage" title="Hello Baby!"></div>
 <div class="clear"></div>
 <? include('disclaimer.php'); ?>

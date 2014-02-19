@@ -736,12 +736,17 @@ h1 {
 .sectionLike {
 	float: left;
 	text-align: center;
-	width: 183px;
+	width: 193px;
 	height: 50px;
 	padding: 0 0 15px 0;
 	background: url(../images/clickHereToLike.jpg) no-repeat;
-	background-position: left;
+	background-position: 10px center;
 	cursor: pointer;
+}
+
+.sectionLike:hover {
+	background: url(../images/clickHereToLike-over.jpg) no-repeat;
+	background-position: 10px center;
 }
 
 .sectionLikeD {
@@ -754,11 +759,6 @@ h1 {
 	background: url(../images/you-have-liked-this.jpg) no-repeat;
 	background-position: center;
 	cursor: pointer;
-}
-
-.sectionLike:hover {
-	background: url(../images/clickHereToLike-over.jpg) no-repeat;
-	background-position: left;
 }
 
 #faqContainer {
@@ -1138,7 +1138,7 @@ h1 {
 
 #sectionShare {
 	float: right;
-	padding: 17px 6px 10px 25px;
+	padding: 17px 0 10px 25px;
 }
 
 #privacyPolicyText {

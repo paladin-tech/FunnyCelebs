@@ -1,6 +1,6 @@
 <?
 $celebrity = (isset($_GET['celebrity']))?(int)$_GET['celebrity']:1;
-list($celebId, $name, $occupation, $birthDate, $birthPlace, $starSign, $title, $story) = $infosystem->Execute("SELECT `celebId`, `name`, `occupation`, `birthDate`, `birthPlace`, `starSign`, `title`, `story` FROM `fc_celebrity` WHERE `celebId` = {$celebrity}")->fields;
+list($celebId, $name, $occupation, $birthDate, $birthPlace, $died, $starSign, $title, $story) = $infosystem->Execute("SELECT `celebId`, `name`, `occupation`, `birthDate`, `birthPlace`, `died`, `starSign`, `title`, `story` FROM `fc_celebrity` WHERE `celebId` = {$celebrity}")->fields;
 
 $page = $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'];
 
@@ -227,7 +227,7 @@ $(document).ready(function() {
 		<div id="details">
 			<span class="span1">NAME:</span> <span class="span2"><?= $name ?></span><br>
 			<span class="span1">OCCUPATION:</span> <span class="span2"><?= $occupation ?></span><br>
-			<span class="span1">BIRTH DATE:</span> <span class="span2"><?= date('F d, Y', strtotime($birthDate)) ?> / Age <?= calculateAge($birthDate)  ?></span><br>
+			<span class="span1">BIRTH DATE:</span> <span class="span2"><?= date('F d, Y', strtotime($birthDate)) ?> / <?= (is_null($died)) ? calculateAge($birthDate) : $died ?></span><br>
 			<span class="span1">PLACE OF BIRTH:</span> <span class="span2"><?= $birthPlace ?></span><br>
 			<span class="span1">STAR SIGN:</span> <span class="span2"><?= $starSign ?></span>
 		</div>

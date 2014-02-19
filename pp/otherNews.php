@@ -42,6 +42,11 @@
 		<a href="index.php?pg=galleryDetails&celebrity=32">Nicole Kidman</a>
 		<a href="index.php?pg=galleryDetails&celebrity=33">BEN AFFLECK</a>
 		<a href="index.php?pg=galleryDetails&celebrity=34">Samuel Jackson</a>
+		<a href="index.php?pg=f-news#news-1">PEYTON MANNING</a>
+		<a href="index.php?pg=f-news#news-3">Roger Federer</a>
+		<a href="index.php?pg=f-news-more#news-5">SARAH JESSICA PARKER</a>
+		<a href="index.php?pg=f-news-more#news-4">Kim Kardashian</a>
+		<a href="index.php?pg=f-news-more#news-6">NIKOLA TESLA</a>
 	</div>
 	<!--<div>-->
 	<!--<img src="statistics.png">-->

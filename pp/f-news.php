@@ -88,7 +88,7 @@ $newsImagePreload = implode(", ", $newsImagePreload);
     <div class="latestNewsRow">
 		<div class="mustReadImage"><img class="newsMustRead" newsId="<?= $newsId ?>" src="images/news-<?= $newsId ?>-big.jpg"></div>
 		<div class="mustReadBody">
-			<div><?= $date ?></div>
+			<div><?= date('F d, Y', strtotime($date)) ?></div>
 			<div class="mustReadTitle"><?= $celebrity ?></div>
 			<div class="mustReadTitle2"><?= $title ?></div>
 			<div class="mustReadText">
@@ -129,9 +129,10 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		list($x_newsId, $x_celebrity, $x_date, $x_title, $x_text) = $rsNews->fields;
 	?>
 	<div class="latestNewsRow">
+		<a name="news-<?= $x_newsId ?>"></a>
 		<div class="latestNewsImage"><img class="newsLatest" newsId="<?= $x_newsId ?>" src="images/news-<?= $x_newsId ?>-small.jpg"></div>
 		<div class="mustReadBody">
-			<div><?= $x_date ?></div>
+			<div><?= date('F d, Y', strtotime($x_date)) ?></div>
 			<div class="mustReadTitle" id="mustReadTitle<?= $x_newsId ?>"><?= $x_celebrity ?></div>
 			<div class="mustReadTitle2" newsId="<?= $x_newsId ?>"><?= $x_title ?></div>
 			<div class="mustReadText" id="news-<?= $x_newsId ?>"><?= truncateWords($x_text) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $x_newsId ?>" newsId="<?= $x_newsId ?>" href="#" onclick="return false">more</a></div>
@@ -162,9 +163,9 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		</div>
 		<div class="clear"></div>
 	</div>
-	<?
-	if($i < $rsNews->RecordCount()) {
-	?>
+		<?
+		if($i < $rsNews->RecordCount()) {
+		?>
 	<div id="gallerySeparator2"></div>
 	<?
 		}

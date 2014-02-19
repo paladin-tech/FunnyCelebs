@@ -2,6 +2,14 @@
 $ip = $_SERVER['REMOTE_ADDR'];
 $likedCheckArray = $likedCount = array();
 
+if(isset($_POST['btnSubmit'])) {
+	$fbID = $user_profile['id'];
+	$fbName = $user_profile['name'];
+	$fbData = serialize($user_profile);
+	$comment = mysql_real_escape_string($_POST['txtComment']);
+	$infosystem->Execute("INSERT INTO `fc_comment` SET `fbID` = '{$fbID}', `fbName` = '{$fbName}', `fbData` = '{$fbData}', `page` = '{$page}', `comment` = '{$comment}', `date` = NOW()");
+}
+
 $rsLikeCount = $infosystem->Execute("SELECT COUNT(`ip`) `itemCount`, `item` FROM `fc_like` WHERE `type` = 'faq' GROUP BY `item`");
 if($rsLikeCount->RecordCount() > 0) {
 	while(!$rsLikeCount->EOF) {
@@ -21,6 +29,8 @@ if($likedCheck->RecordCount() > 0) {
 		$likedCheck->MoveNext();
 	}
 }
+
+$rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_comment` WHERE `page` = '{$page}' ORDER BY `date` DESC");
 ?>
 <script>
 	$(document).ready(function() {
@@ -87,6 +97,13 @@ if($likedCheck->RecordCount() > 0) {
 				$('<img/>')[0].src = 'images/' + this;
 			});
 		}
+
+		$('#frmComment').submit(function(e) {
+			if($('#txtComment').val() == '') {
+				alert('You can\'t send an empty comment');
+				e.preventDefault();
+			}
+		});
 
 		$(['FAQ-1-1.jpg', 'FAQ-2-1.jpg', 'FAQ-2-2.jpg', 'FAQ-2-3.jpg', 'FAQ-3-1.jpg', 'FAQ-3-2.jpg', 'FAQ-3-3.jpg', 'FAQ-4-1.jpg', 'Gmazox-2.jpg', 'faq_like_01-over.jpg', 'faq_like_03-over.jpg']).preload();
 	});
@@ -238,25 +255,47 @@ if($likedCheck->RecordCount() > 0) {
 </div>
 <? include('ads.php'); ?>
 <div id="faqCommentsBlock">
-	<div id="commentsBox" style="padding: 10px 0 20px 14; width: 300px; float: left;">
-		<div id="cbTitle">Comments (36)</div>
-		<div class="comment"><span class="cbCelebrity">Jessie James</span><span class="cbDate">, June 03, 2012, 8.20 PM</span><br>
-			<span class="cbText">Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet.</span>
+	<div style="float: left">
+		<div id="commentsBox">
+			<div id="cbTitle">Comments (<?= $rsComment->RecordCount() ?>)</div>
+			<?
+			$i = 1;
+			while(!$rsComment->EOF) {
+				list($xName, $xDate, $xComment) = $rsComment->fields;
+				?>
+				<div class="comment"><span class="cbCelebrity"><?= $xName ?></span>, <span class="cbDate"><?= date('F d, Y H:i', strtotime($xDate)) ?></span><br>
+					<span class="cbText"><?= $xComment ?></span>
+				</div>
+				<?
+				$rsComment->MoveNext();
+				$i++;
+				if($i > 3) break;
+			}
+			?>
+			<div><img src="images/faq_komentari_isprekidana.jpg"></div>
+			<div style="padding: 8px 0 5px 0">
+				<div style="float: left;"><span class="cbCelebrity">Post comment</span></div>
+				<div class="cbCelebrity" style="float: right;">View all</div>
+				<div class="clear"></div>
+			</div>
 		</div>
-		<div class="comment"><span class="cbCelebrity">Abdulah Muhamed</span><span class="cbDate">, June 03, 2012, 8.20 PM</span><br>
-			<span class="cbText">Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget.</span>
-		</div>
-		<div class="comment"><span class="cbCelebrity">Darko Šarić</span><span class="cbDate">, June 03, 2012, 8.20 PM</span><br>
-			<span class="cbText">Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet.</span>
-		</div>
-		<div><img src="images/faq_komentari_isprekidana.jpg"></div>
-		<div style="padding: 15px 0 5px 0">
-			<div style="float: left;"><span class="cbCelebrity">Post comment</span></div>
-			<div class="cbCelebrity" style="float: right;">View all</div>
-			<div class="clear"></div>
+		<div class="clear"></div>
+		<div style="width: 300px;">
+			<? if ($user) { ?>
+				<form name="frmComment" id="frmComment" method="post" action="<?= $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'] ?>">
+					<div><textarea name="txtComment" id="txtComment"></textarea></div>
+					<div><input type="submit" name="btnSubmit" value="Send Comment"></div>
+					<!--				<div><a href="--><?php //echo $logoutUrl; ?><!--">Logout</a></div>-->
+				</form>
+			<? } else { ?>
+				<div>
+					<div>You need to be connected to your Facebook account if you want to leave a comment.</div>
+					<div class="fbConnectBtn"><a href="<?php echo $loginUrl; ?>"><img src="images/facebook-connect.gif" border="0"></a></div>
+				</div>
+			<? } ?>
 		</div>
 	</div>
-	<div id="faqGuster" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=4'" title="Go to Gallery">
+	<div id="faqGuster" style="float: right" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=4'" title="Go to Gallery">
 		<img src="images/Gmazox-1.jpg" onmouseover="this.src='images/Gmazox-2.jpg'" onmouseout="this.src='images/Gmazox-1.jpg'" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=4'">
 	</div>
 	<div class="clear"></div>
