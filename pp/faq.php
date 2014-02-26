@@ -137,7 +137,7 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 			<div class="faqLikeContainer" celeb="1">
 				<div class="faqLike1Liked" id="faqLiked1" celeb="1"></div>
 				<div class="faqLikeBox1" id="faqLikeBox1" celeb="1" style="display: none">
-					<span><?= $likedCount[11] ?></span>
+					<span><?= number_format($likedCount[11] + 5812) ?></span>
 				</div>
 			</div>
 		<?
@@ -171,9 +171,9 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 					<div class="faqLike3-3L-blank<?= ($likedCheckArray[2] == 3) ? " faqLikeD3" : "" ?>"></div>
 				</div>
 				<div class="faqLikeBox3" id="faqLikeBox2" celeb="2" style="display: none">
-					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[21] ?></span></div>
-					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[22] ?></span></div>
-					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[23] ?></span></div>
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= number_format($likedCount[21] + 2710) ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[22] + 1573) ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[23] + 1498) ?></span></div>
 				</div>
 			</div>
 		<?
@@ -209,9 +209,9 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 					<div class="faqLike3-3L-blank<?= ($likedCheckArray[3] == 3) ? " faqLikeD3" : "" ?>"></div>
 				</div>
 				<div class="faqLikeBox3" id="faqLikeBox3" celeb="3" style="display: none">
-					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[31] ?></span></div>
-					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[32] ?></span></div>
-					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[33] ?></span></div>
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= number_format($likedCount[31] + 1075) ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[32] + 4112) ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[33] + 878) ?></span></div>
 				</div>
 			</div>
 		<?
@@ -235,7 +235,7 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 			<div class="faqLikeContainer" celeb="4">
 				<div class="faqLike1Liked" id="faqLiked1" celeb="4"></div>
 				<div class="faqLikeBox1" id="faqLikeBox1" celeb="4" style="display: none">
-					<span><?= $likedCount[41] ?></span>
+					<span><?= number_format($likedCount[41] + 5280) ?></span>
 				</div>
 			</div>
 		<?
@@ -257,7 +257,7 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 <div id="faqCommentsBlock">
 	<div style="float: left">
 		<div id="commentsBox">
-			<div id="cbTitle">Comments (<?= $rsComment->RecordCount() ?>)</div>
+			<div id="cbTitle" style="padding-top: 0">Comments (<?= $rsComment->RecordCount() ?>)</div>
 			<?
 			$i = 1;
 			while(!$rsComment->EOF) {

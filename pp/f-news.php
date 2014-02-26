@@ -3,7 +3,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 $pager = 0;
 list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `newsId`, `celebrity`, `date`, `title`, `text` FROM `fc_news` WHERE `mustRead` = 'true'")->fields;
-list($likeCountMustRead) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = 'news' AND `item` = {$newsId}")->fields;
+list($likeCountMustRead) = $infosystem->Execute("SELECT (COUNT(fl.`ip`) + fn.`startLike`) FROM `fc_like` fl, `fc_news` fn WHERE fl.`type` = 'news' AND fl.`item` = fn.`newsId` AND fl.`item` = {$newsId}")->fields;
 $likeCount[$newsId] = $likeCountMustRead;
 $likedCheck[$newsId] =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'news' AND `item` = {$newsId} AND `ip` = '{$ip}'");
 
@@ -14,7 +14,7 @@ while(!$rsNews->EOF) {
 	list($x_newsId, $x_celebrity, $x_date, $x_title, $x_text) = $rsNews->fields;
 	$newsImagePreload[] = "'news-{$x_newsId}-small-over.jpg'";
 
-	list($likeCount[$x_newsId]) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = 'news' AND `item` = {$x_newsId}")->fields;
+	list($likeCount[$x_newsId]) = $infosystem->Execute("SELECT (COUNT(fl.`ip`) + fn.`startLike`) FROM `fc_like` fl, `fc_news` fn WHERE fl.`type` = 'news' AND fl.`item` = fn.`newsId` AND fl.`item` = {$x_newsId}")->fields;
 
 	$likedCheck[$x_newsId] =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'news' AND `item` = {$x_newsId} AND `ip` = '{$ip}'");
 	$rsNews->MoveNext();
@@ -88,24 +88,25 @@ $newsImagePreload = implode(", ", $newsImagePreload);
     <div class="latestNewsRow">
 		<div class="mustReadImage"><img class="newsMustRead" newsId="<?= $newsId ?>" src="images/news-<?= $newsId ?>-big.jpg"></div>
 		<div class="mustReadBody">
-			<div><?= date('F d, Y', strtotime($date)) ?></div>
+			<div><?= date('F j, Y, g:i a', strtotime($date)) ?></div>
 			<div class="mustReadTitle"><?= $celebrity ?></div>
 			<div class="mustReadTitle2"><?= $title ?></div>
 			<div class="mustReadText">
 				<?= $text ?><br>
+				<div style="padding-top: 15px;">
 				<?
 				if($likedCheck[$newsId]->RecordCount() == 0) {
 				?>
-					<div class="sectionLike" id="sectionLike<?= $newsId ?>" newsId="<?= $newsId ?>"></div>
+				<div class="sectionLike" id="sectionLike<?= $newsId ?>" newsId="<?= $newsId ?>"></div>
 				<?
 				} else {
 				?>
-					<div class="sectionLikeD" id="sectionLikeD<?= $newsId ?>"></div>
+				<div class="sectionLikeD" id="sectionLikeD<?= $newsId ?>"></div>
 				<?
 				}
 				?>
 				<div class="sectionLikeBox">
-					<span><?= $likeCountMustRead ?></span>
+					<span><?= number_format($likeCountMustRead) ?></span>
 				</div>
 				<div id="sectionShare" style="float: right">
 					<span class='st_facebook_large' displayText='Facebook'></span>
@@ -115,9 +116,9 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 					<span class='st_email_large' displayText='Email'></span>
 				</div>
 			</div>
-		</div>
-		<div class="clear"></div>
+	    </div>
 	</div>
+	<div class="clear"></div>
 </div>
 <? include('ads.php'); ?>
 <div id="latestNews" style="padding-top: 5px;">
@@ -132,12 +133,13 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 		<a name="news-<?= $x_newsId ?>"></a>
 		<div class="latestNewsImage"><img class="newsLatest" newsId="<?= $x_newsId ?>" src="images/news-<?= $x_newsId ?>-small.jpg"></div>
 		<div class="mustReadBody">
-			<div><?= date('F d, Y', strtotime($x_date)) ?></div>
+			<div><?= date('F j, Y, g:i a', strtotime($x_date)) ?></div>
 			<div class="mustReadTitle" id="mustReadTitle<?= $x_newsId ?>"><?= $x_celebrity ?></div>
 			<div class="mustReadTitle2" newsId="<?= $x_newsId ?>"><?= $x_title ?></div>
 			<div class="mustReadText" id="news-<?= $x_newsId ?>"><?= truncateWords($x_text) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $x_newsId ?>" newsId="<?= $x_newsId ?>" href="#" onclick="return false">more</a></div>
 			<div class="mustReadText" id="newsMore-<?= $x_newsId ?>" style="display: none">
 				<?= $x_text ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
+				<div style="padding-top: 15px;">
 				<?
 				if($likedCheck[$x_newsId]->RecordCount() == 0) {
 				?>
@@ -149,15 +151,16 @@ $newsImagePreload = implode(", ", $newsImagePreload);
 				<?
 				}
 				?>
-				<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
-					<span><?= $likeCount[$x_newsId] ?></span>
-				</div>
-				<div id="sectionShare" style="float: right">
-					<span class='st_facebook_large' displayText='Facebook'></span>
-					<span class='st_twitter_large' displayText='Tweet'></span>
-					<span class='st_googleplus_large' displayText='Google +'></span>
-					<span class='st_pinterest_large' displayText='Pinterest'></span>
-					<span class='st_email_large' displayText='Email'></span>
+					<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
+						<span><?= number_format($likeCount[$x_newsId]) ?></span>
+					</div>
+					<div id="sectionShare" style="float: right">
+						<span class='st_facebook_large' displayText='Facebook'></span>
+						<span class='st_twitter_large' displayText='Tweet'></span>
+						<span class='st_googleplus_large' displayText='Google +'></span>
+						<span class='st_pinterest_large' displayText='Pinterest'></span>
+						<span class='st_email_large' displayText='Email'></span>
+					</div>
 				</div>
 			</div>
 		</div>

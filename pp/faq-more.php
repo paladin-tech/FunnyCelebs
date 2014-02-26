@@ -112,7 +112,7 @@ if($likedCheck->RecordCount() > 0) {
 			<div class="faqLikeContainer" celeb="5">
 				<div class="faqLike1Liked" id="faqLiked5" celeb="5"></div>
 				<div class="faqLikeBox1" id="faqLikeBox5" celeb="5" style="display: none">
-					<span><?= $likedCount[51] ?></span>
+					<span><?= number_format($likedCount[51] + 5695) ?></span>
 				</div>
 			</div>
 		<?
@@ -146,9 +146,9 @@ if($likedCheck->RecordCount() > 0) {
 					<div class="faqLike3-3L-blank<?= ($likedCheckArray[6] == 3) ? " faqLikeD3" : "" ?>"></div>
 				</div>
 				<div class="faqLikeBox3" id="faqLikeBox6" celeb="6" style="display: none">
-					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[61] ?></span></div>
-					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[62] ?></span></div>
-					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[63] ?></span></div>
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= number_format($likedCount[61] + 1712) ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[62] + 1380) ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[63] + 2112) ?></span></div>
 				</div>
 			</div>
 		<?
@@ -184,9 +184,9 @@ if($likedCheck->RecordCount() > 0) {
 					<div class="faqLike3-3L-blank<?= ($likedCheckArray[7] == 3) ? " faqLikeD3" : "" ?>"></div>
 				</div>
 				<div class="faqLikeBox3" id="faqLikeBox7" celeb="7" style="display: none">
-					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[71] ?></span></div>
-					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[72] ?></span></div>
-					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[73] ?></span></div>
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= number_format($likedCount[71] + 785) ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[72] + 1412) ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[73] + 3250) ?></span></div>
 				</div>
 			</div>
 		<?
@@ -210,7 +210,7 @@ if($likedCheck->RecordCount() > 0) {
 			<div class="faqLikeContainer" celeb="8">
 				<div class="faqLike1Liked" id="faqLiked8" celeb="8"></div>
 				<div class="faqLikeBox1" id="faqLikeBox8" celeb="8" style="display: none">
-					<span><?= $likedCount[81] ?></span>
+					<span><?= number_format($likedCount[81] + 3670) ?></span>
 				</div>
 			</div>
 		<?
@@ -236,7 +236,7 @@ if($likedCheck->RecordCount() > 0) {
 			<div class="faqLikeContainer" celeb="9">
 				<div class="faqLike1Liked" id="faqLiked9" celeb="9"></div>
 				<div class="faqLikeBox1" id="faqLikeBox9" celeb="9" style="display: none">
-					<span><?= $likedCount[91] ?></span>
+					<span><?= number_format($likedCount[91] + 4880) ?></span>
 				</div>
 			</div>
 		<?
@@ -270,9 +270,9 @@ if($likedCheck->RecordCount() > 0) {
 					<div class="faqLike3-3L-blank<?= ($likedCheckArray[10] == 3) ? " faqLikeD3" : "" ?>"></div>
 				</div>
 				<div class="faqLikeBox3" id="faqLikeBox7" celeb="10" style="display: none">
-					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= $likedCount[101] ?></span></div>
-					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[102] ?></span></div>
-					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= $likedCount[103] ?></span></div>
+					<div style="float: left; width: 112px; height: 64px; margin-left: 30px; text-align: center;"><span><?= number_format($likedCount[101] + 2014) ?></span></div>
+					<div style="float: left; width: 141px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[102] + 1098) ?></span></div>
+					<div style="float: left; width: 114px; height: 64px; margin-left: 16px; text-align: center;"><span><?= number_format($likedCount[103] + 2470) ?></span></div>
 				</div>
 			</div>
 		<?

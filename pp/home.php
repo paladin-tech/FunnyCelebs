@@ -26,8 +26,9 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 <div class="clear"></div>
 <div id="homeText">
 	<h1>What's this all about?</h1>
-	<p>We believe that everybody has wished at least once in their life to live like a celebrity and to be adored, famous, rich and sexy.</p>
-	<p>You may have asked yourselves, however, whether celebrities' lives are really that perfect as they seem or whether they may have faults or secrets they want to keep for themselves or what would they look like in everyday situations that we find almost impossible to imagine them in.</p>
+	<p>We believe that everybody has wished at least once in their life to live like a celebrity and to be adored, famous, rich and sexy!</p>
+	<p>You may have asked yourselves, however, whether celebrities' lives are really that perfect as they seem or whether they may have faults or secrets they want to keep for themselves or what would they look like in everyday situations that we find almost impossible to imagine them in?</p>
+	<p>Funny-celebs will give you answers to some of these questions...</p>
 </div>
 <div id="homeTextSticker"></div>
 <div class="clear"></div>
@@ -89,7 +90,7 @@ list($newsId, $celebrity, $date, $title, $text) = $infosystem->Execute("SELECT `
 	<div class="latestNewsRow">
 		<div class="mustReadImage"><img class="newsMustRead" newsId="<?= $newsId ?>" src="images/news-<?= $newsId ?>-big.jpg"></div>
 		<div class="mustReadBody">
-			<div><?= $date ?></div>
+			<div><?= date('F j, Y, g:i a', strtotime($date)) ?></div>
 			<div class="mustReadTitle"><?= $celebrity ?></div>
 			<div class="mustReadTitle2"><?= $title ?></div>
 			<div class="mustReadText">

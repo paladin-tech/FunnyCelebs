@@ -33,7 +33,7 @@ $carouselImagePreload = implode(", ", $carouselImagePreload);
 
 $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_comment` WHERE `page` = '{$page}' ORDER BY `date` DESC");
 
-list($likeCount) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = 'gallery' AND `item` = {$celebrity}")->fields;
+list($likeCount) = $infosystem->Execute("SELECT (COUNT(fl.`ip`) + fc.`startLike`) FROM `fc_like` fl, `fc_celebrity` fc WHERE fl.`type` = 'gallery' AND fl.`item` = fc.`celebId` AND fl.`item` = {$celebrity}")->fields;
 
 $ip = $_SERVER['REMOTE_ADDR'];
 $likedCheck =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'gallery' AND `item` = {$celebrity} AND `ip` = '{$ip}'");
@@ -191,7 +191,7 @@ $(document).ready(function() {
 			}
 			?>
 			<div class="sectionLikeBox">
-				<span><?= $likeCount ?></span>
+				<span><?= number_format($likeCount) ?></span>
 			</div>
 			<div id="sectionShare" style="float: right">
 				<span class='st_facebook_large' displayText='Facebook'></span>

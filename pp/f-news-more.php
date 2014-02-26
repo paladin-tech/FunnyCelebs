@@ -20,7 +20,7 @@ while(!$rsNews->EOF) {
 	list($x_newsId, $x_celebrity, $x_date, $x_title, $x_text) = $rsNews->fields;
 	$newsImagePreload[] = "'news-{$x_newsId}-small-over.jpg'";
 
-	list($likeCount[$x_newsId]) = $infosystem->Execute("SELECT COUNT(`ip`) FROM `fc_like` WHERE `type` = 'news' AND `item` = {$x_newsId}")->fields;
+	list($likeCount[$x_newsId]) = $infosystem->Execute("SELECT (COUNT(fl.`ip`) + fn.`startLike`) FROM `fc_like` fl, `fc_news` fn WHERE fl.`type` = 'news' AND fl.`item` = fn.`newsId` AND fl.`item` = {$x_newsId}")->fields;
 
 	$likedCheck[$x_newsId] =  $infosystem->Execute("SELECT `ip` FROM `fc_like` WHERE `type` = 'news' AND `item` = {$x_newsId} AND `ip` = '{$ip}'");
 	$rsNews->MoveNext();
@@ -88,33 +88,36 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 		<a name="news-<?= $x_newsId ?>"></a>
 		<div class="latestNewsImage"><img class="newsLatest" newsId="<?= $rsNews->Fields("newsId") ?>" src="images/news-<?= $rsNews->Fields("newsId") ?>-small.jpg"></div>
 			<div class="mustReadBody">
-				<div><?= date('F d, Y', strtotime($x_date)) ?></div>
+				<div><?= date('F j, Y, g:i a', strtotime($x_date)) ?></div>
 				<div class="mustReadTitle" id="mustReadTitle<?= $x_newsId ?>"><?= $x_celebrity ?></div>
 				<div class="mustReadTitle2" newsId="<?= $x_newsId ?>"><?= $x_title ?></div>
 				<div class="mustReadText" id="news-<?= $x_newsId ?>"><?= truncateWords($x_text) ?>... <a class="mustReadTextMoreLink" id="mustReadTextMoreLink<?= $x_newsId ?>" newsId="<?= $x_newsId ?>" href="#" onclick="return false">more</a></div>
 				<div class="mustReadText" id="newsMore-<?= $x_newsId ?>" style="display: none">
 					<?= $x_text ?>&nbsp;<a class="mustReadTextLessLink" href="#" onclick="return false">less</a><br>
+					<div style="padding-top: 15px;">
 					<?
 					if($likedCheck[$x_newsId]->RecordCount() == 0) {
-						?>
-						<div class="sectionLike" id="sectionLike<?= $x_newsId ?>" newsId="<?= $x_newsId ?>"></div>
+					?>
+					<div class="sectionLike" id="sectionLike<?= $x_newsId ?>" newsId="<?= $x_newsId ?>"></div>
 					<?
 					} else {
-						?>
-						<div class="sectionLikeD" id="sectionLikeD<?= $x_newsId ?>"></div>
+					?>
+					<div class="sectionLikeD" id="sectionLikeD<?= $x_newsId ?>"></div>
 					<?
 					}
 					?>
-				<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
-					<span><?= $likeCount[$x_newsId] ?></span>
-				</div>
-				<div id="sectionShare" style="float: right">
-					<span class='st_facebook_large' displayText='Facebook'></span>
-					<span class='st_twitter_large' displayText='Tweet'></span>
-					<span class='st_googleplus_large' displayText='Google +'></span>
-					<span class='st_pinterest_large' displayText='Pinterest'></span>
-					<span class='st_email_large' displayText='Email'></span>
-				</div>
+						<div class="sectionLikeBox" id="sectionLikeBox<?= $x_newsId ?>">
+							<span><?= number_format($likeCount[$x_newsId]) ?></span>
+						</div>
+						<div id="sectionShare" style="float: right">
+							<span class='st_facebook_large' displayText='Facebook'></span>
+							<span class='st_twitter_large' displayText='Tweet'></span>
+							<span class='st_googleplus_large' displayText='Google +'></span>
+							<span class='st_pinterest_large' displayText='Pinterest'></span>
+							<span class='st_email_large' displayText='Email'></span>
+						</div>
+					</div>
+				<div class="clear"></div>
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -128,7 +131,15 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 	    $i++;
 	}
 	?>
-	<div style="height: 22px;"></div>
+</div>
+<div id="pager">
+	<div id="pagerContainer">
+		<div class="pagerFieldFirst" <? if($pager > 1) { ?>onclick="location.href = 'index.php?pg=f-news-more&pager=<?= ($pager - 1) ?>'"<? } else { ?>onclick="location.href = 'index.php?pg=f-news'"<? } ?>></div>
+		<div class="<?= ($pager==0)?" pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=f-news'">1</div>
+		<div class="<?= ($pager==1)?" pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=f-news-more&pager=1'">2</div>
+		<div class="pagerFieldLast"<? if($pager < 1) { ?> onclick="location.href = 'index.php?pg=f-news-more&pager=<?= ($pager + 1) ?>'"<? } ?>></div>
+		<div class="clear"></div>
+	</div>
 </div>
 <? include('ads.php'); ?>
 <div id="commentsFNewsContainer">
@@ -163,17 +174,9 @@ $rsComment = $infosystem->Execute("SELECT `fbName`, `date`, `comment` FROM `fc_c
 		<? } else { ?>
 			<div>
 				<div>You need to be connected to your Facebook account if you want to leave a comment.</div>
-				<div><a href="<?php echo $loginUrl; ?>"><img src="images/facebook-connect.gif" border="0"></a></div>
+				<div class="fbConnectBtn"><a href="<?php echo $loginUrl; ?>"><img src="images/facebook-connect.gif" border="0"></a></div>
 			</div>
 		<? } ?>
-	</div>
-	<div id="pagerContainer" style="padding: 20px; float: left; padding: 20px 73px 0 73px;">
-		<div class="pagerFieldFirst" <? if($pager > 1) { ?>onclick="location.href = 'index.php?pg=f-news-more&pager=<?= ($pager - 1) ?>'"<? } else { ?>onclick="location.href = 'index.php?pg=f-news'"<? } ?>></div>
-		<div class="<?= ($pager==0)?" pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=f-news'">1</div>
-		<div class="<?= ($pager==1)?" pagerFieldActive":"pagerField"?>" onclick="location.href = 'index.php?pg=f-news-more&pager=1'">2</div>
-		<!--		<div class="--><?//= ($pager==3)?" pagerFieldActive":"pagerField"?><!--" onclick="location.href = 'index.php?pg=f-news-more&pager=2'">3</div>-->
-		<div class="pagerFieldLast"<? if($pager < 1) { ?> onclick="location.href = 'index.php?pg=f-news-more&pager=<?= ($pager + 1) ?>'"<? } ?>></div>
-		<div class="clear"></div>
 	</div>
 	<div class="bull" onclick="location.href = 'index.php?pg=galleryDetails&celebrity=24'" title="Go to Gallery"></div>
 </div>
