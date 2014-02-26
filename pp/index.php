@@ -41,6 +41,7 @@ function truncateWords($text, $maxLength = 20)
 	<script type="text/javascript">stLight.options({publisher: "11bdf58d-6cc5-4ecd-b0ef-8f21b3d9c6bf", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
+<?php include_once("analyticstracking.php") ?>
 <a name="top"></a>
 <div id="container">
 	<div id="topContainer">
@@ -62,15 +63,6 @@ function truncateWords($text, $maxLength = 20)
 		<div id="characterContainer">
 <!--			<img src="images/header2.png" style="margin-top: -58px;">-->
 		</div>
-<!--		<div id="characterContainer">-->
-<!--			<div id="character1">-->
-<!--				<img src="images/opra.png">-->
-<!--			</div>-->
-<!--			<div id="character2">-->
-<!--				<img src="images/ashton.png">-->
-<!--			</div>-->
-<!--			<div class="clear"></div>-->
-<!--		</div>-->
 	</div>
 	<div id="main">
 		<? include($pg.'.php'); ?>
